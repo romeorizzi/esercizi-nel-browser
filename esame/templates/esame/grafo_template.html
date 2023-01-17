@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
+    <script src="https://graphicalstructure.org/Playground/Scripts/Line.js"></script>
+    <style>
+      body {
+         padding: 0px;
+         margin: 0px;
+         height: 40in;
+      
+      }
+      .node {
+         position: absolute;
+         height: 1.6em;
+         line-height: 1.6em;  
+         width: 1.6em;  
+         font-size: 1.6em;
+         font-weight: bold;
+         border-radius: 50%;
+         background-color: green;
+         color: black;
+         text-align: center;
+         cursor: pointer;
+       }  
+    </style>
+  </head>
+<div class='node' id='A' style='top:58%;left:3%; background: green;' ondblclick='javascript:change(this.id);'>A</div>
+<div class='node' id='B' style='top:58%;left:25%; background: green;' ondblclick='javascript:change(this.id);'>B</div>
+<div class='node' id='C' style='top:42%;left:19%; background: green;' ondblclick='javascript:change(this.id);'>C</div>
+<div class='node' id='D' style='top:42%;left:8%; background: green;' ondblclick='javascript:change(this.id);'>D</div>
+<div class='node' id='E' style='top:25%;left:8%; background: green;' ondblclick='javascript:change(this.id);'>E</div>
+<div class='node' id='F' style='top:25%;left:19%; background: green;' ondblclick='javascript:change(this.id);'>F</div>
+<div class='node' id='G' style='top:8%;left:25%; background: green;' ondblclick='javascript:change(this.id);'>G</div>
+<div class='node' id='H' style='top:58%;left:53%; background: green;' ondblclick='javascript:change(this.id);'>H</div>
+<div class='node' id='I' style='top:58%;left:44%; background: green;' ondblclick='javascript:change(this.id);'>I</div>
+<div class='node' id='L' style='top:8%;left:53%; background: green;' ondblclick='javascript:change(this.id);'>L</div>
+<div class='node' id='M' style='top:8%;left:44%; background: green;' ondblclick='javascript:change(this.id);'>M</div>
+<div class='node' id='N' style='top:8%;left:62%; background: green;' ondblclick='javascript:change(this.id);'>N</div>
+<div class='node' id='O' style='top:8%;left:34%; background: green;' ondblclick='javascript:change(this.id);'>O</div>
+<div class='node' id='P' style='top:58%;left:62%; background: green;' ondblclick='javascript:change(this.id);'>P</div>
+<div class='node' id='Q' style='top:58%;left:34%; background: green;' ondblclick='javascript:change(this.id);'>Q</div>
+<div class='node' id='R' style='top:42%;left:78%; background: green;' ondblclick='javascript:change(this.id);'>R</div>
+<div class='node' id='S' style='top:8%;left:3%; background: green;' ondblclick='javascript:change(this.id);'>S</div>
+<div class='node' id='T' style='top:8%;left:94%; background: green;' ondblclick='javascript:change(this.id);'>T</div>
+<div class='node' id='U' style='top:42%;left:88%; background: green;' ondblclick='javascript:change(this.id);'>U</div>
+<div class='node' id='V' style='top:25%;left:78%; background: green;' ondblclick='javascript:change(this.id);'>V</div>
+<div class='node' id='W' style='top:8%;left:71%; background: green;' ondblclick='javascript:change(this.id);'>W</div>
+<div class='node' id='X' style='top:58%;left:71%; background: green;' ondblclick='javascript:change(this.id);'>X</div>
+<div class='node' id='Y' style='top:58%;left:94%; background: green;' ondblclick='javascript:change(this.id);'>Y</div>
+<div class='node' id='Z' style='top:25%;left:88%; background: green;' ondblclick='javascript:change(this.id);'>Z</div>
+<script>
+  $('.node').draggable();
+  var _lines = new Array(); //This array will store all lines (option)
+  var _canvas = document.createElement('canvas');
+  var _ctx;
+  var ele1 , ele2, f=0;
+  var lineindex =0;
+  var linemap = {};
+  var _left = new Object(); //This will store _left elements offset
+  var _right = new Object(); //This will store _right elements offset
+  var _color='coral';
+  var _dash;
+  var _id;
+  var clientrectleft
+  var clientrectright
+  var leftnodeoffsetx
+  var leftnodeoffsety
+  var rightnodeoffsetx
+  var rightnodeoffsety
+  var dax
+  var day
+  var dangle
+  var rightx
+  var righty
+  var leftx
+  var lefty
+  var _error =false;
+    var connect = function() {
+      var _me = this;
+      //Initialize Canvas object
+      _canvas.id = 'cav1';
+      _canvas.width = document.body.clientWidth;
+      _canvas.height = document.body.clientHeight;
+      document.body.appendChild(_canvas)
+      _ctx = _canvas.getContext('2d');
+      this.drawLine = function(option) {
+        //It will push line to array.
+        linemap[`${option.left_node}${option.right_node}`] = _lines.length;
+        _lines.push(option);
+        this.connect(option);
+      };
+  this.kruskalize =function (_cl = 'rgb(0,0,0,0.08)')  {
+    for ( line of _lines) {
+      line.col = _cl;
+    }
+  }
+      this.changecolor = function (starting , ending , assignedcolor) {
+    if (linemap[`${starting}${ending}`] != undefined)  {
+       let  targg = parseInt(linemap[`${starting}${ending}`]);
+       console.log(targg , starting , ending  , assignedcolor)
+      _lines[targg].col =assignedcolor;
+    }
+    else {
+      let targg = parseInt(linemap[`${ending}${starting}`]);
+      console.log(targg , starting , ending  , assignedcolor)
+      _lines[targg].col =assignedcolor;
+    }
+      this.redrawLines();
+      }
+      this.dl = function(one , two) {
+        for (var y = 0 ; y < _lines.length ; ++y) {
+   if ((_lines[y].left_node) == one &&  (_lines[y].right_node) == two) {
+    _lines.splice(y,1);
+   }
+        }
+      };
+      //This Function is used to connect two different div with a dotted line.
+     this.connect = async function(option) {
+      if ( option.left_node == undefined || option.left_node == 'null' || option.right_node == undefined || option.right_node == 'null'  ) {
+        return;
+      }
+            //To decide colour of the line
+                _color = option.col || 'coral';
+                _ctx.font = '30px Segoe UI';
+            //To decide style of the line. dotted or solid
+            switch (option.style) {
+              case 'dashed':
+                _dash = [4, 2];
+                break;
+              case 'solid':
+                _dash = [0, 0];
+                break;
+              case 'dotted':
+                _dash = [2, 2];
+                break;
+              default:
+                _dash = [0, 0];
+                break;
+            }
+            _ctx.setLineDash(_dash);
+            //If left_node is actually right side, following code will switch elements.
+               _left_node = document.getElementById(option.left_node);
+               _right_node = document.getElementById(option.right_node);
+               if (_left_node == null || _right_node == null) {return;}
+               clientrectleft = _left_node.getBoundingClientRect();
+               clientrectright = _right_node.getBoundingClientRect();
+               leftnodeoffsetx = clientrectleft.left +document.documentElement.scrollLeft;
+               leftnodeoffsety = clientrectleft.top +document.documentElement.scrollTop;
+               rightnodeoffsetx = clientrectright.left +document.documentElement.scrollLeft;
+               rightnodeoffsety = clientrectright.top +document.documentElement.scrollTop;
+               dax = (rightnodeoffsetx+ _right_node.offsetHeight/2) - (leftnodeoffsetx+ _left_node.offsetWidth/2);
+               day = (rightnodeoffsety+ _right_node.offsetHeight/2) - (leftnodeoffsety+ _left_node.offsetHeight/2);
+               dangle = Math.atan2(day ,dax);
+               rightx = (_right_node.offsetWidth/2) * Math.cos(135+dangle) + (rightnodeoffsetx+ _right_node.offsetWidth/2) ;
+               righty  = (_right_node.offsetHeight/2) * Math.sin(135+dangle) + (rightnodeoffsety + (_right_node.offsetHeight / 2)) ;
+               leftx = (_left_node.offsetWidth/2) * Math.cos(.05+dangle) + (leftnodeoffsetx+ _left_node.offsetWidth/2) ;
+               lefty  = (_left_node.offsetHeight/2) * Math.sin(.05+dangle) + (leftnodeoffsety + (_left_node.offsetHeight / 2)) ;
+              //Get Left point and Right Point
+              _left.x = leftx
+              _left.y = lefty
+              _right.x = rightx
+              _right.y = righty
+                ele1_x = _left.x;
+                ele1_y = _left.y;
+                ele2_x = _right.x;
+                ele2_y = _right.y;
+                if (option.text == undefined) {
+                  option.text = ''
+                }
+                _ctx.beginPath(); 
+              _ctx.moveTo(_left.x, _left.y );
+              _ctx.lineTo((_right.x), (_right.y));
+              _ctx.lineWidth = option.width || 2;
+              _ctx.strokeStyle = _color;
+     if (option.gtype == 'arrow') {
+              let headlen = 16; // length of head in pixels
+              var dx = Number(ele2_x) - Number(ele1_x);
+              let dy = ele2_y - ele1_y;
+              let angle = Math.atan2(dy, dx);
+              _ctx.moveTo( ele1_x,  ele1_y);
+              _ctx.lineTo(ele2_x, ele2_y);
+              _ctx.lineTo(ele2_x - headlen * Math.cos(angle - Math.PI / 6),  ele2_y - headlen * Math.sin(angle - Math.PI / 6));
+              _ctx.moveTo(ele2_x,  ele2_y);
+              _ctx.lineTo(ele2_x - headlen * Math.cos(angle + Math.PI / 6),  ele2_y - headlen * Math.sin(angle + Math.PI / 6));
+            }
+              _ctx.stroke();
+  f = 0;
+              _ctx.font = 'bold 1.6em Segoe ui';
+              _ctx.fillText(option.text,(_right.x +_left.x)/2-15 ,( _right.y + _left.y)/2-15);
+            //option.resize = option.resize || false;
+        }
+      window.addEventListener('resize',function()  {
+          _me.redrawLines();
+        //_me.Blines();
+       //  _me.Listlines();
+      })
+      this.redrawLines = async function() {
+        if (_lines.length == 0) return;
+        _ctx.clearRect(0, 0,  10000, 4300);
+          for (let li = 0 ; li < _lines.length ;li++) {
+            _me.connect(_lines[li])
+            }
+      };
+      this.Splaylines = async function() {
+        if (tree.length == 0) return;
+        _ctx.clearRect(0, 0,  10000, 4300);
+        for (let source in tree) {
+          let destination = tree[source];
+          if(destination != 'null')
+          _me.connect({left_node:source , right_node:destination+'treetop'})
+          }
+      };
+      this.Listlines = function() {
+        if (next.length == 0) return;
+       _ctx.clearRect(0, 0,  10000, 4300);
+        for (let source in next) {
+          let destination = next[source];
+          if(destination != 'null')
+          _me.connect({left_node:source , right_node:destination , col:'black' ,style:'dashed'})
+          }
+      };
+      this.Blines = function() {
+        if (BTree.length == 0) return;
+        _ctx.clearRect(0, 0,  10000, 4300);
+        for (let source in BTree) {
+          let destination = BTree[source];
+          if(destination != 'null')
+          _me.connect({left_node:source , right_node:destination+'top',gtype:'UD' })
+          }
+      };
+      return this;
+    };
+    var LineController = connect();
+  LineController.drawLine({
+    left_node:'S',
+    right_node:'G',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'S',
+    right_node:'A',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'S',
+    right_node:'E',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'G',
+    right_node:'B',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'G',
+    right_node:'F',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'E',
+    right_node:'F',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'E',
+    right_node:'C',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'F',
+    right_node:'D',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'D',
+    right_node:'C',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'D',
+    right_node:'B',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'A',
+    right_node:'C',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'A',
+    right_node:'B',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'G',
+    right_node:'O',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'B',
+    right_node:'Q',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'O',
+    right_node:'Q',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'O',
+    right_node:'M',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'Q',
+    right_node:'I',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'M',
+    right_node:'I',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'M',
+    right_node:'H',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'I',
+    right_node:'L',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'L',
+    right_node:'H',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'N',
+    right_node:'L',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'P',
+    right_node:'H',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'N',
+    right_node:'P',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'N',
+    right_node:'W',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'P',
+    right_node:'X',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'W',
+    right_node:'T',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'W',
+    right_node:'V',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'W',
+    right_node:'X',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'X',
+    right_node:'R',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'X',
+    right_node:'Y',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'V',
+    right_node:'Z',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'V',
+    right_node:'R',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'Z',
+    right_node:'T',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'Z',
+    right_node:'U',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'R',
+    right_node:'U',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'U',
+    right_node:'Y',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'line',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'Y',
+    right_node:'T',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'O',
+    right_node:'P',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'Q',
+    right_node:'N',
+    col: 'black',
+    width: 2,
+    style: 'solid',
+    gtype: 'arrow',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+    var counters = Array(256).fill(0);
+     var isPath = false;
+     var path = Array();
+
+  function change(id) {
+    var colors = ['red', 'orange', 'blue', 'green'];
+    var len = colors.length;
+   var e = document.getElementById(id);
+    var index = id.charCodeAt(0);
+    var counter = counters[index];
+    if (counter != len) {
+      e.style.background = colors[counter];
+      counter = counter + 1;
+    } else {
+      counter = 0;
+      e.style.background = colors[counter];
+    }
+    counters[index] = counter;
+    if(isPath){
+        path.push(id);
+    }
+  }
+    //Modalità attivata
+    function path_color(){
+        isPath = !isPath;
+        if(isPath == true){
+            path = []; //resetto il percorso
+            refresh_nodes('green'); //resetto colore grafo
+            alert('Select a path by coloring nodes');
+        }
+        else{
+            if(Object.keys(path).length <= 1)
+                alert('Path not valid!');   //Perorso con un solo nodo non valido
+            else{
+                for(i=1; i < Object.keys(path).length; i++){
+                    a = path[i-1];
+                    b = path[i];
+                    changecolor(a,b, 'red');
+                    document.getElementById(a).style.background = 'green';
+                    document.getElementById(b).style.background = 'green';
+                }
+            }
+        }
+    }
+
+    //Colora l'intero grafo
+    function refresh_nodes(color){
+        var divs = document.getElementsByClassName('node');
+        for(i=0; i<Object.keys(divs).length; i++){
+            id = divs[i].id;
+            index = id.charCodeAt(0);
+            counters[index] = 0;
+            divs[i].style.background = color
+        }
+    }
+
+    //Colora l'intero grafo
+    function refresh_edges(){
+        for(i=1; i < Object.keys(_lines).length; i++){
+            a = _lines[i].left_node;
+            b = _lines[i].right_node;
+            changecolor(a,b, 'black');
+        }
+    }
+
+    function send_output(){
+        var output = new Object();
+        var nodes = document.getElementsByClassName('node');
+        output.n = new Array();
+        //Aggiungo nodi all'output
+        for(i=0; i<Object.keys(nodes).length; i++){
+            var node = new Object();
+            node.id = nodes[i].id;
+            node.color = nodes[i].style.background;
+            output.n.push(node);
+        }
+        output.m = new Array();
+        //Aggiungo archi all'output
+        for(i=0; i < Object.keys(_lines).length; i++){
+            var edge = new Object();
+            edge.left = _lines[i].left_node;
+            edge.right = _lines[i].right_node;
+            edge.color = _lines[i].col;
+            edge.orientation = _lines[i].gtype;
+            edge.value = _lines[i].text;
+            output.m.push(edge);
+           }
+        var jsonString = JSON.stringify(output, null, '	');
+        window.parent.postMessage(jsonString, '*');
+        refresh_edges();
+    }
+
+    function get_colored_nodes(){
+        var output = new Object();
+        output.nodes =  new Array();
+        var nodes = document.getElementsByClassName('node');
+        //Aggiungo nodi all'output
+        for(i=0; i<Object.keys(nodes).length; i++){
+            if(nodes[i].style.background != 'green'){
+                var node = new Object();
+                node = nodes[i].id;
+                output.nodes.push(node);
+            }
+        }
+        var jsonString = JSON.stringify(output, null);
+        window.parent.postMessage(jsonString, '*');
+    }
+
+    function get_path(){
+        var output = new Object();
+        output.edges =  new Array();
+        //Aggiungo archi all'output
+        for(i=0; i < Object.keys(_lines).length; i++){
+            if(_lines[i].col != 'black'){
+                var edge = new Object();
+                edge.left = _lines[i].left_node;
+                edge.right = _lines[i].right_node;
+                edge.orientation = _lines[i].gtype;
+                edge.value = _lines[i].text;
+                output.edges.push(edge);
+                }
+       }
+    var jsonString = JSON.stringify(output, null, '	');
+    window.parent.postMessage(jsonString, '*');
+    refresh_edges();
+    }
+
+    //Comunicazione parent-iframe
+    window.onmessage = function(e){
+        if (e.data == 'changecolor')
+            path_color();
+        if (e.data == 'edgeset')
+            get_path();
+        if (e.data == 'nodeset')
+            get_colored_nodes();
+        if (e.data == 'send')
+            send_output();
+    };
+</script>
+</html>

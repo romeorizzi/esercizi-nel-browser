@@ -1,0 +1,67 @@
+%YAML 1.2
+---
+# Note: this yaml file contains the dynamic settings that influence the deployment of an exercise. It is organized into sections. Each section may contain groups of radio (i.e., mutually exclusive) options. If you edit this file, we suggest you to proceed by commenting (an `#` at the beginning of the line) and decommenting lines, leaving precisely one line decommented in each group.
+
+# Section Environment:
+env: ROexam
+#env: VM
+
+# Section Request User Bar:
+REQUEST_USER_BAR_DEFAUL: ['Code','Markdown','Raw','Attachment']
+#REQUEST_USER_BAR_DEFAUL: ['Markdown','Raw','Attachment']
+#REQUEST_USER_BAR_DEFAUL: ['Code','Markdown','Raw']
+#REQUEST_USER_BAR_DEFAUL: ['Markdown','Raw']
+# Note: the settings of this group are overridden by settings in the longyaml file from which the notebooks for the single exercises are generated.
+
+# Section Feedback given to the Student:
+FEEDBACKS_TO_STUDENT: ['the_scores','report_on_goals','cautious_notes','positive_enforcements']
+#FEEDBACKS_TO_STUDENT: ['the_scores','report_on_goals','notes']
+#FEEDBACKS_TO_STUDENT: ['the_scores','report_on_goals']
+
+# Section MONITOR_CALLS_TO_CHECKERS:
+##group1 [MONITOR_CALLS_TO_RTAL_CHECKERS]
+MONITOR_CALLS_TO_RTAL_CHECKERS: False
+#MONITOR_CALLS_TO_RTAL_CHECKERS: True
+
+# Section DEBUG_RTAL_AT_SET_UP:
+DEBUG_RTAL_AT_SET_UP: False
+#DEBUG_RTAL_AT_SET_UP: True
+
+# Section RTAL DEBUG at command Interface:
+##group [RTAL_INTERFACE_VERBOSITY]:
+#RTAL_INTERFACE_VERBOSITY: ['signal_when_no_feedback_has_been_produced']
+RTAL_INTERFACE_VERBOSITY: ['signal_when_no_feedback_has_been_produced','TALight_signal_problem']
+#RTAL_INTERFACE_VERBOSITY: ['signal_when_no_feedback_has_been_produced','TALight_signal_problem','report_TALight_protocol']
+
+# Section Alternative Checkers Management:
+##group1 [CHECKERS_INVOLVED]
+#CHECKERS_INVOLVED: ONLY_THE_ONE_EMBEDDED_IN_NOTEBOOK
+#CHECKERS_INVOLVED: ONLY_THE_TALIGHT_ONES
+CHECKERS_INVOLVED: BOTH
+#CHECKERS_INVOLVED: THOSE_IN_LIST_FROM_YAML_LONGFILE
+#CHECKERS_INVOLVED: ONLY_FIRST_IN_LIST_FROM_YAML_LONGFILE
+
+##group2 [CHECK_AGREEMENT_OF_CHECKERS]
+#CHECK_AGREEMENT_OF_CHECKERS: False
+CHECK_AGREEMENT_OF_CHECKERS: True
+
+##group3 [SERVERS_INVOLVED]
+#SERVERS_INVOLVED: ONLY_FIRST_URL
+SERVERS_INVOLVED: ALL_URLS
+
+
+# Section RTAL servers and URLs:
+RTAL_LOCAL_URL: ws://127.0.0.1:8008   # on local machine
+RTAL_CLOUD_UNIVR_URL: wss://ta.di.univr.it/tal
+RTAL_CLOUD_PISA_URL: wss://rizzi.olinfo.it/tal
+#RTAL_SOME_OLD_URL: ws://192.168.64.2:8008
+
+##group [RTAL_URLS] (to specify the servers to pool):
+RTAL_URLS: [RTAL_CLOUD_UNIVR_URL]
+#RTAL_URLS: [RTAL_CLOUD_UNIVR_URL, RTAL_LOCAL_URL]
+#RTAL_URLS: []
+# explanation: when the list TAL_URLS contains more URLs, then there are two cases:
+#   -case 1: if setting `SERVERS_INVOLVED` = ONLY_FIRST_URL then only the farst server in the list is called
+#   -case 2: if setting `SERVERS_INVOLVED` = RTAL_CHECKER_WITH_DIFF then each server in the list, in that order, gets called at each feedback request. In case of differences in reply these are spot out.
+
+...

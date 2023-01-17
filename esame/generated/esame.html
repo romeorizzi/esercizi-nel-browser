@@ -1,0 +1,26 @@
+{% extends 'esame/common.html' %}
+
+{% block content %}
+<div class="container my-5 text-center" style="max-width:900px">
+    <h1>ESAME DI RICERCA OPERATIVA</h1>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for esercizio,pair in data.items %}
+        <div class="col-sm"  style="margin-bottom:15px">
+            <div class="card" style="width: 18rem;">
+                <img src="" class="card-img-top">
+                <div class="card-body">
+                    <h2 class="card-title">{{pair.title}}</h2>
+                    <p class="card-title">Punti sicuri: <b>{{pair.score.punti_sicuri | safe}}</b></p>
+                    <p class="card-title">Punti aggiuntivi possibili: <b>{{pair.score.punti_aggiuntivi_possibili  | safe}}</b></p>
+                    <p class="card-title">Punti fuori portata: <b>{{pair.score.punti_fuori_portata  | safe}}</b></p>
+                    <a href="{% url esercizio %}" class="btn btn-primary">Seleziona</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

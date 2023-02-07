@@ -1,8 +1,16 @@
 import sys 
 from xml.dom import minidom
+import ruamel.yaml
 
 sys.setrecursionlimit(10**9)
-xmldoc = minidom.parse('graphml/esempio_esame_1_graph.graphml')
+yaml = ruamel.yaml.YAML()
+
+final_graph = str
+with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml') as fp:
+     data = yaml.load(fp)
+     final_graph = data['graphml']
+
+xmldoc = minidom.parse(final_graph)
 
 edge_list = xmldoc.getElementsByTagName('edge')
 node_list = xmldoc.getElementsByTagName('node')
@@ -39,7 +47,7 @@ def node_arrow():
                archi_grafo_arrow.append([edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'line'])
 
           elif arrow_list[count].attributes['target'].value == 'standard':
-               archi_grafo_arrow.append([edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'arrow'])
+               archi_grafo_arrow.append([edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'arrow_right'])
      return archi_grafo_arrow
 
 def edge_string():

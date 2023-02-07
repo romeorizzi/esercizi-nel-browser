@@ -1,1 +1,1 @@
-generated/urls.py
+/home/jacopo/Documenti/Git/RO_browser/esame/generated/urls.py

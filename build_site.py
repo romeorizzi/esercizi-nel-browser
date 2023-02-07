@@ -220,6 +220,10 @@ for key in PROBLEM.keys(): # per ogni esercizio
         if 'general_description_before_task' in all_exercises[key]['tasks'][k].keys():
             descr_before_task = all_exercises[key]['tasks'][k]['general_description_before_task'].replace('__','').replace('$','')
         d = {"question":f"<label>{all_exercises[key]['tasks'][k]['request'].replace('__','')}{all_exercises[key]['tasks'][k]['init_answ_cell_msg_automatic'].replace('#','<br>')}</label>","feedback":"", "goals":all_exercises[key]['tasks'][k]['goals'],"descr_before_task":f"<label>{descr_before_task}</label>"}
+        if 'componenti_stato' in all_exercises[key]['tasks'][k].keys():
+            d['componenti_stato'] = all_exercises[key]['tasks'][k]['componenti_stato']
+        if 'task_state_modifier' in all_exercises[key]['tasks'][k].keys():
+            d['task_state_modifier'] = all_exercises[key]['tasks'][k]['task_state_modifier']
         if 'select' in all_exercises[key]['tasks'][k].keys():
             d['select'] = all_exercises[key]['tasks'][k]['select']
         if int(k)< 10:              

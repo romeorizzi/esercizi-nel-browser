@@ -81,3 +81,7 @@ mst:
     punti_aggiuntivi_possibili: 0
     punti_fuori_portata: 0
     punti_sicuri: 0
+  task03:
+    punti_aggiuntivi_possibili: 0
+    punti_fuori_portata: 0
+    punti_sicuri: 0

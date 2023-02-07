@@ -27,6 +27,12 @@
         margin-left: auto;
         margin-right: auto;
       }
+      .inlinebutton{
+        display:inline-block;
+      }
+      .inlinetext{
+        display:inline-block;
+      }
     </style>
   </head>
 <br>
@@ -66,19 +72,41 @@
         <label style="margin-top:5px;font-size:18px" class="form-label">{{quadruple.question | safe}}</label>
           <div class="row g-3">
             <iframe id = 'frame{{ task }}' src="{% url 'grafo_template' %}" width="100%" height="300px" style="border: 1;" overflow="auto" scrolling='no'></iframe>
-            <button type='submit' onclick='javascript:change_color("frame{{ task }}");'>Colora Archi</button>
+            <div class="inlinebutton">
+            {% for state in quadruple.task_state_modifier %}
+              {% if state == 'edgecol' %}
+                <button type='submit' onclick='javascript:change_color("frame{{ task }}");' class="btn btn-success">Colora Archi</button>
+              {% endif %}  
+              {% if state == 'orientation' %}                
+                <button type='submit' onclick='javascript:change_orientation("frame{{ task }}");' class="btn btn-success">Cambia orientamento arco</button>
+              {% endif %}
+              {% if state == 'nodetag' %}
+                <button type="submit" onclick='javascript:change_nodetag("frame{{task}}", "{{ task }}");' class="btn btn-success">Cambia valore nodo</button>              
+                <div class="inlinetext">
+                  <input type="text" id="get_tag{{ task }}" style="display: none; width: auto" placeholder= "Nodo" name="change_name1">
+                  <input type="text" id="set_tag{{ task }}" style="display: none; width: auto" placeholder= "Nuovo nodo" name="change_name2">
+                </div>
+              {% endif %}
+              {% if state == 'refresh' %}
+                <button type='submit' onclick='javascript:refresh_iframe("frame{{ task }}");' class="btn btn-danger">Ripristina Grafo</button>
+              {% endif %}
+            {% endfor %}                
+            </div>
+            {% for s in quadruple.componenti_stato %}
+              <p class="componenti_{{task}}" style="display: none">{{s}}</p>
+            {% endfor %}
             <label>Scegli un'opzione come risposta:</label>
             <br>
             {% for s in quadruple.select %}
             <div>
                 <input type="radio" id="radio_{{ task }}" name="radio_{{ task }}" value="{{s}}">
-                <label for="radio_{{ task }}">{{s}}</label>
+                <label for="radio_{{ task }}">{{ s }}</label>
             </div>
             {% endfor %}
             
-            
+            <button type='submit' onclick='javascript:reset_radio("radio_{{ task }}");' style="width:180px" class="btn btn-danger">Ripristina selezione</button>
             {% for goal in quadruple.goals %} 
-            <button type='submit' onclick='javascript:send("frame{{ task }}", "radio_{{ task }}", "ans_{{goal}}" );'>Ottieni certificato</button>
+            <button type='submit' onclick='javascript:send("frame{{ task }}", "radio_{{ task }}", "ans_{{goal}}", "componenti_{{task}}");' class="btn btn-success">Ottieni certificato</button>
             <br>
             <form name="form" method="post" action = "{% url 'esercizio_tmp' %}" autocomplete="off">
             {% csrf_token %} 
@@ -130,30 +158,86 @@
       iWindow.postMessage('changecolor', '*')
     }
 
+    function change_orientation(name){
+      const iframe = document.getElementById(name);
+      const iWindow = iframe.contentWindow;
+      iWindow.postMessage('changeorientation', '*');
+    }
+
+    function refresh_iframe(name){
+      document.getElementById(name).contentWindow.location.reload();
+    }
+
+    function reset_radio(name){
+      var radiobutton = document.getElementsByName(name)
+      for (var i = 0; i < radiobutton.length; i++){
+        var rbutton = radiobutton[i];
+        rbutton.checked = false
+      }     
+    }
+    isChangeTag = false;
+    function change_nodetag(frame, task){
+      isChangeTag= !isChangeTag;
+      if(isChangeTag == true){
+        document.getElementById('get_tag' + task).style.display = 'inline-block';
+        document.getElementById('set_tag' + task).style.display = 'inline-block';
+      }
+      else{
+        const iframe = document.getElementById(frame);
+        const iWindow = iframe.contentWindow;
+        a = document.getElementById("get_tag" + task).value
+        b = document.getElementById("set_tag" + task).value
+        if(b != "")
+          iWindow.postMessage('changetag' + '.' + a + '.' + b , '*');
+        document.getElementById("get_tag" + task).value = "";
+        document.getElementById("get_tag" + task).style.display = 'none';
+        document.getElementById("set_tag" + task).value = "";
+        document.getElementById("set_tag" + task).style.display = 'none';
+      }  
+    }
+    function find_status(status, dict){
+      for (var i = 0; i < dict.length; i++) {
+        valore = dict[i].innerHTML;
+        if (valore.includes(status))
+          return valore.split(":")[1].split("}")[0].split("'")[1].split("'")[0];
+      }
+      return ""
+    }
+
     var out_text;
 
-    function send(name, radio, output){ 
+    function send(name, radio, output, dictionary){ 
       const iframe = document.getElementById(name);
       const iWindow = iframe.contentWindow;
       var string = 'input[name="' + radio + '"]:checked';
       var value = document.querySelector(string).value;
+      status = value.split("[")[1].split("]")[0];
+      dict = document.getElementsByClassName(dictionary);
+      select_status = find_status(status, dict);
       out_text = output;
-      if(value.includes("[nodeset]"))
-        iWindow.postMessage('nodeset', '*'); 
-      else if(value.includes("[edgeset]"))
-        iWindow.postMessage('edgeset', '*');
+      if(select_status == "nodeset")
+        iWindow.postMessage(status +'.nodeset', '*'); 
+      else if(select_status == "edgeset")
+        iWindow.postMessage(status + '.edgeset', '*');
+      else if(select_status == "orientation")
+        iWindow.postMessage(status + '.orientation', '*');
+      else if(select_status == "edgecol")
+        iWindow.postMessage(status + '.edgecol', '*');
+      else if(select_status == "nodecol")
+        iWindow.postMessage(status + '.nodecol', '*');
       else
-        iWindow.postMessage('send', '*'); 
+        iWindow.postMessage(status + '.send', '*'); 
     }
 
+    
     function isJsonString(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        return false;
+      try {
+          JSON.parse(str);
+      } catch (e) {
+          return false;
+      }
+      return true;
     }
-    return true;
-  }
 
   function printStringToInput(input, newJSON) {
       var inputField = document.getElementById(input);
@@ -177,8 +261,8 @@
     let commonKeys = json1Keys.filter(key => json2Keys.includes(key));
 
     for (let key of commonKeys) {
-    let newKey = key + "2";
-    json2[newKey] = json2[key];
+    let newKey = key;
+    json1[newKey] = json2[key];
     delete json2[key];
   }
   }
@@ -189,7 +273,7 @@
     }
   });
 
-  </script>
+</script>
   
 {% endblock %}
 </html>

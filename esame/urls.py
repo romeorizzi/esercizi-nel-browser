@@ -1,1 +1,1 @@
-/home/jacopo/Documenti/Git/RO_browser/esame/generated/urls.py
+/home/romeo/corsi/RO/esami/esercizi-nel-browser/esame/generated/urls.py

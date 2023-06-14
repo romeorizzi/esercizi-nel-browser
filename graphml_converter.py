@@ -38,16 +38,52 @@ def node_position():
           coordinate_nodi.append([int(int(float(x))/13), int(int(float(y))/8)])         
      return coordinate_nodi
 
+def node_tag():
+    node_tag = []
+    tmp_node_tag = xmldoc.getElementsByTagName('y:NodeLabel')
+
+    for node_id in range(len(tmp_node_tag)):
+        if tmp_node_tag[node_id].getAttribute('tag') != "":
+            node_tag.append(tmp_node_tag[node_id].getAttribute('tag'))
+
+    # print(node_tag)
+
+    return node_tag
+
+def node_color():
+    colori_nodi = []
+    node_color = xmldoc.getElementsByTagName('y:Fill')
+
+    for node_id in range(numero_nodi):
+        color = node_color[node_id].attributes['color'].value
+        colori_nodi.append(color)
+    return colori_nodi
+
 def node_arrow():
      archi_grafo_arrow = []
      arrow_list = xmldoc.getElementsByTagName('y:Arrows')
+     arch_weight = xmldoc.getElementsByTagName('y:EdgeLabel')
 
      for count in range(numero_archi):
-          if arrow_list[count].attributes['target'].value == 'none':
-               archi_grafo_arrow.append([edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'line'])
+         weight = arch_weight[count].firstChild.data
+         if weight == " ":
+             weight = -13234214325
 
-          elif arrow_list[count].attributes['target'].value == 'standard':
-               archi_grafo_arrow.append([edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'arrow_right'])
+        #  if arrow_list[count].attributes['type'].value == 'curve':
+        #      archi_grafo_arrow.append(
+        #          [edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'curve', weight, arrow_list[count].attributes['type'].value])
+        # else:
+         if arrow_list[count].attributes['target'].value == 'none' and arrow_list[count].attributes['source'].value == 'none':
+             archi_grafo_arrow.append(
+                 [edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'line', weight, arrow_list[count].attributes['type'].value])
+
+         elif arrow_list[count].attributes['target'].value == 'standard' and arrow_list[count].attributes['source'].value == 'none':
+             archi_grafo_arrow.append(
+                 [edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'arrow', weight, arrow_list[count].attributes['type'].value])
+
+         elif arrow_list[count].attributes['target'].value == 'standard' and arrow_list[count].attributes['source'].value == 'standard':
+             archi_grafo_arrow.append(
+                 [edge_list[count].attributes['source'].value, edge_list[count].attributes['target'].value, 'bidirectional', weight, arrow_list[count].attributes['type'].value])
      return archi_grafo_arrow
 
 def edge_string():

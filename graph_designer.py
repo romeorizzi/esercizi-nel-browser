@@ -8,10 +8,16 @@ TEMPLATES_DIRECTORY = os.path.join(os.getcwd(),"esame","templates","esame")
 v = graphml_converter.node_edges()
 e = graphml_converter.node_arrow()
 
-nodes_positions = {}
+nodes_values = {}
 numero_nodi, numero_archi = graphml_converter.numero_node_edges()
 coordinate_nodi = []
 coordinate_nodi = graphml_converter.node_position()
+colori_nodi = []
+colori_nodi = graphml_converter.node_color()
+tag_nodi = []
+tag_nodi = graphml_converter.node_tag()
+
+
 yaml = ruamel.yaml.YAML()
 with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml') as cn:
     data = yaml.load(cn)
@@ -26,9 +32,11 @@ with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml') as cn:
 
 def assign_coords(v):
     for node,count in zip(v,range(numero_nodi)):
-        nodes_positions[node] = {}
-        nodes_positions[node]['x'] = coordinate_nodi[count][0]
-        nodes_positions[node]['y'] = coordinate_nodi[count][1]
+        nodes_values[node] = {}
+        nodes_values[node]['x'] = coordinate_nodi[count][0]
+        nodes_values[node]['y'] = coordinate_nodi[count][1]
+        nodes_values[node]['color'] = colori_nodi[count]
+        nodes_values[node]['tag'] = tag_nodi[count]
 
 def write_yaml():
     yaml = ruamel.yaml.YAML()
@@ -42,12 +50,15 @@ def write_yaml():
         
     with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml', 'w') as fp:        
         yaml.dump(data, fp) 
-    
+
 def init_graph_html():
     assign_coords(v)
     txt = ""
     for node in v:
-        txt += f"<div class='node' id='{node}' style='top:{nodes_positions[node]['y']+70}%;left:{nodes_positions[node]['x']+4}%; background: {background_col};' onclick='javascript:change(this.id);'>{node}</div>\n"
+        txt += f"<div class='node' id='{node}' style='top:{nodes_values[node]['y']}px;left:{nodes_values[node]['x']}px; background: {background_col};border: thin solid black' onclick='javascript:change(this.id);'>\n"#{node}</div>\n"
+        txt += f"<label id='{node}-label-char' style='position: absolute; top:0%;left:25%;'> {node}</label>\n"
+        txt += f"<label id='{node}-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'> {nodes_values[node]['tag']}</label>\n"
+        txt += "</div>\n"
     txt += "<script>\n"
     txt += "  $('.node').draggable();\n"      
     txt += "  var _lines = new Array(); //This array will store all lines (option)\n"
@@ -164,39 +175,88 @@ def init_graph_html():
     txt += "                ele1_y = _left.y;\n"
     txt += "                ele2_x = _right.x;\n"
     txt += "                ele2_y = _right.y;\n"
-    txt += "                if (option.text == undefined) {\n"
-    txt += "                  option.text = ''\n"
+    txt += "                if (option.text == -13234214325) {\n"
+    txt += "                  option.text = '';\n"
     txt += "                }\n"
-    txt += "                _ctx.beginPath(); \n"             
-    txt += "              _ctx.moveTo(_left.x, _left.y );\n"     
-    txt += "              _ctx.lineTo((_right.x), (_right.y));\n"              
+    txt += "                _ctx.beginPath(); \n"
+    txt += "              if (option.ltype == '') {\n"           
+    txt += "                  _ctx.moveTo(_left.x, _left.y );\n"     
+    txt += "                  _ctx.lineTo((_right.x), (_right.y));\n"
+    txt += "              }\n"             
     txt += "              _ctx.lineWidth = option.width || 2;\n"
     txt += "              _ctx.strokeStyle = _color;\n"
-    txt += "     if (option.gtype == 'arrow_right') {\n"
+    txt += "     if (option.ltype == 'curve') {\n"
+    txt += "        _ctx.P1X = ele1_x;\n"
+    txt += "        _ctx.P1Y = ele1_y;\n"
+    txt += "        _ctx.P2X = ele2_x;\n"
+    txt += "        _ctx.P2Y = ele2_y;\n"
+    txt += "        _ctx.moveTo(ele1_x, ele1_y);\n"
+                    # central point of the bezier curve
+    txt += "        _ctx.P3X = (_ctx.P1X + _ctx.P2X)/2;\n"
+    txt += "        _ctx.P3Y = (_ctx.P1Y + _ctx.P2Y)/2;\n"
+    txt += "        _ctx.DistanceX = Math.abs(_ctx.P2X - _ctx.P1X);\n"
+    txt += "        _ctx.DistanceY = Math.abs(_ctx.P2Y - _ctx.P1Y);\n"
+    txt += "        if (_ctx.DistanceX >= _ctx.DistanceY){\n"
+    txt += "            if (_ctx.P1Y<_ctx.P2Y){\n"
+    txt += "                _ctx.P3Y = _ctx.P3Y + (Math.log(_ctx.DistanceX)/Math.log(2))*5;\n"
+    txt += "            }else{\n"
+    txt += "                _ctx.P3Y = _ctx.P3Y - (Math.log(_ctx.DistanceX)/Math.log(2))*5;\n"
+    txt += "            }\n"
+    txt += "        }else{\n"
+    txt += "            if (_ctx.P1X<_ctx.P2X){\n"
+    txt += "                _ctx.P3X = _ctx.P3X - (Math.log(_ctx.DistanceY)/Math.log(2))*5;\n"
+    txt += "            }else{\n"
+    txt += "                _ctx.P3X = _ctx.P3X - (Math.log(_ctx.DistanceY)/Math.log(2))*5;\n"
+    txt += "            }\n"
+    txt += "        }\n"
+    txt += "        _ctx.bezierCurveTo(_ctx.P3X, _ctx.P3Y, _ctx.P3X, _ctx.P3Y, ele2_x, ele2_y);\n"
+    txt += "        _ctx.stroke();\n"
+    txt += "       }\n"
+    txt += "     if (option.gtype == 'arrow') {\n"
     txt += "              let headlen = 16; // length of head in pixels\n"
-    txt += "              var dx = Number(ele2_x) - Number(ele1_x);\n"
-    txt += "              let dy = ele2_y - ele1_y;\n"
+    txt += "              if (option.ltype == 'curve') {\n"
+    txt += "                var dx = Number(ele2_x) - Number(_ctx.P3X);\n"
+    txt += "                var dy = ele2_y - _ctx.P3Y;\n"
+    txt += "              } else {\n"
+    txt += "                var dx = Number(ele2_x) - Number(ele1_x);\n"
+    txt += "                var dy = ele2_y - ele1_y;\n"
+    txt += "              }\n"
     txt += "              let angle = Math.atan2(dy, dx);\n"
-    txt += "              _ctx.moveTo( ele1_x,  ele1_y);\n"
-    txt += "              _ctx.lineTo(ele2_x, ele2_y);\n"
+    txt += "              _ctx.moveTo(ele2_x,  ele2_y);\n"
     txt += "              _ctx.lineTo(ele2_x - headlen * Math.cos(angle - Math.PI / 6),  ele2_y - headlen * Math.sin(angle - Math.PI / 6));\n"
     txt += "              _ctx.moveTo(ele2_x,  ele2_y);\n"
-    txt += "              _ctx.lineTo(ele2_x - headlen * Math.cos(angle + Math.PI / 6),  ele2_y - headlen * Math.sin(angle + Math.PI / 6));\n"    
+    txt += "              _ctx.lineTo(ele2_x - headlen * Math.cos(angle + Math.PI / 6),  ele2_y - headlen * Math.sin(angle + Math.PI / 6));\n"
     txt += "            }\n"
-    txt += "     if (option.gtype == 'arrow_left') {\n"
-    txt += "              let headlen = 16; // length of head in pixels\n"
-    txt += "              var dx = Number(ele1_x) - Number(ele2_x);\n"
-    txt += "              let dy = ele1_y - ele2_y;\n"
+    txt += "     if (option.gtype == 'bidirectional') {\n"
+    txt += "              let headlen = 16; // length   of    head in pixels;\n"
+    txt += "              if (option.ltype == 'curve') {\n"
+    txt += "                var dx = Number(ele1_x) - Number(_ctx.P3X);\n"
+    txt += "                var dy = ele1_y - _ctx.P3Y;\n"
+    txt += "              } else {\n"
+    txt += "                var dx = Number(ele1_x) - Number(ele2_x);\n"
+    txt += "                var dy = ele1_y - ele2_y;\n"
+    txt += "              }\n"
     txt += "              let angle = Math.atan2(dy, dx);\n"
-    txt += "              _ctx.moveTo( ele2_x,  ele2_y);\n"
-    txt += "              _ctx.lineTo(ele1_x, ele1_y);\n"
-    txt += "              _ctx.lineTo(ele1_x - headlen * Math.cos(angle - Math.PI / 6),  ele1_y - headlen * Math.sin(angle - Math.PI / 6));\n"
-    txt += "              _ctx.moveTo(ele1_x,  ele1_y);\n"
-    txt += "              _ctx.lineTo(ele1_x - headlen * Math.cos(angle + Math.PI / 6),  ele1_y - headlen * Math.sin(angle + Math.PI / 6));\n"    
+    txt += "              _ctx.moveTo(ele1_x, ele1_y);\n"
+    txt += "              _ctx.lineTo(ele1_x - headlen * Math.cos(angle - Math.PI / 6), ele1_y - headlen * Math.sin(angle - Math.PI / 6));\n"
+    txt += "              _ctx.moveTo(ele1_x, ele1_y);\n"
+    txt += "              _ctx.lineTo(ele1_x - headlen * Math.cos(angle + Math.PI / 6), ele1_y - headlen * Math.sin(angle + Math.PI / 6));\n"
+    txt += "              if (option.ltype == 'curve') {\n"
+    txt += "                var dx = Number(ele2_x) - Number(_ctx.P3X);\n"
+    txt += "                var dy = ele2_y - _ctx.P3Y;\n"
+    txt += "              } else {\n"
+    txt += "                var dx = Number(ele2_x) - Number(ele1_x);\n"
+    txt += "                var dy = ele2_y - ele1_y;\n"
+    txt += "              }\n"
+    txt += "              let firstangle = Math.atan2(dy, dx);\n"
+    txt += "              _ctx.moveTo(ele2_x, ele2_y);\n"
+    txt += "              _ctx.lineTo(ele2_x - headlen * Math.cos(firstangle - Math.PI / 6), ele2_y - headlen * Math.sin(firstangle - Math.PI / 6));\n"
+    txt += "              _ctx.moveTo(ele2_x, ele2_y);\n"
+    txt += "              _ctx.lineTo(ele2_x - headlen * Math.cos(firstangle + Math.PI / 6), ele2_y - headlen * Math.sin(firstangle + Math.PI / 6));\n"
     txt += "            }\n"
     txt += "              _ctx.stroke();\n"             
     txt += "  f = 0;\n"
-    txt += "              _ctx.font = 'bold 1.6em Segoe ui';\n"
+    txt += "              _ctx.font = 'bold 1.1em Segoe ui';\n"
     txt += "              _ctx.fillText(option.text,(_right.x +_left.x)/2-15 ,( _right.y + _left.y)/2-15);\n"
     txt += "            //option.resize = option.resize || false;\n"     
     txt += "        }\n" 
@@ -246,11 +306,13 @@ def init_graph_html():
         txt += "  LineController.drawLine({\n"
         txt += f"    left_node:'{edge[0]}',\n"
         txt += f"    right_node:'{edge[1]}',\n"
+        txt += f"    label_node:'{edge[0]}-label',\n"
         txt += f"    col: {edge_color_starting},\n"
         txt += f"    width: 2,\n"
-#       txt += f"    text: {edge[2]},\n"
+        txt += f"    text: {edge[3]},\n"
         txt += f"    style: 'solid',\n"
         txt += f"    gtype: '{edge[2]}',\n"
+        txt += f"    ltype: '{edge[4]}',\n"
         txt += "  })\n"
         txt += f"  $( '.'+'node' ).draggable({{\n"
         txt += "  scroll: false,\n"
@@ -274,34 +336,17 @@ def init_graph_html():
     txt += "        }\n"   
     txt += "        counters[index] = counter;\n"
     txt += "    }\n\n"
-    txt += "    //cambio orientamento\n"
-    txt += "    function orient (starting , ending , orientation) {\n"
-    txt += "        if (linemap[`${starting}${ending}`] != undefined)  {\n"
-    txt += "            let  targg = parseInt(linemap[`${starting}${ending}`]);\n"
-    txt += "            console.log(targg , starting , ending  , orientation)\n"
-    txt += "            _lines[targg].gtype = orientation;\n"
-    txt += "        }\n"
-    txt += "        else {\n"
-    txt += "            let targg = parseInt(linemap[`${ending}${starting}`]);\n"
-    txt += "            console.log(targg , starting , ending  , orientation)\n"
-    txt += "            _lines[targg].gtype = orientation;\n"
-    txt += "        }\n"
-    txt += "         this.redrawLines();\n"
-    txt += "    }\n\n"
     txt += "    //Cambio orientamento archi\n"
     txt += "    function change_orientation(){\n"
     txt += "        for(i=0; i < Object.keys(_lines).length; i++){\n"
     txt += "            a = _lines[i].left_node;\n"
     txt += "            b = _lines[i].right_node;\n"
-    txt += f"            if(document.getElementById(a).style.background != {initial_nodes_color} && document.getElementById(b).style.background != {initial_nodes_color}){{\n"
-    txt += "                if(_lines[i].gtype == 'line')\n"
-    txt += "                    orient(a,b, 'arrow_right');\n"
-    txt += "                else if (_lines[i].gtype == 'arrow_right')\n"
-    txt += "                    orient(a,b, 'arrow_left');\n"
-    txt += "                else if (_lines[i].gtype == 'arrow_left')\n"
-    txt += "                    orient(a,b, 'line' );\n"
-    txt += "             }\n"
+    txt += f"           if(document.getElementById(a).style.background != {initial_nodes_color} && document.getElementById(b).style.background != {initial_nodes_color}){{\n"
+    txt += "                _lines[i].left_node = b;\n"
+    txt += "                _lines[i].right_node = a;\n"
+    txt += "            }\n"
     txt += "        }\n"
+    txt += "        this.redrawLines();\n"
     txt += "    }\n\n"
     txt += "    //Modalità attivata\n"
     txt += "    function path_color(){\n"
@@ -444,8 +489,14 @@ def init_graph_html():
     txt += "        }\n"
     txt += "        for(i=0; i<Object.keys(nodes).length; i++){\n"
     txt += "            if(nodes[i].id == a){\n"
+    txt += "                inner = nodes[i].innerHTML;\n"
+    txt += '                var tag = document.getElementById(a+"-label-char");\n'
+    txt += '                tag.id = b+"-label-char";\n'
+    txt += "                tag.innerHTML = b;\n"
+    txt += '                var label = document.getElementById(a+"-label");\n'
+    txt += '                label.id = b+"-label";\n'
     txt += "                nodes[i].id = b;\n"
-    txt += "                nodes[i].innerHTML = b;\n"
+    txt += "                //nodes[i].innerHTML = b;\n"
     txt += "            }\n"
     txt += "        }\n"
     txt += "    }\n"

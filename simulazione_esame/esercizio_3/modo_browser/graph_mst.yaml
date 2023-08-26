@@ -21,8 +21,8 @@ graphml: graphml/grafo_10_graph.graphml
 nodecol_action: [[red, green], green]
 edgecol_action: [[red, blue, black], black]
 
-graphic_instance_descriptor: "<iframe id = 'frame1' src='{% url 'grafo_template' %}'
-  width='100%' height='300px' style='border: 1;' overflow='auto' scrolling='no'></iframe>"
+graphic_instance_descriptor: "<iframe id = 'frame1' src='{% url 'grafo_template' %}'\
+  \ width='100%' height='300px' style='border: 1;' overflow='auto' scrolling='no'></iframe>"
 
 tasks:
 - 1:
@@ -60,10 +60,10 @@ tasks:
     request: Ritornare una soluzione che rispetti l'opzione selezionata
     init_answ_cell_msg: '#Seleziona nodi e/o archi (colora i nodi cliccando e gli
       archi con il bottone) \n Scegliere poi un opzione di risposta tra le successive.'
-    verif: "verify_submission(TALight_problem_name='RO_lcs',checkers=['TALight', 'embedded_in_notebook'],task_dict={'task':
-      1, 'pt_tot': 45, 'pt_formato_OK': 0, 'pt_feasibility_OK': 1, 'pt_consistency_OK':
-      0}, input_data_assigned={'s':'GCTCTACGCTGGATTC','t':'ATGCCGCTTACCGTGATC','beginning':'','ending':'','forbidden_s_interval_first_pos':1000000,'forbidden_s_interval_last_pos':0,'reduce_s_to_its_suffix_of_length':16,'reduce_s_to_its_prefix_of_length':16,'reduce_t_to_its_suffix_of_length':18,'reduce_t_to_its_prefix_of_length':18,'partialDPtable':[],'CAP_FOR_NUM_OPT_SOLS':10,'CAP_FOR_NUM_SOLS':10,},
-      long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})"
+    verif: "verify_submission(TALight_problem_name='RO_lcs',checkers=['TALight', 'embedded_in_notebook'],task_dict={'task':\
+      \ 1, 'pt_tot': 45, 'pt_formato_OK': 0, 'pt_feasibility_OK': 1, 'pt_consistency_OK':\
+      \ 0}, input_data_assigned={'s':'GCTCTACGCTGGATTC','t':'ATGCCGCTTACCGTGATC','beginning':'','ending':'','forbidden_s_interval_first_pos':1000000,'forbidden_s_interval_last_pos':0,'reduce_s_to_its_suffix_of_length':16,'reduce_s_to_its_prefix_of_length':16,'reduce_t_to_its_suffix_of_length':18,'reduce_t_to_its_prefix_of_length':18,'partialDPtable':[],'CAP_FOR_NUM_OPT_SOLS':10,'CAP_FOR_NUM_SOLS':10,},\
+      \ long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})"
     init_answ_cell_msg_automatic: '#Seleziona nodi e/o archi (colora i nodi cliccando
       su essi e gli archi con il bottone "Colora Archi")'
 
@@ -90,10 +90,10 @@ tasks:
       o alcune ma non tutte le soluzioni ottime.
     init_answ_cell_msg: '#Seleziona nodi e/o archi (colora i nodi cliccando e gli
       archi con il bottone) \n Scegliere poi un opzione di risposta tra le successive.'
-    verif: "verify_submission(TALight_problem_name='RO_lcs',checkers=['TALight', 'embedded_in_notebook'],task_dict={'task':
-      1, 'pt_tot': 45, 'pt_formato_OK': 0, 'pt_feasibility_OK': 1, 'pt_consistency_OK':
-      0}, input_data_assigned={'s':'GCTCTACGCTGGATTC','t':'ATGCCGCTTACCGTGATC','beginning':'','ending':'','forbidden_s_interval_first_pos':1000000,'forbidden_s_interval_last_pos':0,'reduce_s_to_its_suffix_of_length':16,'reduce_s_to_its_prefix_of_length':16,'reduce_t_to_its_suffix_of_length':18,'reduce_t_to_its_prefix_of_length':18,'partialDPtable':[],'CAP_FOR_NUM_OPT_SOLS':10,'CAP_FOR_NUM_SOLS':10,},
-      long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})"
+    verif: "verify_submission(TALight_problem_name='RO_lcs',checkers=['TALight', 'embedded_in_notebook'],task_dict={'task':\
+      \ 1, 'pt_tot': 45, 'pt_formato_OK': 0, 'pt_feasibility_OK': 1, 'pt_consistency_OK':\
+      \ 0}, input_data_assigned={'s':'GCTCTACGCTGGATTC','t':'ATGCCGCTTACCGTGATC','beginning':'','ending':'','forbidden_s_interval_first_pos':1000000,'forbidden_s_interval_last_pos':0,'reduce_s_to_its_suffix_of_length':16,'reduce_s_to_its_prefix_of_length':16,'reduce_t_to_its_suffix_of_length':18,'reduce_t_to_its_prefix_of_length':18,'partialDPtable':[],'CAP_FOR_NUM_OPT_SOLS':10,'CAP_FOR_NUM_SOLS':10,},\
+      \ long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})"
     init_answ_cell_msg_automatic: '#Seleziona nodi e/o archi (colora i nodi cliccando
       su essi e gli archi con il bottone "Colora Archi")'
 - 3:
@@ -124,10 +124,10 @@ tasks:
       o alcune ma non tutte le soluzioni ottime.
     init_answ_cell_msg: '#Seleziona nodi e/o archi (colora i nodi cliccando e gli
       archi con il bottone) \n Scegliere poi un opzione di risposta tra le successive.'
-    verif: "verify_submission(TALight_problem_name='RO_lcs',checkers=['TALight', 'embedded_in_notebook'],task_dict={'task':
-      1, 'pt_tot': 45, 'pt_formato_OK': 0, 'pt_feasibility_OK': 1, 'pt_consistency_OK':
-      0}, input_data_assigned={'s':'GCTCTACGCTGGATTC','t':'ATGCCGCTTACCGTGATC','beginning':'','ending':'','forbidden_s_interval_first_pos':1000000,'forbidden_s_interval_last_pos':0,'reduce_s_to_its_suffix_of_length':16,'reduce_s_to_its_prefix_of_length':16,'reduce_t_to_its_suffix_of_length':18,'reduce_t_to_its_prefix_of_length':18,'partialDPtable':[],'CAP_FOR_NUM_OPT_SOLS':10,'CAP_FOR_NUM_SOLS':10,},
-      long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})"
+    verif: "verify_submission(TALight_problem_name='RO_lcs',checkers=['TALight', 'embedded_in_notebook'],task_dict={'task':\
+      \ 1, 'pt_tot': 45, 'pt_formato_OK': 0, 'pt_feasibility_OK': 1, 'pt_consistency_OK':\
+      \ 0}, input_data_assigned={'s':'GCTCTACGCTGGATTC','t':'ATGCCGCTTACCGTGATC','beginning':'','ending':'','forbidden_s_interval_first_pos':1000000,'forbidden_s_interval_last_pos':0,'reduce_s_to_its_suffix_of_length':16,'reduce_s_to_its_prefix_of_length':16,'reduce_t_to_its_suffix_of_length':18,'reduce_t_to_its_prefix_of_length':18,'partialDPtable':[],'CAP_FOR_NUM_OPT_SOLS':10,'CAP_FOR_NUM_SOLS':10,},\
+      \ long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})"
     init_answ_cell_msg_automatic: '#Seleziona nodi e/o archi (colora i nodi cliccando
       su essi e gli archi con il bottone "Colora Archi")'
 general_description_to_conclude: Ricordati di salvare periodicamente il tuo lavoro.

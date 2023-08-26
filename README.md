@@ -11,9 +11,8 @@ Fatto questo, il sito sarà inizializzato e pronto all'uso.
 
 ### INSTALLARE django
 
-Se sei su ubuntu:
 ```
-sudo apt install python3-django
+pip install django=3.2
 ```
 
 ### AVVIARE IL SITO
@@ -32,5 +31,5 @@ Se non avvii il server TALight non potrai utilizzarne i servizi!
 Lancia il comando
 
 ```
-.../TALight/exam_sessions $ rtald -a exam_RO_test.yaml -d ~/TALight/example_problems/tutorial
+./rtald -d ~/TALight/example_problems/tutorial
 ```

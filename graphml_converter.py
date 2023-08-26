@@ -6,7 +6,7 @@ sys.setrecursionlimit(10**9)
 yaml = ruamel.yaml.YAML()
 
 final_graph = str
-with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml') as fp:
+with open('simulazione_esame/esercizio_3/modo_browser/graph_mst.yaml') as fp:
      data = yaml.load(fp)
      final_graph = data['graphml']
 

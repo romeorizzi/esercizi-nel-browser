@@ -19,7 +19,7 @@ tag_nodi = graphml_converter.node_tag()
 
 
 yaml = ruamel.yaml.YAML()
-with open('simulazione_esame/esercizio_3/modo_browser/graph_mst.yaml') as cn:
+with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml') as cn:
     data = yaml.load(cn)
     node_color = data['nodecol_action'][0]
     initial_nodes_color = data['nodecol_action'][1]
@@ -41,14 +41,14 @@ def assign_coords(v):
 def write_yaml():
     yaml = ruamel.yaml.YAML()
     graph_edges = graphml_converter.edge_string() #grafo senza l'informazione arco puntato o meno
-    with open('simulazione_esame/esercizio_3/modo_browser/graph_mst.yaml') as fp:
+    with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml') as fp:
         data = yaml.load(fp)
 
     data['instance']['n'] = numero_nodi
     data['instance']['m'] = numero_archi
     data['instance']['edges'] = graph_edges
 
-    with open('simulazione_esame/esercizio_3/modo_browser/graph_mst.yaml', 'w') as fp:
+    with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml', 'w') as fp:
         yaml.dump(data, fp)
 
 def init_graph_html():

@@ -1,8 +1,8 @@
 knapsack:
   task01:
     punti_aggiuntivi_possibili: 0
-    punti_fuori_portata: 0
-    punti_sicuri: 0
+    punti_fuori_portata: 9
+    punti_sicuri: 1
   task02:
     punti_aggiuntivi_possibili: 0
     punti_fuori_portata: 0
@@ -82,6 +82,22 @@ mst:
     punti_fuori_portata: 0
     punti_sicuri: 0
   task03:
+    punti_aggiuntivi_possibili: 0
+    punti_fuori_portata: 0
+    punti_sicuri: 0
+  task04:
+    punti_aggiuntivi_possibili: 0
+    punti_fuori_portata: 0
+    punti_sicuri: 0
+  task05:
+    punti_aggiuntivi_possibili: 0
+    punti_fuori_portata: 0
+    punti_sicuri: 0
+  task06:
+    punti_aggiuntivi_possibili: 0
+    punti_fuori_portata: 0
+    punti_sicuri: 0
+  task07:
     punti_aggiuntivi_possibili: 0
     punti_fuori_portata: 0
     punti_sicuri: 0

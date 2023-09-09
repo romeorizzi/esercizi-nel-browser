@@ -1,7 +1,30 @@
 context_knapsack:
   data:
     task01:
-      feedback: ''
+      feedback: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"
+        \"http://www.w3.org/TR/html4/loose.dtd\">\n<html>\n<head>\n<meta http-equiv=\"\
+        Content-Type\" content=\"text/html; charset=utf-8\">\n<title></title>\n<style
+        type=\"text/css\">\n.ansi2html-content { display: inline; white-space: pre-wrap;
+        word-wrap: break-word; }\n.body_foreground { color: #000000; }\n.body_background
+        { background-color: #FFFFFF; }\n.inv_foreground { color: #FFFFFF; }\n.inv_background
+        { background-color: #000000; }\n</style>\n</head>\n<body class=\"body_foreground
+        body_background\" style=\"font-size: normal;\" >\n<pre class=\"ansi2html-content\"\
+        >\n\u2022 Formato di `opt_val`: OK...(infatti: come `opt_val` hai immesso
+        un intero come richiesto)....(nota: ovviamente durante lo svolgimento dell'esame
+        non posso dirti se l'intero immesso sia poi la risposta corretta, ma il formato
+        \xE8 corretto)\n\u2022 Formato di `opt_sol`: OK...(infatti: come `opt_sol`
+        hai immesso un sottoinsieme degli oggetti dell'istanza originale)....(nota:
+        resta da stabilire l'ammissibilit\xE0 di `opt_sol`)\n\u2022 Ammissibilit\xE0
+        di `opt_sol`: OK...(infatti: come `opt_sol` hai immesso un sottoinsieme degli
+        oggetti dell'istanza originale)....(nota: resta da stabilire l'ottimalit\xE0
+        di `opt_sol`)\n\u2022 Consistenza tra `opt_val` e `opt_sol`: NO....(motivo:
+        Il valore totale della soluzione immessa in `opt_sol` \xE8 102, non 4 come
+        hai invece immesso in `opt_val`. La soluzione (ammissibile) che hai immesso
+        \xE8 `opt_sol`=['A', 'B'].)\n\nTotalizzi [punti sicuri: 1], [punti aggiuntivi
+        possibili: 0], [punti fuori portata: 9]\nSpiegazione: Il valore totale della
+        soluzione immessa in `opt_sol` \xE8 102, non 4 come hai invece immesso in
+        `opt_val`. La soluzione (ammissibile) che hai immesso \xE8 `opt_sol`=['A',
+        'B'].\n\n\n</pre>\n</body>\n\n</html>\n"
     task02:
       feedback: ''
     task03:
@@ -45,4 +68,12 @@ context_mst:
     task02:
       feedback: ''
     task03:
+      feedback: ''
+    task04:
+      feedback: ''
+    task05:
+      feedback: ''
+    task06:
+      feedback: ''
+    task07:
       feedback: ''

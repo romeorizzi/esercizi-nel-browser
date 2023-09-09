@@ -53,18 +53,23 @@ import ruamel.yaml
 import ast
 from pathlib import Path
 from graph_designer import init_graph_html, write_yaml
+import convert
 
 import site_utils as su
 
 # da rimuovere in seguito
 while True:
-    yes_no = input("Sei sicuro di voler inizializzare il sito? Così facendo eventuali risultati salvati andranno persi!\n[y/N]\n")
-    if yes_no =="N" or yes_no == "n" or yes_no == "no":
+    yes_no = input("Sei sicuro di voler inizializzare il sito? Così facendo eventuali risultati salvati andranno persi! [y/N]: ").lower()
+    if yes_no == "n" or yes_no == "no":
         print("\nOK, interrompo l'inizializzazione. Se vuoi riavviare il server senza perdere i risultati acquisiti esegui 'manage.py runserver' .")
         exit(0)
     elif yes_no == "y" or yes_no == "yes":
         print("\nOK, procedo con l'inizializzazione.")
         break
+
+# converto gli .instance in .yaml
+print('\nIniziono con la generazione degli yaml a partire dagli instance')
+convert.start()
 
 # dichiaro il path di tutti i file utili
 

@@ -1,8 +1,8 @@
 knapsack:
   task01:
     punti_aggiuntivi_possibili: 0
-    punti_fuori_portata: 9
-    punti_sicuri: 1
+    punti_fuori_portata: 0
+    punti_sicuri: 0
   task02:
     punti_aggiuntivi_possibili: 0
     punti_fuori_portata: 0

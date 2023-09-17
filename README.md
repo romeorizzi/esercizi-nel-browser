@@ -1,3 +1,10 @@
+### INSTALLAZIONE
+
+```
+pip install django=3.2
+sudo apt install python3-markdown
+```
+
 # INIZIALIZZARE IL SITO
 
 Con l'inizializzazione del sito vengono eliminati tutti i dati presenti all'interno della directory, compresi i risultati salvati e gli allegati inseriti fino a questo momento. Se vuoi davvero fare questo, allora lancia questo comando nella directory del progetto
@@ -7,13 +14,6 @@ python build_site.py
 ```
 
 Fatto questo, il sito sarà inizializzato e pronto all'uso.
-
-
-### INSTALLARE django
-
-```
-pip install django=3.2
-```
 
 ### AVVIARE IL SITO
 

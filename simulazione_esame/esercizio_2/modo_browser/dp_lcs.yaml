@@ -22,10 +22,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol1=""\n#e
-      la sua lunghezza:\nopt_val1=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol1=""\n#e la sua lunghezza:\nopt_val1=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol1=""\ne
+      la sua lunghezza:\nopt_val1=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol1=""\ne la sua lunghezza:\nopt_val1=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -39,10 +39,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol2=""\n#e
-      la sua lunghezza:\nopt_val2=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol2=""\n#e la sua lunghezza:\nopt_val2=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol2=""\ne
+      la sua lunghezza:\nopt_val2=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol2=""\ne la sua lunghezza:\nopt_val2=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -55,10 +55,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol3=""\n#e
-      la sua lunghezza:\nopt_val3=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol3=""\n#e la sua lunghezza:\nopt_val3=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol3=""\ne
+      la sua lunghezza:\nopt_val3=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol3=""\ne la sua lunghezza:\nopt_val3=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -72,10 +72,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol4=""\n#e
-      la sua lunghezza:\nopt_val4=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol4=""\n#e la sua lunghezza:\nopt_val4=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol4=""\ne
+      la sua lunghezza:\nopt_val4=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol4=""\ne la sua lunghezza:\nopt_val4=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -89,10 +89,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol5=""\n#e
-      la sua lunghezza:\nopt_val5=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol5=""\n#e la sua lunghezza:\nopt_val5=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol5=""\ne
+      la sua lunghezza:\nopt_val5=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol5=""\ne la sua lunghezza:\nopt_val5=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -106,10 +106,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol6=""\n#e
-      la sua lunghezza:\nopt_val6=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol6=""\n#e la sua lunghezza:\nopt_val6=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol6=""\ne
+      la sua lunghezza:\nopt_val6=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol6=""\ne la sua lunghezza:\nopt_val6=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -123,10 +123,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol7=""\n#e
-      la sua lunghezza:\nopt_val7=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol7=""\n#e la sua lunghezza:\nopt_val7=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol7=""\ne
+      la sua lunghezza:\nopt_val7=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol7=""\ne la sua lunghezza:\nopt_val7=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0
@@ -140,10 +140,10 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol8=""\n#e
-      la sua lunghezza:\nopt_val8=7'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta (una stringa, per esempio
-      "TATATAX")\nopt_sol8=""\n#e la sua lunghezza:\nopt_val8=7'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol8=""\ne
+      la sua lunghezza:\nopt_val8=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol8=""\ne la sua lunghezza:\nopt_val8=7
     pt_consistency_OK: 0
     pt_feasibility_OK: 1
     pt_formato_OK: 0

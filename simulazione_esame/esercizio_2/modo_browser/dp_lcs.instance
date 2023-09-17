@@ -25,7 +25,7 @@ tasks:
       pt_consistency_OK: 0
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra le due stringhe<br/>$s$ = {s}<br/>$t$ = {t}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
      
   - 2:    # esercizio inizia con...
@@ -36,7 +36,7 @@ tasks:
       beginning: CC
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una stringa di lunghezza massima che inizi col prefisso __{task["beginning"]}__ e sia sottosequenza comune tra<br/>$s$ = {s}<br/>$t$ = {t}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
 
   - 3:    # esercizio suffisso su s
@@ -47,7 +47,7 @@ tasks:
       reduce_s_to_its_suffix_of_length: 15
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b> $s\''$ = {s[len(s)-task["reduce_s_to_its_suffix_of_length"]:]} di $s$ e <br/>$t$ = {t}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
 
   - 4:    # esercizio suffisso su s
@@ -58,7 +58,7 @@ tasks:
       reduce_s_to_its_suffix_of_length: 11
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b> $s\''$ = {s[len(s)-task["reduce_s_to_its_suffix_of_length"]:]} di $s$ e <br/>$t$ = {t}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
 
   - 5:    # esercizio suffisso su s
@@ -69,7 +69,7 @@ tasks:
       reduce_s_to_its_suffix_of_length: 9
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b> $s\''$ = {s[len(s)-task["reduce_s_to_its_suffix_of_length"]:]} di $s$ e <br/>$t$ = {t}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
     
   - 6:    # esercizio suffisso su t
@@ -80,7 +80,7 @@ tasks:
       reduce_t_to_its_suffix_of_length: 13
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\''$ = {t[len(t)-task["reduce_t_to_its_suffix_of_length"]:]} di $t$ e <br/>$s$ = {s}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
 
   - 7:    # esercizio suffisso su t
@@ -91,7 +91,7 @@ tasks:
       reduce_t_to_its_suffix_of_length: 11
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\''$ = {t[len(t)-task["reduce_t_to_its_suffix_of_length"]:]} di $t$ e <br/>$s$ = {s}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
 
 
@@ -103,9 +103,8 @@ tasks:
       reduce_t_to_its_suffix_of_length: 9
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\''$ = {t[len(t)-task["reduce_t_to_its_suffix_of_length"]:]} di $t$ e <br/>$s$ = {s}.'}
-      init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\n#e la sua lunghezza:\nopt_val{task_number}=7'
+      init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
 
 general_description_to_conclude: {"content":"ricordati di salvare periodicamente il tuo lavoro. Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda (potrai sempre riaprirla successivamente)"}
-
 ...

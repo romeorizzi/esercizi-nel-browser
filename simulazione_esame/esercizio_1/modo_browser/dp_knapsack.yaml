@@ -66,21 +66,21 @@ tasks:
     goals:
     - opt_sol
     - opt_val
-    init_answ_cell_msg: '#Inserisci la tua risposta in forma di lista di oggetti da
+    init_answ_cell_msg: 'Inserisci la tua risposta in forma di lista di oggetti da
       prendere (esempio: [''C'', ''F'', ''A''])
 
       opt_sol1=[]
 
-      #Specificare il valore della soluzione introdotta (un intero, la somma dei valori
+      Specificare il valore della soluzione introdotta (un intero, la somma dei valori
       degli oggetti presi):
 
       opt_val1=-1'
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta in forma di lista di
+    init_answ_cell_msg_automatic: 'Inserisci la tua risposta in forma di lista di
       oggetti da prendere (esempio: [''C'', ''F'', ''A''])
 
       opt_sol1=[]
 
-      #Specificare il valore della soluzione introdotta (un intero, la somma dei valori
+      Specificare il valore della soluzione introdotta (un intero, la somma dei valori
       degli oggetti presi):
 
       opt_val1=-1'

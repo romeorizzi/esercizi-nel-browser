@@ -30,7 +30,7 @@ tasks:
       pt_consistency_OK: 0
       goals: ['opt_sol', 'opt_val']
       request: {"context":also_task, "content":'Tra i sottoinsiemi di oggetti di peso complessivo non eccedente $CapacityMax$= __{CapacityMax}__ fornirne uno in cui sia massima la somma dei valori.'}
-      init_answ_cell_msg: "#Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])\nopt_sol{task_number}=[]\n#Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):\nopt_val{task_number}=-1"
+      init_answ_cell_msg: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])\nopt_sol{task_number}=[]\nSpecificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):\nopt_val{task_number}=-1"
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
 
   - 2:

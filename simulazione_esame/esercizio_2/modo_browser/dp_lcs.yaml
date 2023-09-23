@@ -17,6 +17,14 @@ tags:
 - algoritmi classici su stringhe
 tasks:
 - 1:
+    answ_form:
+    - init_var: ''
+      name_var: opt_sol{task_number}
+      title: Inserisci la tua risposta (una stringa, per esempio 'TATATAX')
+      type_var: str
+    - init_var: 7
+      name_var: opt_val{task_number}
+      title: e la sua lunghezza
     general_description_before_task: Si considerino le seguenti sequenze di caratteri:<br/><br/>
       $s$ = __AAGCGAGATAGCCGGT__ <br/>  $t$ = __ATAACCGATACAAGTC__
     goals:
@@ -33,7 +41,13 @@ tasks:
       = AAGCGAGATAGCCGGT<br/>$t$ = ATAACCGATACAAGTC.
     tot_points: 45
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''answ_form'':[{''type_var'':
+      ''str'', ''title'': "Inserisci la tua risposta (una stringa, per esempio ''TATATAX'')",
+      ''init_var'': '''', ''name_var'': ''opt_sol{task_number}''}, {''title'': ''e
+      la sua lunghezza'', ''init_var'': 7, ''name_var'': ''opt_val{task_number}''}],''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''answ_form'':[{''type_var'':
+      ''str'', ''title'': "Inserisci la tua risposta (una stringa, per esempio ''TATATAX'')",
+      ''init_var'': '''', ''name_var'': ''opt_sol{task_number}''}, {''title'': ''e
+      la sua lunghezza'', ''init_var'': 7, ''name_var'': ''opt_val{task_number}''}],''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
 - 2:
     beginning: CC
     goals:

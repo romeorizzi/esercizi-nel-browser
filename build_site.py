@@ -1,3 +1,11 @@
+import os
+import ruamel.yaml
+from pathlib import Path
+import markdown
+from graph_designer import init_graph_html, write_yaml
+import convert
+import site_utils as su
+
 ####################################################################################################################
 #                                                                                                                  #
 #                                                   INTRODUZIONE                                                   #
@@ -31,22 +39,6 @@
 #                |_problema2.html
 #                |_ ...
 
-####################################################################################################################
-#                                                                                                                  #
-#                                                     START                                                        #
-#                                                                                                                  #
-####################################################################################################################
-
-import os
-import ruamel.yaml
-import ast
-from pathlib import Path
-from graph_designer import init_graph_html, write_yaml
-import convert
-import markdown
-
-import site_utils as su
-
 def match_yaml_args():
     txt = ""
     for key in PROBLEM_KEYS: # per ogni problema
@@ -64,7 +56,7 @@ def match_yaml_args():
     return txt
 
 # converto gli .instance in .yaml
-print('\nIniziono con la generazione degli .yaml a partire dagli .instance')
+print('Inizio con la generazione degli .yaml a partire dagli .instance')
 convert.start()
 
 # dichiaro il path di tutti i file utili
@@ -114,7 +106,7 @@ f = open(os.path.join(home,VIEWS_DIRECTORY),"w")
 f.write(txt)
 
 # Qui stampiamo effettivamente i context per ogni esercizio
-txt = f"contexts = {{" # dichiariamo contexts
+txt = "contexts = {" # dichiariamo contexts
 for key in PROBLEM.keys(): # per ogni esercizio
     txt += f"'context_{all_exercises[key]['name']}': {{'data':{{" # inseriamo l'entry context_*nome esercizio*
     for k in all_exercises[key]['tasks'].keys(): # poi per ogni task trasformiamo la richiesta in html
@@ -123,11 +115,14 @@ for key in PROBLEM.keys(): # per ogni esercizio
         if 'general_description_before_task' in tasks_k:
             descr_before_task = markdown.markdown(tasks_k['general_description_before_task'], extensions=['markdown.extensions.extra'])
         request = markdown.markdown(tasks_k['request'].replace('\n','<br>').replace('\\n','<br>'), extensions=['markdown.extensions.extra'])
-        init_answ = markdown.markdown(tasks_k['init_answ_cell_msg_automatic'].replace('\n','<br>').replace('\\n','<br>'), extensions=['markdown.extensions.extra'])
-        d = {"question":f"<label>{request}{init_answ}</label>",
-             "feedback":"",
-             "goals":tasks_k['goals'],
-             "descr_before_task":f"<label>{descr_before_task}</label>"}
+        if 'answ_form' in tasks_k:
+            init_answ = '<p>'
+            for form in tasks_k['answ_form']:
+                init_answ += f"{form['title']}<br>"
+            init_answ += '</p>'
+        else:
+            init_answ = markdown.markdown(tasks_k['init_answ_cell_msg_automatic'].replace('\n','<br>').replace('\\n','<br>'), extensions=['markdown.extensions.extra'])
+        d = {"question":f"<label>{request}{init_answ}</label>", "feedback":"", "goals":tasks_k['goals'], "descr_before_task":f"<label>{descr_before_task}</label>"}
         if 'componenti_stato' in tasks_k:
             d['componenti_stato'] = tasks_k['componenti_stato']
         if 'task_state_modifier' in tasks_k:
@@ -136,9 +131,9 @@ for key in PROBLEM.keys(): # per ogni esercizio
             d['select'] = tasks_k['select']
 
         if int(k) < 10:
-            txt += f"'task0{k}': {d},"
+            txt += f"'task0{k}':{d},"
         else:
-            txt += f"'task{k}': {d},"
+            txt += f"'task{k}':{d},"
     txt += "}},"
 txt += "}\n\n"
 f.write(txt)
@@ -150,12 +145,9 @@ f.write(txt)
 ####################################################################################################################
 
 # Commento per "scores" da stampare su views.py
-
 txt = "# Anche qui vogliamo tenere traccia dei punti dell'utente per ogni esercizio a seconda della\n# sottomissione corrente. In particolare, ci interessano gli score per l'intero esercizio, ovvero\n# la somma dei punti per ciascuna voce (sicuri, possibili, fuori portata).\n\nscores = {" # dichiariamo scores
 
 # Qui stampiamo gli score
-
-#txt += f"scores = {{" # dichiariamo scores
 for key in PROBLEM.keys(): # per ogni problema
     txt += f"'score_{all_exercises[key]['name']}': {{'punti_sicuri':0,'punti_aggiuntivi_possibili':0,'punti_fuori_portata':0}}," # inizializzo gli score
 txt += "}\n\n"
@@ -191,7 +183,6 @@ for key in PROBLEM_KEYS:
     ex_tot[key] = tot
     etp += f"'{all_exercises[key]['name']}': {tot},"
 etp += "}\n\n"
-
 f.write(etp)
 
 ####################################################################################################################
@@ -205,14 +196,9 @@ f.write(etp)
 es = 1
 txt = "exam_context = {'data':{"
 for key in PROBLEM_KEYS: # per ogni esercizio scrivo i punti assegnando anche i colori
-    green = '<font color="green">'
-    red = '<font color="red">'
-    blue = '<font color="blue">'
-    close = '</font>'
-    txt += f"'{all_exercises[key]['name']}': {{'title': '{all_exercises[key]['name']}', 'score': {{'punti_sicuri':'{green}0/{ex_tot[key]}{close}', 'punti_aggiuntivi_possibili':'{blue}0/{ex_tot[key]}{close}','punti_fuori_portata':'{red}0/{ex_tot[key]}{close}'}}}},"
+    txt += f"'{all_exercises[key]['name']}': {{'title': '{all_exercises[key]['name']}', 'score': {{'punti_sicuri':'<font color=\"green\">0/{ex_tot[key]}</font>', 'punti_aggiuntivi_possibili': '<font color=\"blue\">0/{ex_tot[key]}</font>', 'punti_fuori_portata':'<font color=\"red\">0/{ex_tot[key]}</font>'}}}},"
     es += 1
 txt += "}}\n\n"
-#txt += "'graph':{'title':'graph','score': {'punti_sicuri':0, 'punti_aggiuntivi_possibili':0,'punti_fuori_portata':0}}}}\n" # da togliere in futuro
 f.write(txt)
 
 ####################################################################################################################
@@ -228,8 +214,8 @@ for key in PROBLEM_KEYS:
     f.write(f"score_{all_exercises[key]['name']} = scores['score_{all_exercises[key]['name']}'] # dichiaro score_{all_exercises[key]['name']}\n\n")
     f.write(f"def {all_exercises[key]['name']}(request): # definisco il nome della view \n")
     f.write(f"    rtalproblem = 'RO_{all_exercises[key]['name']}' # il corrispondente problema in TALight è RO_{all_exercises[key]['name']}\n")
-    f.write(f"    rtalservice = 'check' # vogliamo che venga richiesto il servizio check per il problema\n")
-    f.write(f"    rtaltoken = 'id625tbt_VR437029_OrLwSWKtpyrk1bS_RIVO_CARAPUCCI' # dummy token\n")
+    f.write("    rtalservice = 'check' # vogliamo che venga richiesto il servizio check per il problema\n")
+    f.write("    rtaltoken = 'id625tbt_VR437029_OrLwSWKtpyrk1bS_RIVO_CARAPUCCI' # dummy token\n")
     f.write(f"    instance_dict = {global_args_dict[key]} # prendo i parametri dell'istanza\n")
     f.write(f"    ntasks = {all_exercises[key]['ntasks']} # prendo il numero di task\n")
     f.write("    conv = Ansi2HTMLConverter(dark_bg = False) # inizializzo il convertitore HTML\n")
@@ -238,7 +224,7 @@ for key in PROBLEM_KEYS:
             if any(c.isalpha() for c in all_exercises[key]['instance'][el]) and type(all_exercises[key]['instance'][el]) == str:
                 f.write(f"    {el} = '{all_exercises[key]['instance'][el]}'\n")
             else:
-               f.write(f"    {el} = {all_exercises[key]['instance'][el]}\n")
+                f.write(f"    {el} = {all_exercises[key]['instance'][el]}\n")
         except:
             f.write(f"    {el} = {all_exercises[key]['instance'][el]}\n")
     for k in all_exercises[key]['tasks'].keys(): # dichiaro tutte le task come variabili per semplificare il codice
@@ -249,7 +235,7 @@ for key in PROBLEM_KEYS:
     f.write(f"    for task in context_{all_exercises[key]['name']}['data'].keys():\n")
     f.write("        try:\n")
     forb_symbol = "\" # fix temporaneo errore sintassi yaml (attesa uniformazione)"
-    f.write(f"            context_{all_exercises[key]['name']}['data'][task]['question'] = context_{all_exercises[key]['name']}['data'][task]['question'].replace('\{forb_symbol}','').format(**vars())\n")
+    f.write(f"            context_{all_exercises[key]['name']}['data'][task]['question'] = context_{all_exercises[key]['name']}['data'][task]['question'].replace('{forb_symbol}','').format(**vars())\n")
     f.write("        except:\n")
     f.write("            pass\n")
     f.write("    for i in range(1,ntasks+1):\n")
@@ -276,10 +262,10 @@ for key in PROBLEM_KEYS:
     f.write("                            answ = '<b><font color=\"red\">Non ho potuto richiedere alcun servizio, controlla che il tipo dei dati che hai immesso sia corretto.</font></b>'\n")
     f.write(f"                    write_to_yaml_feedback(FEEDBACKS,'{all_exercises[key]['name']}',i,answ) # se tutto ok scrivo il feedback nel file\n")
     f.write(f"                    context_{all_exercises[key]['name']}['data'][f'task0{{i}}']['feedback'] = answ # aggiungo il feedback al context per poterlo visualizzare nella pagina\n")
-    f.write(f"                    try: # se il feedback è corretto aggiorno i punteggi\n")
+    f.write("                    try: # se il feedback è corretto aggiorno i punteggi\n")
     f.write(f"                        score_{all_exercises[key]['name']}[f'task0{{i}}'] = safe_points(answ)\n")
-    f.write(f"                    except:\n")
-    f.write(f"                        pass\n")
+    f.write("                    except:\n")
+    f.write("                        pass\n")
     f.write("        else:\n")
     f.write("            try:\n")
     f.write("                instance_dict['Knapsack_Capacity'] = locals()[f'task{i}']['CapacityGen'] # fix temporaneo errore sintassi yaml (attesa uniformazione)\n")
@@ -299,15 +285,15 @@ for key in PROBLEM_KEYS:
     f.write("                            answ = 'Non ho potuto richiedere alcun servizio, controlla che il tipo dei dati che hai immesso sia corretto.'\n")
     f.write(f"                    write_to_yaml_feedback(FEEDBACKS,'{all_exercises[key]['name']}',i,answ) # se tutto ok scrivo il feedback nel file\n")
     f.write(f"                    context_{all_exercises[key]['name']}['data'][f'task{{i}}']['feedback'] = answ # aggiungo il feedback al context per poterlo visualizzare nella pagina\n")
-    f.write(f"                    try: # se il feedback è corretto aggiorno i punteggi\n")
+    f.write("                    try: # se il feedback è corretto aggiorno i punteggi\n")
     f.write(f"                        score_{all_exercises[key]['name']}[f'task{{i}}'] = safe_points(answ)\n")
-    f.write(f"                    except:\n")
-    f.write(f"                        pass\n")
+    f.write("                    except:\n")
+    f.write("                        pass\n")
     f.write("    get_scores_from_feedbacks(FEEDBACKS, POINTS_YAML)\n")
     f.write(f"    return render(request, 'esame/{all_exercises[key]['name']}.html', context_{all_exercises[key]['name']})\n\n")
     f.write("def grafo_template(request): # definisco il nome della view\n")
     f.write("    return render(request,os.path.join('esame','grafo_template.html'))\n")
-    task += 1
+    ##task += 1
 
 
 ####################################################################################################################
@@ -344,7 +330,7 @@ def init_urls():
     f.write("    url('grafo_template',views.grafo_template, name='grafo_template'),\n")
     f.write("    path('retrieve_saved_solutions/<str:ex>',views.retrieve_saved_solutions, name='retrieve_saved_solutions'),\n") # prende come parametro ex
     f.write("    path('save_solutions/<str:ex>',views.save_solutions,name='save_solutions'),\n") # prende come parametro ex
-    f.write("    path('simple_upload/<str:ex>/<str:task>',views.simple_upload,name='simple_upload'),\n]") # prende come parametri ex e task
+    f.write("    path('simple_upload/<str:ex>/<str:task>',views.simple_upload,name='simple_upload'),\n]") # prende come parametri ex e tfask
     f.close()
 
 ####################################################################################################################
@@ -386,7 +372,7 @@ def init_forms():
 def init_esercizio_html():
     for key in PROBLEM_KEYS:
         if all_exercises[key]['name'] == "mst":
-            init_esercizio_grafo_html()
+            init_esercizio_grafo_html(key)
         else:
             r = open(os.path.join(TEMPLATES_DIRECTORY,'esercizio_template.html'),'r')
             txt = "".join(r.readlines())
@@ -396,14 +382,14 @@ def init_esercizio_html():
             f.write(txt)
             f.close()
 
-def init_esercizio_grafo_html():
-        r = open(os.path.join(TEMPLATES_DIRECTORY,'esercizio_grafo_template.html'),'r')
-        txt = "".join(r.readlines())
-        txt = txt.replace("esercizio_tmp",all_exercises[key]['name']).replace("Titolo",all_exercises[key]['name']).replace("Istanza",su.instance_description(all_exercises[key]["instance"])).replace("esercizioxx",all_exercises[key]['name']).replace("Rappresentazione istanza",all_exercises[key]['graphic_instance_descriptor']).replace("Conclusione",all_exercises[key]["conclusion"]) # sostituisco le descrizioni generali in base all'esercizio
-        r.close()
-        f = open(os.path.join(GENERATED_DIRECTORY,f"{all_exercises[key]['name']}.html"),"w") # genero il file *nome esercizio*.html
-        f.write(txt)
-        f.close()
+def init_esercizio_grafo_html(key):
+    r = open(os.path.join(TEMPLATES_DIRECTORY,'esercizio_grafo_template.html'),'r')
+    txt = "".join(r.readlines())
+    txt = txt.replace("esercizio_tmp",all_exercises[key]['name']).replace("Titolo",all_exercises[key]['name']).replace("Istanza",su.instance_description(all_exercises[key]["instance"])).replace("esercizioxx",all_exercises[key]['name']).replace("Rappresentazione istanza",all_exercises[key]['graphic_instance_descriptor']).replace("Conclusione",all_exercises[key]["conclusion"]) # sostituisco le descrizioni generali in base all'esercizio
+    r.close()
+    f = open(os.path.join(GENERATED_DIRECTORY,f"{all_exercises[key]['name']}.html"),"w") # genero il file *nome esercizio*.html
+    f.write(txt)
+    f.close()
 
 
 ####################################################################################################################
@@ -434,15 +420,15 @@ def init_esame_html():
 def empty_feedback_log(log_path):
     yaml_dict = {}
     for key in PROBLEM_KEYS:
-        yaml_dict[f"context_{all_exercises[key]['name']}"] = {}
-        yaml_dict[f"context_{all_exercises[key]['name']}"]['data'] = {}
+        yaml_dict[f"context_{all_exercises[key]['name']}"] = {'data':{}}
+        #yaml_dict[f"context_{all_exercises[key]['name']}"]['data'] = {}
         for task in PROBLEM[key]['tasks']:
             if task<10:
-                yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task0{task}'] = {}
-                yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task0{task}']['feedback'] = "" # svuoto
+                yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task0{task}'] = {'feedback':""}
+                #yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task0{task}']['feedback'] = "" # svuoto
             else:
-                yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}'] = {}
-                yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}']['feedback'] = "" # svuoto
+                yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}'] = {'feedback':""}
+                #yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}']['feedback'] = "" # svuoto
     # sovrascrivo il file
     f = open(log_path,"w")
     ruamel.yaml.dump(yaml_dict, f, default_flow_style=False)
@@ -462,15 +448,9 @@ def empty_score_log(points_path):
         yaml_dict[all_exercises[key]['name']] = {}
         for task in PROBLEM[key]['tasks']:
             if task<10:
-                yaml_dict[all_exercises[key]['name']][f'task0{task}'] = {}
-                yaml_dict[all_exercises[key]['name']][f'task0{task}']['punti_sicuri'] = 0
-                yaml_dict[all_exercises[key]['name']][f'task0{task}']['punti_aggiuntivi_possibili'] = 0
-                yaml_dict[all_exercises[key]['name']][f'task0{task}']['punti_fuori_portata'] = 0
+                yaml_dict[all_exercises[key]['name']][f'task0{task}'] = {'punti_sicuri':0,'punti_aggiuntivi_possibili':0,'punti_fuori_portata':0}
             else:
-                yaml_dict[all_exercises[key]['name']][f'task{task}'] = {}
-                yaml_dict[all_exercises[key]['name']][f'task{task}']['punti_sicuri'] = 0
-                yaml_dict[all_exercises[key]['name']][f'task{task}']['punti_aggiuntivi_possibili'] = 0
-                yaml_dict[all_exercises[key]['name']][f'task{task}']['punti_fuori_portata'] = 0
+                yaml_dict[all_exercises[key]['name']][f'task{task}'] = {'punti_sicuri':0,'punti_aggiuntivi_possibili':0,'punti_fuori_portata':0}
     # sovrascrivo il file
     f = open(points_path,"w")
     ruamel.yaml.dump(yaml_dict, f, default_flow_style=False)
@@ -485,7 +465,7 @@ def empty_score_log(points_path):
 # Elimino i vecchi symlink relativi all'inizializzazione precedente
 def clear_symlinks():
     rootdir = ESAME_DIRECTORY
-    for subdir, dirs, files in os.walk(rootdir):
+    for subdir, _, files in os.walk(rootdir):
         for file in files:
             #print os.path.join(subdir, file)
             filepath = subdir + os.sep + file

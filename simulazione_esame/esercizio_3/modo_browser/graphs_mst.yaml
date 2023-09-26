@@ -162,7 +162,7 @@ tasks:
       in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
       nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'num_opt_sols':(num_opt_sols2,'num_opt_sols2'),})'"
 - 3:
-    goals: not a TALight verify service goal
+    goals: []
     init_answ_cell_msg: Inserisci la tua risposta in questa cella di testo libero.
     init_answ_cell_msg_automatic: Inserisci la tua risposta in questa cella di testo
       libero.

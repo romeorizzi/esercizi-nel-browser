@@ -55,6 +55,15 @@ tags:
 - sottoproblemi e ricorrenze
 tasks:
 - 1:
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol1
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val1
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     general_description_before_task: "In ogni richiesta del presente esercizio lo\
       \ zaino disponibile avr\xE0 capienza al pi\xF9 $CapacityMax$ = __36__  e dovrai\
       \ scegliere quali prendere da un sottoinsieme degli oggetti con nome, peso e\
@@ -100,6 +109,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
 - 2:
     CapacityGen: 32
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol2
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val2
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     goals:
     - opt_sol
     - opt_val
@@ -119,6 +137,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol2,''opt_sol2''),''opt_val'':(opt_val2,''opt_val2''),})'''
 - 3:
     CapacityGen: 30
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol3
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val3
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     goals:
     - opt_sol
     - opt_val
@@ -138,6 +165,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol3,''opt_sol3''),''opt_val'':(opt_val3,''opt_val3''),})'''
 - 4:
     CapacityGen: 28
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol4
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val4
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     general_description_before_task: Nelle successive richieste alcuni degli oggetti
       saranno proibiti, oppure obbligati
     goals:
@@ -159,6 +195,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol4,''opt_sol4''),''opt_val'':(opt_val4,''opt_val4''),})'''
 - 5:
     CapacityGen: 36
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol5
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val5
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_out:
     - E
     goals:
@@ -181,6 +226,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol5,''opt_sol5''),''opt_val'':(opt_val5,''opt_val5''),})'''
 - 6:
     CapacityGen: 36
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol6
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val6
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_out:
     - B
     - E
@@ -206,6 +260,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol6,''opt_sol6''),''opt_val'':(opt_val6,''opt_val6''),})'''
 - 7:
     CapacityGen: 34
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol7
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val7
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_out:
     - B
     - E
@@ -232,6 +295,11 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol7,''opt_sol7''),''opt_val'':(opt_val7,''opt_val7''),})'''
 - 8:
     CapacityGen: 34
+    answ_form:
+    - init_var: '-1'
+      name_var: opt_val8
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_in:
     - B
     - E
@@ -256,6 +324,15 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_val'':(opt_val8,''opt_val8''),})'''
 - 9:
     CapacityGen: 34
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol9
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val9
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_in:
     - B
     - F
@@ -283,6 +360,11 @@ tasks:
       18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol9,''opt_sol9''),''opt_val'':(opt_val9,''opt_val9''),})'''
 - 10:
     CapacityGen: 31
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol10
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
     forced_in:
     - B
     - I

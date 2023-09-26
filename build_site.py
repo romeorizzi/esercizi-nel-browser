@@ -111,18 +111,21 @@ for key in PROBLEM.keys(): # per ogni esercizio
     txt += f"'context_{all_exercises[key]['name']}': {{'data':{{" # inseriamo l'entry context_*nome esercizio*
     for k in all_exercises[key]['tasks'].keys(): # poi per ogni task trasformiamo la richiesta in html
         tasks_k = all_exercises[key]['tasks'][k]
+        request = markdown.markdown(tasks_k['request'].replace('\n','<br>').replace('\\n','<br>'), extensions=['markdown.extensions.extra'])
         descr_before_task = ""
         if 'general_description_before_task' in tasks_k:
             descr_before_task = markdown.markdown(tasks_k['general_description_before_task'], extensions=['markdown.extensions.extra'])
-        request = markdown.markdown(tasks_k['request'].replace('\n','<br>').replace('\\n','<br>'), extensions=['markdown.extensions.extra'])
+        goals = []
+        for goal in tasks_k['goals']:
+            goals.append({'goal':goal,'value':'','form':''})
         if 'answ_form' in tasks_k:
-            init_answ = '<p>'
-            for form in tasks_k['answ_form']:
-                init_answ += f"{form['title']}<br>"
-            init_answ += '</p>'
+            for i in range(len(tasks_k['answ_form'])):
+                goals[i]['form'] = tasks_k['answ_form'][i]['title']
+                goals[i]['value'] = tasks_k['answ_form'][i]['init_var']
+            d = {"question":f"<label>{request}</label>", "feedback":"", "goals":goals, "descr_before_task":f"<label>{descr_before_task}</label>"}
         else:
             init_answ = markdown.markdown(tasks_k['init_answ_cell_msg_automatic'].replace('\n','<br>').replace('\\n','<br>'), extensions=['markdown.extensions.extra'])
-        d = {"question":f"<label>{request}{init_answ}</label>", "feedback":"", "goals":tasks_k['goals'], "descr_before_task":f"<label>{descr_before_task}</label>"}
+            d = {"question":f"<label>{request}{init_answ}</label>", "feedback":"", "goals":goals, "descr_before_task":f"<label>{descr_before_task}</label>"}
         if 'componenti_stato' in tasks_k:
             d['componenti_stato'] = tasks_k['componenti_stato']
         if 'task_state_modifier' in tasks_k:
@@ -401,7 +404,6 @@ def init_esercizio_grafo_html(key):
 # Genero il file esame.html (a differenza di esercizio.html non viene cambiato nulla, ma in futuro può essere utile)
 
 def init_esame_html():
-    keys = sorted(PROBLEM.keys())
     r = open(os.path.join(TEMPLATES_DIRECTORY,'esame_template.html'),'r')
     txt = "".join(r.readlines())
     r.close()
@@ -425,10 +427,8 @@ def empty_feedback_log(log_path):
         for task in PROBLEM[key]['tasks']:
             if task<10:
                 yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task0{task}'] = {'feedback':""}
-                #yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task0{task}']['feedback'] = "" # svuoto
             else:
                 yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}'] = {'feedback':""}
-                #yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}']['feedback'] = "" # svuoto
     # sovrascrivo il file
     f = open(log_path,"w")
     ruamel.yaml.dump(yaml_dict, f, default_flow_style=False)
@@ -467,7 +467,6 @@ def clear_symlinks():
     rootdir = ESAME_DIRECTORY
     for subdir, _, files in os.walk(rootdir):
         for file in files:
-            #print os.path.join(subdir, file)
             filepath = subdir + os.sep + file
             if os.path.islink(filepath):
                 os.remove(filepath)

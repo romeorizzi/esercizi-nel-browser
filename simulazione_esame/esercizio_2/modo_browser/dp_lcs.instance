@@ -28,14 +28,12 @@ tasks:
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
       answ_form:
-        - type_var: str
-          title: Inserisci la tua risposta (una stringa, per esempio 'TATATAX')
-          init_var: ""
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
           name_var: opt_sol{task_number}
-        - title: e la sua lunghezza
+        - title: "e la sua lunghezza:"
           init_var: 7
           name_var: opt_val{task_number}
-
   - 2:    # esercizio inizia con...
       tot_points: 45
       pt_formato_OK: 0
@@ -46,7 +44,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una stringa di lunghezza massima che inizi col prefisso __{task["beginning"]}__ e sia sottosequenza comune tra<br/>$s$ = {s}<br/>$t$ = {t}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
   - 3:    # esercizio suffisso su s
       tot_points: 45
       pt_formato_OK: 0
@@ -57,7 +61,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b> $s\''$ = {s[len(s)-task["reduce_s_to_its_suffix_of_length"]:]} di $s$ e <br/>$t$ = {t}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
   - 4:    # esercizio suffisso su s
       tot_points: 45
       pt_formato_OK: 0
@@ -68,7 +78,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b> $s\''$ = {s[len(s)-task["reduce_s_to_its_suffix_of_length"]:]} di $s$ e <br/>$t$ = {t}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
   - 5:    # esercizio suffisso su s
       tot_points: 45
       pt_formato_OK: 0
@@ -79,7 +95,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b> $s\''$ = {s[len(s)-task["reduce_s_to_its_suffix_of_length"]:]} di $s$ e <br/>$t$ = {t}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
   - 6:    # esercizio suffisso su t
       tot_points: 45
       pt_formato_OK: 0
@@ -90,7 +112,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\''$ = {t[len(t)-task["reduce_t_to_its_suffix_of_length"]:]} di $t$ e <br/>$s$ = {s}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
   - 7:    # esercizio suffisso su t
       tot_points: 45
       pt_formato_OK: 0
@@ -101,8 +129,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\''$ = {t[len(t)-task["reduce_t_to_its_suffix_of_length"]:]} di $t$ e <br/>$s$ = {s}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
   - 8:    # esercizio suffisso su t
       tot_points: 45
       pt_formato_OK: 0
@@ -113,6 +146,12 @@ tasks:
       request: {"context":also_task, "content":'Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\''$ = {t[len(t)-task["reduce_t_to_its_suffix_of_length"]:]} di $t$ e <br/>$s$ = {s}.'}
       init_answ_cell_msg: 'Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol{task_number}=""\ne la sua lunghezza:\nopt_val{task_number}=7'
       verif: {'TALight_problem_name':'RO_lcs', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta (una stringa, per esempio 'TATATAX'):"
+          init_var: 'TATATAX'
+          name_var: opt_sol{task_number}
+        - title: "e la sua lunghezza:"
+          init_var: 7
+          name_var: opt_val{task_number}
 general_description_to_conclude: {"content":"ricordati di salvare periodicamente il tuo lavoro. Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda (potrai sempre riaprirla successivamente)"}
 ...

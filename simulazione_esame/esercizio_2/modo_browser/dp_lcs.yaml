@@ -18,13 +18,12 @@ tags:
 tasks:
 - 1:
     answ_form:
-    - init_var: ''
-      name_var: opt_sol{task_number}
-      title: Inserisci la tua risposta (una stringa, per esempio 'TATATAX')
-      type_var: str
-    - init_var: 7
-      name_var: opt_val{task_number}
-      title: e la sua lunghezza
+    - init_var: TATATAX
+      name_var: opt_sol1
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val1
+      title: 'e la sua lunghezza:'
     general_description_before_task: Si considerino le seguenti sequenze di caratteri:<br/><br/>
       $s$ = __AAGCGAGATAGCCGGT__ <br/>  $t$ = __ATAACCGATACAAGTC__
     goals:
@@ -41,14 +40,15 @@ tasks:
       = AAGCGAGATAGCCGGT<br/>$t$ = ATAACCGATACAAGTC.
     tot_points: 45
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''answ_form'':[{''type_var'':
-      ''str'', ''title'': "Inserisci la tua risposta (una stringa, per esempio ''TATATAX'')",
-      ''init_var'': '''', ''name_var'': ''opt_sol{task_number}''}, {''title'': ''e
-      la sua lunghezza'', ''init_var'': 7, ''name_var'': ''opt_val{task_number}''}],''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''answ_form'':[{''type_var'':
-      ''str'', ''title'': "Inserisci la tua risposta (una stringa, per esempio ''TATATAX'')",
-      ''init_var'': '''', ''name_var'': ''opt_sol{task_number}''}, {''title'': ''e
-      la sua lunghezza'', ''init_var'': 7, ''name_var'': ''opt_val{task_number}''}],''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
 - 2:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol2
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val2
+      title: 'e la sua lunghezza:'
     beginning: CC
     goals:
     - opt_sol
@@ -66,6 +66,13 @@ tasks:
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
       ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''beginning'':''CC'',''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''beginning'':''CC'',''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol2,''opt_sol2''),''opt_val'':(opt_val2,''opt_val2''),})'''
 - 3:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol3
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val3
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val
@@ -83,6 +90,13 @@ tasks:
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
       ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':15,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':15,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol3,''opt_sol3''),''opt_val'':(opt_val3,''opt_val3''),})'''
 - 4:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol4
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val4
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val
@@ -100,6 +114,13 @@ tasks:
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
       ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol4,''opt_sol4''),''opt_val'':(opt_val4,''opt_val4''),})'''
 - 5:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol5
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val5
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val
@@ -117,6 +138,13 @@ tasks:
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
       ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':9,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':9,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol5,''opt_sol5''),''opt_val'':(opt_val5,''opt_val5''),})'''
 - 6:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol6
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val6
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val
@@ -134,6 +162,13 @@ tasks:
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
       ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':13,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':13,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol6,''opt_sol6''),''opt_val'':(opt_val6,''opt_val6''),})'''
 - 7:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol7
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val7
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val
@@ -151,6 +186,13 @@ tasks:
     verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
       ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol7,''opt_sol7''),''opt_val'':(opt_val7,''opt_val7''),})'''
 - 8:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol8
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val8
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val

@@ -1,6 +1,6 @@
 import os
 import re
-import yaml
+import yaml as ya
 from RO_utils import *
 
 class Default(dict):
@@ -18,7 +18,7 @@ class bcolors:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
-def analyze_string(string, instance, task, set_key, str_instance):
+def analyze_string(string, instance, task, str_instance):
     _task = Default({'task' : task})
     #_err = Default(task)
     _instance = Default(instance)
@@ -36,7 +36,6 @@ def analyze_string(string, instance, task, set_key, str_instance):
     #    new_str = new_str.format_map(_err)
     #except:
     #    pass
-
     missing = set()
     found = set(re.findall(r'{(.+?)}', new_str, flags=re.M))
     if len(found) > 0:
@@ -65,17 +64,17 @@ def analyze_string(string, instance, task, set_key, str_instance):
             print(f"{bcolors.WARNING}\tMissing: {missing}{bcolors.ENDC}")
     return(new_str.replace('*^*','{').replace('*&*','}'), missing)
 
-def analyze_generic(request, instance, str_instance, task, set_key):
+def analyze_generic(request, instance, str_instance, task):
     if isinstance(request, str):
-        return analyze_string(request, instance, task, set_key, str_instance)[0]
+        return analyze_string(request, instance, task, str_instance)[0]
     elif isinstance(request, dict):
         for field in request:
-            request[field] = analyze_string(request[field], instance, task, set_key, str_instance)[0]
+            request[field] = analyze_string(request[field], instance, task,  str_instance)[0]
     return request
 
-def analyze_general_description_before_task(gdbf, instance, str_instance, task, set_key):
+def analyze_general_description_before_task(gdbf, instance, str_instance, task):
     if "rendition" in gdbf and gdbf["rendition"] == "from_code":
-        result = analyze_string(gdbf["content"], instance, task, set_key, str_instance)
+        result = analyze_string(gdbf["content"], instance, task, str_instance)
         try:
             result_ = {}
             exec(f"output={result[0]}", globals(), result_)
@@ -85,38 +84,44 @@ def analyze_general_description_before_task(gdbf, instance, str_instance, task, 
             gdbf["content"] = result[0]
     else:
         for field in gdbf:
-            result = analyze_string(gdbf[field], instance, task, set_key, str_instance)
+            result = analyze_string(gdbf[field], instance, task, str_instance)
             gdbf[field] = result[0]
     return gdbf
 
 def analyze_task(task, instance, str_instance, task_number, pure_instance):
     instance['task_number'] = task_number
     str_instance += f'task_number={task_number};'
-    set_key = instance.keys()
+    #set_key = instance.keys()
     #task_dict = f"'task_number':{task_number},"
     task_dict = '{'
     for key in task:
-        if key == 'general_description_before_task':
+        if key == 'answ_form':
+            if isinstance(task['answ_form'], list):
+                for i in range(len(task['answ_form'])):
+                    task[key][i] = analyze_generic(task[key][i], instance, str_instance, task)
+            else:
+                task[key] = analyze_generic(task[key], instance, str_instance, task)
+        elif key == 'general_description_before_task':
             gdbf = task['general_description_before_task']
             if isinstance(gdbf, list):
                 gdbf_str = ''
                 for content in gdbf:
-                    gdbf_str += analyze_general_description_before_task(content, instance, str_instance, task, set_key)['content']
+                    gdbf_str += analyze_general_description_before_task(content, instance, str_instance, task)['content']
                 task['general_description_before_task'] = gdbf_str
             else:
-                task['general_description_before_task'] = analyze_general_description_before_task(gdbf, instance, str_instance, task, set_key)['content']
+                task['general_description_before_task'] = analyze_general_description_before_task(gdbf, instance, str_instance, task)['content']
         elif key == 'verif':
             if not isinstance(task['verif'], dict):
-                task['verif'] = analyze_generic(task['verif'], instance, str_instance, task, set_key)
+                task['verif'] = analyze_generic(task['verif'], instance, str_instance, task)
         elif key == 'request':
             if isinstance(task[key], dict):
-                task[key] = analyze_generic(task[key], instance, str_instance, task, set_key)['content']
+                task[key] = analyze_generic(task[key], instance, str_instance, task)['content']
             else:
-                task[key] = analyze_generic(task[key], instance, str_instance, task, set_key)
+                task[key] = analyze_generic(task[key], instance, str_instance, task)
         else:
-            task[key] = analyze_generic(task[key], instance, str_instance, task, set_key)
+            task[key] = analyze_generic(task[key], instance, str_instance, task)
 
-        if key not in ('verif', 'goals', 'general_description_before_task','init_answ_cell_msg','request'):
+        if key not in ('verif', 'goals', 'general_description_before_task','init_answ_cell_msg','request','answ_form'):
             task_dict += f"""'{key}':{repr(task[key])},"""
 
     if 'verif' in task and isinstance(task['verif'], dict):
@@ -192,11 +197,14 @@ def start():
                     if file[-9:] in '.instance':
                         path_instance = f"{path_}{file}"
                         with open(path_instance, 'r') as file:
-                            instance = yaml.safe_load(file)
+                            instance = ya.safe_load(file)
                             print(f"{bcolors.BOLD}{bcolors.HEADER}{path_instance}{bcolors.ENDC}")
                             new_instance = analyze_instance(instance)
                             with open(path_instance[:-9]+'.yaml', 'w') as file:
-                                yaml.dump(new_instance, file)
-            except FileNotFoundError as e:
+                                ya.dump(new_instance, file)
+            except FileNotFoundError:
                 #print(".instance file error")
                 pass
+
+if __name__ == '__main__':
+    start()

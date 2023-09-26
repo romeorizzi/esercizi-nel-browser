@@ -32,7 +32,13 @@ tasks:
       request: {"context":also_task, "content":'Tra i sottoinsiemi di oggetti di peso complessivo non eccedente $CapacityMax$= __{CapacityMax}__ fornirne uno in cui sia massima la somma dei valori.'}
       init_answ_cell_msg: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])\nopt_sol{task_number}=[]\nSpecificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):\nopt_val{task_number}=-1"
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 2:
       tot_points: 40
       pt_formato_OK: 0
@@ -41,9 +47,14 @@ tasks:
       CapacityGen: 32
       request: {"context":also_task, "content":'Tra i sottoinsiemi di oggetti di peso complessivo non eccedente <b>la capacità {task["CapacityGen"]}</b>, fornirne uno in cui sia massima la somma dei valori.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
-      # init_answ_cell_msg: "#Writing here would override the automatic prompt message'
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 3:
       tot_points: 40
       pt_formato_OK: 0
@@ -53,7 +64,13 @@ tasks:
       request: {"context":also_task, "content":'Tra i sottoinsiemi di oggetti di peso complessivo non eccedente <b>la capacità {task["CapacityGen"]}</b>, fornirne uno in cui sia massima la somma dei valori.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 4:
       general_description_before_task: {"content":"Nelle successive richieste alcuni degli oggetti saranno proibiti, oppure obbligati"}
       tot_points: 40
@@ -64,7 +81,13 @@ tasks:
       request: {"context":also_task, "content":'Tra i sottoinsiemi di oggetti di peso complessivo non eccedente <b>la capacità {task["CapacityGen"]}</b>, fornirne uno in cui sia massima la somma dei valori.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 5:
       tot_points: 40
       pt_formato_OK: 0
@@ -75,7 +98,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una soluzione ottima se <b>{task["CapacityGen"]} è la capienza dello zaino</b> da non superarsi ma assumendo di <b>non poter prendere</b> nessuno degli elementi in {task["forced_out"]}.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 6:
       tot_points: 40
       pt_formato_OK: 0
@@ -86,7 +115,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una soluzione ottima se <b>{task["CapacityGen"]} è la capienza dello zaino</b> da non superarsi ma assumendo di <b>non poter prendere</b> nessuno degli elementi in {task["forced_out"]}.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 7:
       tot_points: 40
       pt_formato_OK: 0
@@ -97,7 +132,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una soluzione ottima se <b>{task["CapacityGen"]} è la capienza dello zaino</b> da non superarsi ma assumendo di <b>non poter prendere</b> nessuno degli elementi in {task["forced_out"]}.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 8:
       tot_points: 40
       pt_formato_OK: 0
@@ -108,7 +149,10 @@ tasks:
       request: {"context":also_task, "content":'Fornire una soluzione ottima se <b>{task["CapacityGen"]} è la capienza dello zaino</b> da non superarsi ma assumendo di <b>dover prendere</b> tutti gli elementi in {task["forced_in"]}.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 9:
       tot_points: 40
       pt_formato_OK: 0
@@ -120,7 +164,13 @@ tasks:
       request: {"context":also_task, "content":'Fornire una soluzione ottima se <b>{task["CapacityGen"]} è la capienza dello zaino</b> da non superarsi ma assumendo di <b>dover prendere tutti</b> gli elementi in {task["forced_in"]} e <b>nessuno</b> di quelli in {task["forced_out"]}.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
+        - title: "Specificare il valore della soluzione introdotta (un intero, la somma dei valori degli oggetti presi):"
+          init_var: -1
+          name_var: opt_val{task_number}
   - 10:
       tot_points: 40
       pt_formato_OK: 0
@@ -132,6 +182,9 @@ tasks:
       request: {"context":also_task, "content":'Fornire una soluzione ottima se <b>{task["CapacityGen"]} è la capienza dello zaino</b> da non superarsi ma assumendo di <b>dover prendere tutti</b> gli elementi in {task["forced_in"]} e <b>nessuno</b> di quelli in {task["forced_out"]}.'}
       init_answ_cell_msg_automatic: PLACEHOLDER_prompt
       verif: {'TALight_problem_name':'RO_knapsack', 'checkers':['TALight', 'embedded_in_notebook']}
-
+      answ_form:
+        - title: "Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio: ['C', 'F', 'A'])"
+          init_var: "['C', 'F', 'A']"
+          name_var: opt_sol{task_number}
 general_description_to_conclude: {"content":"ricordati di salvare periodicamente il tuo lavoro. Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda (potrai sempre riaprirla successivamente)"}
 ...

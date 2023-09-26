@@ -110,7 +110,7 @@
             <br>
             <form name="form" method="post" action = "{% url 'esercizio_tmp' %}" autocomplete="off">
             {% csrf_token %} 
-            <textarea style="width:100%;font-size:18px;" class="form-control" id="ans_{{goal}}" name="ans_{{goal}}" placeholder="Inserisci {{goal}}"required></textarea>     
+            <textarea style="width:100%;font-size:18px;" class="form-control" id="ans_{{goal.goal}}" name="ans_{{goal.goal}}" placeholder="Inserisci {{goal.goal}}"required></textarea>
             <br>
             <div class="col-sm">
               <button type="submit" name="run_script_{{task}}" style="width:80px;" class="btn btn-primary">Invia</button>     

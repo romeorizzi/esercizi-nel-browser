@@ -95,7 +95,7 @@ tasks:
       pt_formato_OK: 0
       pt_feasibility_OK: 0
       pt_consistency_OK: 0
-      goals: not a TALight verify service goal
+      goals: []
       request: {"context":also_task, "content":'Specificare quanti siano gli alberi ricoprenti di peso minimo.'}
       init_answ_cell_msg: "Inserisci la tua risposta in questa cella di testo libero."
 

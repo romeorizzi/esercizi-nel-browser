@@ -167,6 +167,7 @@ def get_goals(answer,task):
     for goal in task['goals']: # per ogni goal richiesto dalla task
     # prendo la soluzione dell'utente e provo a convertirla nei tre formati possibili (int, list, str)
     # quando riesco a farlo la associo al goal e genero answer_dict
+        goal = goal['goal']
         already_cast = 0
         try:
             answer_dict[goal] = int(answer.cleaned_data[f'ans_{goal}'])

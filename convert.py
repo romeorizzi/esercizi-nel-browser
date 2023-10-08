@@ -36,6 +36,7 @@ def analyze_string(string, instance, task, str_instance):
     #    new_str = new_str.format_map(_err)
     #except:
     #    pass
+
     missing = set()
     found = set(re.findall(r'{(.+?)}', new_str, flags=re.M))
     if len(found) > 0:
@@ -69,7 +70,7 @@ def analyze_generic(request, instance, str_instance, task):
         return analyze_string(request, instance, task, str_instance)[0]
     elif isinstance(request, dict):
         for field in request:
-            request[field] = analyze_string(request[field], instance, task,  str_instance)[0]
+            request[field] = analyze_string(request[field], instance, task, str_instance)[0]
     return request
 
 def analyze_general_description_before_task(gdbf, instance, str_instance, task):
@@ -91,7 +92,6 @@ def analyze_general_description_before_task(gdbf, instance, str_instance, task):
 def analyze_task(task, instance, str_instance, task_number, pure_instance):
     instance['task_number'] = task_number
     str_instance += f'task_number={task_number};'
-    #set_key = instance.keys()
     #task_dict = f"'task_number':{task_number},"
     task_dict = '{'
     for key in task:

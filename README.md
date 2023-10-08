@@ -23,7 +23,7 @@ Per avviare il sito lancia questo comando nella directory del progetto
 python manage.py runserver
 ```
 
-Poi apri questo link http://127.0.0.1:8000/esame
+Poi apri questo link http://127.0.0.1:8000
 
 ### RICORDATI DI AVVIARE TALIGHT
 

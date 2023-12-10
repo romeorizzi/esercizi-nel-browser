@@ -1,142 +1,117 @@
-<?xml version="1.0" ?>
-<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
-	<key id="data_node" for="node" yfiles.type="nodegraphics"/>
-	<key id="data_edge" for="edge" yfiles.type="edgegraphics"/>
-	<graph edgedefault="directed" id="G">
-		<node id="A">
-			<data key="data_node">
-				<y:ShapeNode>
-					<y:Geometry height="35.2778" width="35.2778" x="6000" y="200"/>
-					<y:Fill color="#ff0000" transparent="false"/>
-					<y:BorderStyle hasColor="false" type="line" width="1.0"/>
-					<y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">A</y:NodeLabel>
-					<y:NodeLabel tag="pizza">pizza</y:NodeLabel>
-					<y:Shape type="ellipse"/>
-				</y:ShapeNode>
-			</data>
-		</node>
-		<node id="B">
-			<data key="data_node">
-				<y:ShapeNode>
-					<y:Geometry height="35.2778" width="35.2778" x="500" y="1500"/>
-					<y:Fill color="#ffff00" transparent="false"/>
-					<y:BorderStyle hasColor="false" type="line" width="1.0"/>
-					<y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">B</y:NodeLabel>
-					<y:NodeLabel tag="caffè">caffè</y:NodeLabel>
-					<y:Shape type="rectangle"/>
-				</y:ShapeNode>
-			</data>
-		</node>
-		<node id="T">
-			<data key="data_node">
-				<y:ShapeNode>
-					<y:Geometry height="35.2778" width="35.2778" x="6000" y="1500"/>
-					<y:Fill color="#ffffff" transparent="false"/>
-					<y:BorderStyle color="#000000" type="line" width="1.0"/>
-					<y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">T</y:NodeLabel>
-					<y:NodeLabel tag=" "> </y:NodeLabel>
-					<y:Shape type="ellipse"/>
-				</y:ShapeNode>
-			</data>
-		</node>
-		<node id="D">
-			<data key="data_node">
-				<y:ShapeNode>
-					<y:Geometry height="35.2778" width="35.2778" x="7000" y="1500"/>
-					<y:Fill color="#ffa500" transparent="false"/>
-					<y:BorderStyle hasColor="false" type="line" width="1.0"/>
-					<y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">D</y:NodeLabel>
-					<y:NodeLabel tag="pasta">pasta</y:NodeLabel>
-					<y:Shape type="ellipse"/>
-				</y:ShapeNode>
-			</data>
-		</node>
-		<node id="E">
-			<data key="data_node">
-				<y:ShapeNode>
-					<y:Geometry height="35.2778" width="35.2778" x="500" y="200"/>
-					<y:Fill color="#0000ff" transparent="false"/>
-					<y:BorderStyle hasColor="false" type="line" width="1.0"/>
-					<y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">E</y:NodeLabel>
-					<y:NodeLabel tag=" "> </y:NodeLabel>
-					<y:Shape type="ellipse"/>
-				</y:ShapeNode>
-			</data>
-		</node>
-		<node id="F">
-			<data key="data_node">
-				<y:ShapeNode>
-					<y:Geometry height="35.2778" width="35.2778" x="3000" y="200"/>
-					<y:Fill color="#ffa500" transparent="false"/>
-					<y:BorderStyle hasColor="false" type="line" width="1.0"/>
-					<y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">F</y:NodeLabel>
-					<y:NodeLabel tag="gelato">gelato</y:NodeLabel>
-					<y:Shape type="ellipse"/>
-				</y:ShapeNode>
-			</data>
-		</node>
-		<edge id="A_B" source="A" target="B">
-			<data key="data_edge">
-				<y:ArcEdge>
-					<y:Arrows source="none" target="standard" type=""/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel>13</y:EdgeLabel>
-				</y:ArcEdge>
-			</data>
-		</edge>
-		<edge id="B_T" source="B" target="T">
-			<data key="data_edge">
-				<y:PolyLineEdge>
-					<y:Arrows source="standard" target="standard" type="curve"/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel>2</y:EdgeLabel>
-				</y:PolyLineEdge>
-			</data>
-		</edge>
-		<edge id="T_A" source="T" target="A">
-			<data key="data_edge">
-				<y:PolyLineEdge>
-					<y:Arrows source="standard" target="standard" type=""/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel> </y:EdgeLabel>
-				</y:PolyLineEdge>
-			</data>
-		</edge>
-		<edge id="T_D" source="T" target="D">
-			<data key="data_edge">
-				<y:PolyLineEdge>
-					<y:Arrows source="none" target="none" type=""/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel>14</y:EdgeLabel>
-				</y:PolyLineEdge>
-			</data>
-		</edge>
-		<edge id="A_F" source="A" target="F">
-			<data key="data_edge">
-				<y:ArcEdge>
-					<y:Arrows source="none" target="standard" type=""/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel>13</y:EdgeLabel>
-				</y:ArcEdge>
-			</data>
-		</edge>
-		<edge id="B_E" source="B" target="E">
-			<data key="data_edge">
-				<y:ArcEdge>
-					<y:Arrows source="none" target="none" type=""/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel>2</y:EdgeLabel>
-				</y:ArcEdge>
-			</data>
-		</edge>
-		<edge id="E_F" source="E" target="F">
-			<data key="data_edge">
-				<y:PolyLineEdge>
-					<y:Arrows source="standard" target="standard" type=""/>
-					<y:LineStyle color="#000000" type="line" width="1"/>
-					<y:EdgeLabel> </y:EdgeLabel>
-				</y:PolyLineEdge>
-			</data>
-		</edge>
-	</graph>
-</graphml>
+<?xml version="1.0" encoding='utf-8'?>
+   <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+        <key id="data_node" for="node" yfiles.type="nodegraphics"/>
+        <key id="data_edge" for="edge" yfiles.type="edgegraphics"/>
+        <graph edgedefault="directed">
+<node id="0">
+                <data key="data_node">
+                    <y:ShapeNode>
+                        <y:Geometry height="35" width="35" x="555" y="1497"/>
+                        <y:Fill color="#ff0000" transparent="false"/>
+                        <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+                        <y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">0</y:NodeLabel>
+                        <y:NodeLabel tag=" "></y:NodeLabel>
+                        <y:Shape type="ellipse"/>
+                    </y:ShapeNode>
+                </data>
+            </node><node id="1">
+                <data key="data_node">
+                    <y:ShapeNode>
+                        <y:Geometry height="35" width="35" x="5038" y="1420"/>
+                        <y:Fill color="#ff0000" transparent="false"/>
+                        <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+                        <y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">1</y:NodeLabel>
+                        <y:NodeLabel tag=" "></y:NodeLabel>
+                        <y:Shape type="ellipse"/>
+                    </y:ShapeNode>
+                </data>
+            </node><node id="2">
+                <data key="data_node">
+                    <y:ShapeNode>
+                        <y:Geometry height="35" width="35" x="9500" y="1499"/>
+                        <y:Fill color="#ff0000" transparent="false"/>
+                        <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+                        <y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">2</y:NodeLabel>
+                        <y:NodeLabel tag=" "></y:NodeLabel>
+                        <y:Shape type="ellipse"/>
+                    </y:ShapeNode>
+                </data>
+            </node><node id="3">
+                <data key="data_node">
+                    <y:ShapeNode>
+                        <y:Geometry height="35" width="35" x="7195" y="159"/>
+                        <y:Fill color="#ff0000" transparent="false"/>
+                        <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+                        <y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">3</y:NodeLabel>
+                        <y:NodeLabel tag=" "></y:NodeLabel>
+                        <y:Shape type="ellipse"/>
+                    </y:ShapeNode>
+                </data>
+            </node><node id="4">
+                <data key="data_node">
+                    <y:ShapeNode>
+                        <y:Geometry height="35" width="35" x="2864" y="164"/>
+                        <y:Fill color="#ff0000" transparent="false"/>
+                        <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+                        <y:NodeLabel fontFamily="Dialog" fontSize="20" underlinedText="false" fontStyle="plain" target="label">4</y:NodeLabel>
+                        <y:NodeLabel tag=" "></y:NodeLabel>
+                        <y:Shape type="ellipse"/>
+                    </y:ShapeNode>
+                </data>
+            </node><edge id="0_1" source="0" target="1">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>2</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge><edge id="0_4" source="0" target="4">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>3</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge><edge id="1_2" source="1" target="2">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>2</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge><edge id="1_3" source="1" target="3">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>2</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge><edge id="1_4" source="1" target="4">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>3</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge><edge id="2_3" source="2" target="3">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>2</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge><edge id="3_4" source="3" target="4">
+                <data key="data_edge">
+                    <y:ArcEdge>
+                        <y:Arrows source="none" target="standard" type=""/>
+                        <y:LineStyle color="#000000" type="line" width="1"/>
+                        <y:EdgeLabel>5</y:EdgeLabel>
+                    </y:ArcEdge>
+                </data>
+            </edge></graph></graphml>

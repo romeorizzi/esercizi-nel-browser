@@ -10,11 +10,8 @@ e = graphml_converter.node_arrow()
 
 nodes_values = {}
 numero_nodi, numero_archi = graphml_converter.numero_node_edges()
-coordinate_nodi = []
 coordinate_nodi = graphml_converter.node_position()
-colori_nodi = []
 colori_nodi = graphml_converter.node_color()
-tag_nodi = []
 tag_nodi = graphml_converter.node_tag()
 
 
@@ -532,7 +529,3 @@ def init_graph_html():
     f = open(os.path.join(TEMPLATES_DIRECTORY,"grafo_template.html"),"w")
     f.write(t)
     f.close()
-
-
-
-

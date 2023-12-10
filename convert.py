@@ -1,7 +1,8 @@
 import os
 import re
 import yaml as ya
-from RO_utils import *
+from utils import graph
+from utils.RO_utils import *
 
 class Default(dict):
     def __missing__(self, key):
@@ -170,6 +171,8 @@ def analyze_instance(yaml_dict):
     if 'general_description_to_conclude' in yaml_new and 'content' in yaml_new['general_description_to_conclude']:
         yaml_new['general_description_to_conclude'] = yaml_new['general_description_to_conclude']['content']
     yaml_new['graphic_instance_descriptor'] = ''
+    if 'edges' in yaml_new['instance']:
+        graph.create_graphml(yaml_new['instance']['edges'], yaml_new['graphml'])
     return yaml_new
 
 def start():

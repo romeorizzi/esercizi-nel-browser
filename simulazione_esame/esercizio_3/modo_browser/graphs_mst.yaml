@@ -9,9 +9,9 @@ general_description_to_conclude: Ricordati di salvare periodicamente il tuo lavo
 graphic_instance_descriptor: ''
 graphml: graphml/grafo_10_graph.graphml
 instance:
-  edges: '[(A,B)(B,T)(T,A)(T,D)(A,F)(B,E)(E,F)]'
+  edges: '[(0,1)(0,4)(1,2)(1,3)(1,4)(2,3)(3,4)]'
   m: 7
-  n: 6
+  n: 5
 modes:
 - free
 - with_checks

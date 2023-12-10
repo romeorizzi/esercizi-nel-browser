@@ -89,8 +89,8 @@ for key in PROBLEM_KEYS:
     global_args[key] = META_YAML['services']['check']['args']
 
 # raccolgo tutti gli argomenti degli yaml per ogni problema
-global_args_dict = {}
-all_exercises = {}
+global_args_dict: dict = {}
+all_exercises: dict = {}
 for key in PROBLEM_KEYS:
     all_exercises[key] = {}
     all_exercises[key]["instance"] = PROBLEM[key]['instance']

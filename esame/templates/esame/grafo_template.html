@@ -2,7 +2,7 @@
 <html>
   <head>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha512-4DaiBX8rsgOoBSNLceQ/IixDF+uUDV0hJrQX/MJ9RwJZCDqbEp0EjIQodGxszPtTpwlenJznR2jkgDWqj4Hs+A==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js" integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q==" crossorigin="anonymous"></script>
     <script src="https://graphicalstructure.org/Playground/Scripts/Line.js"></script>
     <style>
       body {
@@ -25,29 +25,25 @@
        }  
     </style>
   </head>
-<div class='node' id='A' style='top:25px;left:461px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
-<label id='A-label-char' style='position: absolute; top:0%;left:25%;'> A</label>
-<label id='A-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'> pizza</label>
+<div class='node' id='0' style='top:187px;left:42px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
+<label id='0-label-char' style='position: absolute; top:0%;left:25%;'> 0</label>
+<label id='0-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
 </div>
-<div class='node' id='B' style='top:187px;left:38px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
-<label id='B-label-char' style='position: absolute; top:0%;left:25%;'> B</label>
-<label id='B-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'> caffè</label>
+<div class='node' id='1' style='top:177px;left:387px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
+<label id='1-label-char' style='position: absolute; top:0%;left:25%;'> 1</label>
+<label id='1-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
 </div>
-<div class='node' id='T' style='top:187px;left:461px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
-<label id='T-label-char' style='position: absolute; top:0%;left:25%;'> T</label>
-<label id='T-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
+<div class='node' id='2' style='top:187px;left:730px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
+<label id='2-label-char' style='position: absolute; top:0%;left:25%;'> 2</label>
+<label id='2-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
 </div>
-<div class='node' id='D' style='top:187px;left:538px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
-<label id='D-label-char' style='position: absolute; top:0%;left:25%;'> D</label>
-<label id='D-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'> pasta</label>
+<div class='node' id='3' style='top:19px;left:553px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
+<label id='3-label-char' style='position: absolute; top:0%;left:25%;'> 3</label>
+<label id='3-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
 </div>
-<div class='node' id='E' style='top:25px;left:38px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
-<label id='E-label-char' style='position: absolute; top:0%;left:25%;'> E</label>
-<label id='E-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
-</div>
-<div class='node' id='F' style='top:25px;left:230px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
-<label id='F-label-char' style='position: absolute; top:0%;left:25%;'> F</label>
-<label id='F-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'> gelato</label>
+<div class='node' id='4' style='top:20px;left:220px; background: green;border: thin solid black' onclick='javascript:change(this.id);'>
+<label id='4-label-char' style='position: absolute; top:0%;left:25%;'> 4</label>
+<label id='4-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'>  </label>
 </div>
 <script>
   $('.node').draggable();
@@ -292,12 +288,12 @@
     };
     var LineController = connect();
   LineController.drawLine({
-    left_node:'A',
-    right_node:'B',
-    label_node:'A-label',
+    left_node:'0',
+    right_node:'1',
+    label_node:'0-label',
     col: 'black',
     width: 2,
-    text: 13,
+    text: 2,
     style: 'solid',
     gtype: 'arrow',
     ltype: '',
@@ -307,57 +303,12 @@
   drag: function(event, ui){LineController.redrawLines();}
   });
   LineController.drawLine({
-    left_node:'B',
-    right_node:'T',
-    label_node:'B-label',
+    left_node:'0',
+    right_node:'4',
+    label_node:'0-label',
     col: 'black',
     width: 2,
-    text: 2,
-    style: 'solid',
-    gtype: 'bidirectional',
-    ltype: 'curve',
-  })
-  $( '.'+'node' ).draggable({
-  scroll: false,
-  drag: function(event, ui){LineController.redrawLines();}
-  });
-  LineController.drawLine({
-    left_node:'T',
-    right_node:'A',
-    label_node:'T-label',
-    col: 'black',
-    width: 2,
-    text: -13234214325,
-    style: 'solid',
-    gtype: 'bidirectional',
-    ltype: '',
-  })
-  $( '.'+'node' ).draggable({
-  scroll: false,
-  drag: function(event, ui){LineController.redrawLines();}
-  });
-  LineController.drawLine({
-    left_node:'T',
-    right_node:'D',
-    label_node:'T-label',
-    col: 'black',
-    width: 2,
-    text: 14,
-    style: 'solid',
-    gtype: 'line',
-    ltype: '',
-  })
-  $( '.'+'node' ).draggable({
-  scroll: false,
-  drag: function(event, ui){LineController.redrawLines();}
-  });
-  LineController.drawLine({
-    left_node:'A',
-    right_node:'F',
-    label_node:'A-label',
-    col: 'black',
-    width: 2,
-    text: 13,
+    text: 3,
     style: 'solid',
     gtype: 'arrow',
     ltype: '',
@@ -367,14 +318,14 @@
   drag: function(event, ui){LineController.redrawLines();}
   });
   LineController.drawLine({
-    left_node:'B',
-    right_node:'E',
-    label_node:'B-label',
+    left_node:'1',
+    right_node:'2',
+    label_node:'1-label',
     col: 'black',
     width: 2,
     text: 2,
     style: 'solid',
-    gtype: 'line',
+    gtype: 'arrow',
     ltype: '',
   })
   $( '.'+'node' ).draggable({
@@ -382,14 +333,59 @@
   drag: function(event, ui){LineController.redrawLines();}
   });
   LineController.drawLine({
-    left_node:'E',
-    right_node:'F',
-    label_node:'E-label',
+    left_node:'1',
+    right_node:'3',
+    label_node:'1-label',
     col: 'black',
     width: 2,
-    text: -13234214325,
+    text: 2,
     style: 'solid',
-    gtype: 'bidirectional',
+    gtype: 'arrow',
+    ltype: '',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'1',
+    right_node:'4',
+    label_node:'1-label',
+    col: 'black',
+    width: 2,
+    text: 3,
+    style: 'solid',
+    gtype: 'arrow',
+    ltype: '',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'2',
+    right_node:'3',
+    label_node:'2-label',
+    col: 'black',
+    width: 2,
+    text: 2,
+    style: 'solid',
+    gtype: 'arrow',
+    ltype: '',
+  })
+  $( '.'+'node' ).draggable({
+  scroll: false,
+  drag: function(event, ui){LineController.redrawLines();}
+  });
+  LineController.drawLine({
+    left_node:'3',
+    right_node:'4',
+    label_node:'3-label',
+    col: 'black',
+    width: 2,
+    text: 5,
+    style: 'solid',
+    gtype: 'arrow',
     ltype: '',
   })
   $( '.'+'node' ).draggable({

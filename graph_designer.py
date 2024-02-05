@@ -1,7 +1,7 @@
 import os
 import ruamel.yaml
-
 import graphml_converter
+
 GENERATED_DIRECTORY = os.path.join(os.getcwd(),"esame","generated")
 TEMPLATES_DIRECTORY = os.path.join(os.getcwd(),"esame","templates","esame")
 
@@ -13,7 +13,6 @@ numero_nodi, numero_archi = graphml_converter.numero_node_edges()
 coordinate_nodi = graphml_converter.node_position()
 colori_nodi = graphml_converter.node_color()
 tag_nodi = graphml_converter.node_tag()
-
 
 yaml = ruamel.yaml.YAML()
 with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml') as cn:

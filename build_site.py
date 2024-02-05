@@ -2,7 +2,6 @@ import os
 import ruamel.yaml
 from pathlib import Path
 import markdown
-from graph_designer import init_graph_html, write_yaml
 import convert
 import site_utils as su
 
@@ -58,6 +57,7 @@ def match_yaml_args():
 # converto gli .instance in .yaml
 print('Inizio con la generazione degli .yaml a partire dagli .instance')
 convert.start()
+
 
 # dichiaro il path di tutti i file utili
 home = str(Path.home())
@@ -196,11 +196,9 @@ f.write(etp)
 
 # Context per la view esame
 
-es = 1
 txt = "exam_context = {'data':{"
 for key in PROBLEM_KEYS: # per ogni esercizio scrivo i punti assegnando anche i colori
     txt += f"'{all_exercises[key]['name']}': {{'title': '{all_exercises[key]['name']}', 'score': {{'punti_sicuri':'<font color=\"green\">0/{ex_tot[key]}</font>', 'punti_aggiuntivi_possibili': '<font color=\"blue\">0/{ex_tot[key]}</font>', 'punti_fuori_portata':'<font color=\"red\">0/{ex_tot[key]}</font>'}}}},"
-    es += 1
 txt += "}}\n\n"
 f.write(txt)
 
@@ -493,6 +491,7 @@ def generate_symlinks():
 #                                                 INIZIALIZZAZIONE                                                 #
 #                                                                                                                  #
 ####################################################################################################################
+from graph_designer import init_graph_html, write_yaml
 
 empty_feedback_log(os.path.join(home,FEEDBACKS)) # svuoto il file dei feedback correnti
 empty_feedback_log(os.path.join(home,FEEDBACK_SAVED_LOG)) # svuoto il file dei feedback salvati

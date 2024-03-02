@@ -1,5 +1,6 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+from utils import graph_modeling as modeling
 
 def create_graphml(edges, graphml_name):
     G = nx.Graph()
@@ -23,9 +24,12 @@ def create_graphml(edges, graphml_name):
     with plt.ion():
         plt.show()
 
-    a = input('Quale layout si preferisce: ')
+    a = input('Quale layout si preferisce (aggiungre M per modificare tale layout): ')
     if a != '':
-        pos = pos_type[int(a)]
+        if a[-1] == 'M':
+            pos = modeling.main(pos_type[int(a[:-1])], edges)
+        else:
+            pos = pos_type[int(a)]
     else:
         pos = pos_type[-1]
 

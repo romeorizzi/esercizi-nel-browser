@@ -1,4 +1,4 @@
-import ruamel
+import ruamel.yaml
 import os
 
 ############## INSTANCE FORMAT ##############
@@ -66,10 +66,11 @@ def get_instance_from_yaml(PATH):
             return INSTANCE
         if file.endswith(".yaml"):
             YAML_FILE = f"{PATH}/{file}"
+    yaml = ruamel.yaml.YAML(typ='safe', pure=True)
     with open(YAML_FILE,'r') as stream:
         try:
-            INSTANCE = ruamel.yaml.safe_load(stream)
-        except ruamel.yaml.YAMLError as exc:
+            INSTANCE = yaml.load(stream)
+        except yaml.YAMLError as exc:
             print(exc)
             exit(1)
     tasks = {}

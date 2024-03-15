@@ -1,7 +1,6 @@
 import os
-import shutil
 import ast
-import ruamel
+import ruamel.yaml
 
 from datetime import datetime
 from django.shortcuts import render,redirect
@@ -15,6 +14,7 @@ import rtal_lib as rl
 
 home = str(Path.home())
 RTAL_URL='ws://127.0.0.1:8008' # connessione a localhost porta 8008
+yaml = ruamel.yaml.YAML(typ='safe', pure=True)
 
 # Il dizionario 'contexts' contiene tutte le informazioni utili ad ogni esercizio. Abbiamo deciso
 # di gestire il salvataggio dei dati tramite file yaml, percio' dobbiamo tenere traccia per ogni
@@ -64,7 +64,7 @@ def write_to_yaml_feedback(yaml_path,exercise,task,feedback):
     # apro e leggo lo yaml contenente i feedback
     with open(yaml_path,'r') as stream:
         try:
-            full_yaml_dict = ruamel.yaml.safe_load(stream)
+            full_yaml_dict = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
@@ -75,7 +75,7 @@ def write_to_yaml_feedback(yaml_path,exercise,task,feedback):
         full_yaml_dict[f'context_{exercise}']['data'][f'task{task}']['feedback'] = feedback
     # apro lo yaml contenente i feedback e scrivo il nuovo feedback
     f = open(yaml_path,'w')
-    ruamel.yaml.dump(full_yaml_dict, f, default_flow_style=False)
+    yaml.dump(full_yaml_dict, f)
     f.close()
 
 def get_scores(feedback):
@@ -115,7 +115,7 @@ def html_score(ex):
     # Vado a leggermi i punteggi
     with open(POINTS_YAML,'r') as stream:
         try:
-            points_dict = ruamel.yaml.safe_load(stream)
+            points_dict = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
@@ -138,7 +138,7 @@ def get_scores_from_feedbacks(FEEDBACK_YAML, POINTS_YAML):
     # apro lo yaml con i feedback
     with open(FEEDBACK_YAML,'r') as stream:
         try:
-            feedback_dict = ruamel.yaml.safe_load(stream)
+            feedback_dict = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
@@ -155,7 +155,7 @@ def get_scores_from_feedbacks(FEEDBACK_YAML, POINTS_YAML):
             points_dict[esercizio][task]['punti_fuori_portata'] = scores['punti_fuori_portata']
     # riporto i punteggi nello yaml dei punti
     f = open(POINTS_YAML,'w')
-    ruamel.yaml.dump(points_dict, f, default_flow_style=False)
+    yaml.dump(points_dict, f)
     f.close()
     # modifico i punti totali degli esercizi
     for context in contexts.keys():
@@ -208,7 +208,7 @@ def retrieve_saved_solutions(request,ex):
     # apro e leggo lo yaml dei feedback salvati
     with open(FEEDBACK_SAVED_LOG,'r') as stream:
         try:
-            saved_log_dict = ruamel.yaml.safe_load(stream)
+            saved_log_dict = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
@@ -226,21 +226,21 @@ def save_scores(ex):
     # apro e leggo il file dei punteggi correnti
     with open(POINTS_YAML,'r') as stream:
         try:
-            points = ruamel.yaml.safe_load(stream)
+            points = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
     # apro e leggo il file dei punteggi salvati
     with open(SAVED_SCORES,'r') as stream:
         try:
-            saved_scores = ruamel.yaml.safe_load(stream)
+            saved_scores = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
     # sostituisco i punti salvati con i punti correnti
     saved_scores[ex] = points[ex]
     f = open(SAVED_SCORES,'w')
-    ruamel.yaml.dump(saved_scores, f, default_flow_style=False)
+    yaml.dump(saved_scores, f)
     f.close()
 
 def save_solutions(request,ex):
@@ -248,21 +248,21 @@ def save_solutions(request,ex):
     # apro e leggo il file dei feedback correnti
     with open(FEEDBACKS,'r') as stream:
         try:
-            last_log_dict = ruamel.yaml.safe_load(stream)
+            last_log_dict = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
     # apro e leggo il file dei feedback salvati
     with open(FEEDBACK_SAVED_LOG,'r') as stream:
         try:
-            saved_log_dict = ruamel.yaml.safe_load(stream)
+            saved_log_dict = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
     # sostituisco i feedback salvati con i feedback correnti
     saved_log_dict[context] = last_log_dict[context]
     f = open(FEEDBACK_SAVED_LOG,'w')
-    ruamel.yaml.dump(saved_log_dict, f, default_flow_style=False)
+    yaml.dump(saved_log_dict, f)
     f.close()
     print('\n***********************************\n')
     print('\nHo salvato i risultati come richiesto.\n')

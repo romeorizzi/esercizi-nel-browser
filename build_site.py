@@ -60,6 +60,7 @@ convert.start()
 
 
 # dichiaro il path di tutti i file utili
+yaml = ruamel.yaml.YAML(typ='safe', pure=True)
 home = str(Path.home())
 META_YAML_TEMPL = os.path.join(home,"TALight","example_problems","tutorial","RO_EX","meta.yaml")
 EXAM_DIRECTORY = os.path.join(os.getcwd(),"simulazione_esame")
@@ -82,7 +83,7 @@ for key in PROBLEM_KEYS:
     meta = META_YAML_TEMPL.replace("EX",PROBLEM[key]['name'])
     with open(meta,'r') as stream:
         try:
-            META_YAML = ruamel.yaml.safe_load(stream)
+            META_YAML = yaml.load(stream)
         except ruamel.yaml.YAMLError as exc:
             print(exc)
             exit(1)
@@ -429,7 +430,7 @@ def empty_feedback_log(log_path):
                 yaml_dict[f"context_{all_exercises[key]['name']}"]['data'][f'task{task}'] = {'feedback':""}
     # sovrascrivo il file
     f = open(log_path,"w")
-    ruamel.yaml.dump(yaml_dict, f, default_flow_style=False)
+    yaml.dump(yaml_dict, f)
     f.close()
 
 ####################################################################################################################
@@ -451,7 +452,7 @@ def empty_score_log(points_path):
                 yaml_dict[all_exercises[key]['name']][f'task{task}'] = {'punti_sicuri':0,'punti_aggiuntivi_possibili':0,'punti_fuori_portata':0}
     # sovrascrivo il file
     f = open(points_path,"w")
-    ruamel.yaml.dump(yaml_dict, f, default_flow_style=False)
+    yaml.dump(yaml_dict, f)
     f.close()
 
 ####################################################################################################################

@@ -32,7 +32,6 @@ tasks:
         - {"context":only_instance, "rendition":format_method, "content":"Ogni richiesta del presente esercizio farà riferimento al grafo $G$ offerto nel seguente riquadro. Il grafo $G$ ha __{n}__ nodi, labellati coi primi __{n}__ numeri naturali e __{m}__ archi pesati, labellati coi primi __{m}__ numeri naturali. La lista ordinata degli archi è __{edges}__. Ecco una rappresentazione di $G$ (da quì puoi scaricarti $G$ in vari formati):\n\n"}
         - {"context":only_instance, "rendition":from_code, "content":"edge_weighted_graph_2picture(n={n},m={m},edges=[{edges}])"}
       #     applet_scope: ['download']
-
       tot_points: 70
       pt_formato_OK: 0
       pt_feasibility_OK: 1
@@ -50,6 +49,8 @@ tasks:
       - edgetag
       - orientation
       - refresh
+
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
 
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
@@ -80,6 +81,8 @@ tasks:
       - orientation
       - refresh
 
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
+
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
       - TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli archi ricompresi nel taglio.
@@ -106,6 +109,8 @@ tasks:
       - orientation
       - refresh
 
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
+
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
       - TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli archi ricompresi nel taglio.
@@ -115,7 +120,7 @@ tasks:
       - ALCUNE MA NON TUTTE,  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo in S ).
 
       init_answ_cell_msg_automatic: 'Seleziona nodi e/o archi (colora i nodi cliccando su essi e gli archi con il bottone "Colora Archi")'
-      
+
   - 4:
       tot_points: 60
       pt_formato_OK: 1
@@ -137,6 +142,8 @@ tasks:
       - orientation
       - refresh
 
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
+
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
       - TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli archi ricompresi nel taglio.
@@ -147,7 +154,7 @@ tasks:
 
       init_answ_cell_msg_automatic: 'Seleziona nodi e/o archi (colora i nodi cliccando su essi e gli archi con il bottone "Colora Archi")'
 
-      
+
   - 5:
       tot_points: 60
       pt_formato_OK: 1
@@ -169,6 +176,8 @@ tasks:
       - orientation
       - refresh
 
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
+
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
       - TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli archi ricompresi nel taglio.
@@ -178,7 +187,7 @@ tasks:
       - ALCUNE MA NON TUTTE,  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo in S ).
 
       init_answ_cell_msg_automatic: 'Seleziona nodi e/o archi (colora i nodi cliccando su essi e gli archi con il bottone "Colora Archi")'
-      
+
   - 6:
       tot_points: 60
       pt_formato_OK: 1
@@ -199,6 +208,8 @@ tasks:
       - edgetag
       - orientation
       - refresh
+
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
 
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
@@ -230,6 +241,8 @@ tasks:
       - orientation
       - refresh
 
+      componenti_stato: [ciclo: edgeset, taglio: edgeset, shore: nodeset]
+
       select:
       - NESSUNA [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi
       - TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli archi ricompresi nel taglio.
@@ -239,6 +252,5 @@ tasks:
       - ALCUNE MA NON TUTTE,  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo in S ).
 
       init_answ_cell_msg_automatic: 'Seleziona nodi e/o archi (colora i nodi cliccando su essi e gli archi con il bottone "Colora Archi")'
-
 
 general_description_to_conclude: Ricordati di salvare periodicamente il tuo lavoro. Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda (potrai sempre riaprirla successivamente)

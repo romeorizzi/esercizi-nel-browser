@@ -2,9 +2,7 @@
 ---
 context_knapsack:
   data:
-    task01: {feedback: "<b><font color=\"red\">Non ho potuto produrre alcun feedback.
-        Hai avviato il server di TALight?</font></b><br><br>ERRORE: 'NoneType' object
-        is not subscriptable"}
+    task01: {feedback: ''}
     task02: {feedback: ''}
     task03: {feedback: ''}
     task04: {feedback: ''}
@@ -16,26 +14,7 @@ context_knapsack:
     task10: {feedback: ''}
 context_lcs:
   data:
-    task01: {feedback: "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\"\
-        \ \"http://www.w3.org/TR/html4/loose.dtd\">\n<html>\n<head>\n<meta http-equiv=\"\
-        Content-Type\" content=\"text/html; charset=utf-8\">\n<title></title>\n<style
-        type=\"text/css\">\n.ansi2html-content { display: inline; white-space: pre-wrap;
-        word-wrap: break-word; }\n.body_foreground { color: #000000; }\n.body_background
-        { background-color: #FFFFFF; }\n.inv_foreground { color: #FFFFFF; }\n.inv_background
-        { background-color: #000000; }\n</style>\n</head>\n<body class=\"body_foreground
-        body_background\" style=\"font-size: normal;\" >\n<pre class=\"ansi2html-content\"\
-        >\n• Formato di `opt_val`: OK...(infatti: come `opt_val` hai immesso un intero
-        come richiesto)....(nota: ovviamente durante lo svolgimento dell'esame non
-        posso dirti se l'intero immesso sia poi la risposta corretta, ma il formato
-        è corretto)\n• Formato di `opt_sol`: OK...(infatti: come `opt_sol` hai immesso
-        una stringa sul corretto alfabeto (le 26 lettere inglesi maiuscole).)....(nota:
-        resta da stabilire l'ammissibilità di `opt_sol`)\n• Formato di `opt_sol`:
-        NO....(motivo: Come `opt_sol` è richiesto si inserisca una sottosequenza di
-        `s`='AAGCGAGATAGCCGGT'. Hai invece immesso 'ATAACCGATACAAGTC'.)\n\nTotalizzi
-        [punti sicuri: None], [punti aggiuntivi possibili: 0], [punti fuori portata:
-        10]\nSpiegazione: Come `opt_sol` è richiesto si inserisca una sottosequenza
-        di `s`='AAGCGAGATAGCCGGT'. Hai invece immesso 'ATAACCGATACAAGTC'.\n\n\n</pre>\n\
-        </body>\n\n</html>\n"}
+    task01: {feedback: ''}
     task02: {feedback: ''}
     task03: {feedback: ''}
     task04: {feedback: ''}

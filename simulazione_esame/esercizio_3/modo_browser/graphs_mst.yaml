@@ -30,6 +30,10 @@ tags:
 - algoritmi classici su reti
 tasks:
 - 1:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     general_description_before_task: "Ogni richiesta del presente esercizio farà riferimento
       al grafo $G$ offerto nel seguente riquadro. Il grafo $G$ ha __5__ nodi, labellati
       coi primi __5__ numeri naturali e __8__ archi pesati, labellati coi primi __8__
@@ -74,33 +78,41 @@ tasks:
     tot_points: 70
     verif: "'verify_submission(TALight_problem_name='RO_mst',checkers=['TALight',
       'embedded_in_notebook'],task_dict={'tot_points':70,'pt_formato_OK':0,'pt_feasibility_OK':1,'pt_consistency_OK':0,'task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':70,'pt_formato_OK':0,'pt_feasibility_OK':1,'pt_consistency_OK':0,'task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':70,'pt_formato_OK':0,'pt_feasibility_OK':1,'pt_consistency_OK':0,'task_state_modifier':['edgecol',
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})'"
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'opt_sol':(opt_sol1,'opt_sol1'),'opt_val':(opt_val1,'opt_val1'),})'"
 - 2:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     goals:
     - num_opt_sols
     init_answ_cell_msg: "Inserisci la tua risposta (un intero, il numero di soluzioni
@@ -135,33 +147,41 @@ tasks:
     tot_points: 60
     verif: "'verify_submission(TALight_problem_name='RO_mst',checkers=['TALight',
       'embedded_in_notebook'],task_dict={'tot_points':60,'pt_formato_OK':0,'pt_feasibility_OK':0,'pt_consistency_OK':0,'task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':0,'pt_feasibility_OK':0,'pt_consistency_OK':0,'task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':0,'pt_feasibility_OK':0,'pt_consistency_OK':0,'task_state_modifier':['edgecol',
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'num_opt_sols':(num_opt_sols2,'num_opt_sols2'),})'"
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'num_opt_sols':(num_opt_sols2,'num_opt_sols2'),})'"
 - 3:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     goals: []
     init_answ_cell_msg: Inserisci la tua risposta in questa cella di testo libero.
     init_answ_cell_msg_automatic: Inserisci la tua risposta in questa cella di testo
@@ -193,6 +213,10 @@ tasks:
     - refresh
     tot_points: 90
 - 4:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     cut_cert_type: free
     goals:
     - edge_classification
@@ -248,33 +272,41 @@ tasks:
     tot_points: 60
     verif: "'verify_submission(TALight_problem_name='RO_mst',checkers=['TALight',
       'embedded_in_notebook'],task_dict={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':0,'cut_cert_type':'free','task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':0,'cut_cert_type':'free','task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':0,'cut_cert_type':'free','task_state_modifier':['edgecol',
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'edge_classification':(edge_classification4,'edge_classification4'),})'"
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'edge_classification':(edge_classification4,'edge_classification4'),})'"
 - 5:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     cut_cert_type: free
     goals:
     - edge_classification
@@ -330,33 +362,41 @@ tasks:
     tot_points: 60
     verif: "'verify_submission(TALight_problem_name='RO_mst',checkers=['TALight',
       'embedded_in_notebook'],task_dict={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':4,'cut_cert_type':'free','task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':4,'cut_cert_type':'free','task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':4,'cut_cert_type':'free','task_state_modifier':['edgecol',
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'edge_classification':(edge_classification5,'edge_classification5'),})'"
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'edge_classification':(edge_classification5,'edge_classification5'),})'"
 - 6:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     cut_cert_type: free
     goals:
     - edge_classification
@@ -412,33 +452,41 @@ tasks:
     tot_points: 60
     verif: "'verify_submission(TALight_problem_name='RO_mst',checkers=['TALight',
       'embedded_in_notebook'],task_dict={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':5,'cut_cert_type':'free','task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':5,'cut_cert_type':'free','task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':60,'pt_formato_OK':1,'pt_feasibility_OK':59,'pt_consistency_OK':0,'query_edge':5,'cut_cert_type':'free','task_state_modifier':['edgecol',
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'edge_classification':(edge_classification6,'edge_classification6'),})'"
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'edge_classification':(edge_classification6,'edge_classification6'),})'"
 - 7:
+    componenti_stato:
+    - ciclo: edgeset
+    - taglio: edgeset
+    - shore: nodeset
     forced_in: 4
     goals:
     - opt_sol
@@ -479,30 +527,34 @@ tasks:
     tot_points: 40
     verif: "'verify_submission(TALight_problem_name='RO_mst',checkers=['TALight',
       'embedded_in_notebook'],task_dict={'tot_points':40,'pt_formato_OK':0,'pt_feasibility_OK':1,'pt_consistency_OK':0,'forced_in':4,'task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':40,'pt_formato_OK':0,'pt_feasibility_OK':1,'pt_consistency_OK':0,'forced_in':4,'task_state_modifier':['edgecol',
-      'nodetag', 'edgetag', 'orientation', 'refresh'],'select':['NESSUNA [ciclo]-
-      il mio certificato è un ciclo specificato come un sottoinsieme di archi', 'TUTTE
-      [taglio] - il mio certificato è un taglio espresso come il sottoinsieme degli
-      archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un taglio
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},input_data_assigned={'tot_points':40,'pt_formato_OK':0,'pt_feasibility_OK':1,'pt_consistency_OK':0,'forced_in':4,'task_state_modifier':['edgecol',
+      'nodetag', 'edgetag', 'orientation', 'refresh'],'componenti_stato':[{'ciclo':
+      'edgeset'}, {'taglio': 'edgeset'}, {'shore': 'nodeset'}],'select':['NESSUNA
+      [ciclo]- il mio certificato è un ciclo specificato come un sottoinsieme di archi',
+      'TUTTE [taglio] - il mio certificato è un taglio espresso come il sottoinsieme
+      degli archi ricompresi nel taglio.', 'TUTTE [shore] - il mio certificato è un
+      taglio espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno
+      quelli con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo]
+      - un ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè
+      alcune [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso
+      come il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,\
+      \  perchè alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio
       espresso con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli
-      con un estremo in S )', 'ALCUNE MA NON TUTTE, perchè non tutte [ciclo] - un
-      ciclo per certificare che non è in tutte.', 'ALCUNE MA NON TUTTE, perchè alcune
-      [taglio] - un taglio per certificare che è in qualcuna. Il taglio espresso come
-      il sottoinsieme degli archi compresi nel taglio.', 'ALCUNE MA NON TUTTE,  perchè
-      alcune [shore] - un taglio per certificare che è in qualcuna. Il taglio espresso
-      con un sottoinsieme S dei nodi (gli archi del taglio saranno quelli con un estremo
-      in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o archi (colora i
-      nodi cliccando su essi e gli archi con il bottone \"Colora Archi\")','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'opt_sol':(opt_sol7,'opt_sol7'),'opt_val':(opt_val7,'opt_val7'),})'"
+      con un estremo in S ).'],'init_answ_cell_msg_automatic':'Seleziona nodi e/o
+      archi (colora i nodi cliccando su essi e gli archi con il bottone \"Colora Archi\"\
+      )','n':'5','m':'8','edges':'[({0,1},2),({1,2},2),({2,3},2),({1,3},2),({3,4},5),({1,4},3),({0,4},3)]',},long_answer_dict={'opt_sol':(opt_sol7,'opt_sol7'),'opt_val':(opt_val7,'opt_val7'),})'"
 title: Alberi in un grafo

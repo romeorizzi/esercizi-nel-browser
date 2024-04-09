@@ -9,10 +9,15 @@ def create_graphml(edges, graphml_name):
         x,y = list(edge[0])
         G.add_edge(x, y, weight=edge[1])
 
-    lay_type = ['twopi', 'osage', 'patchwork', 'fdp', 'circo', 'neato', 'dot', 'sfdp']
+    #lay_type = ['twopi', 'osage', 'patchwork', 'fdp', 'circo', 'neato', 'dot', 'sfdp']
+    lay_type = []
     pos_type = []
-    for layout in lay_type:
-        pos_type.append(nx.nx_agraph.graphviz_layout(G, prog=layout))
+    for layout in  ['twopi', 'osage', 'patchwork', 'fdp', 'circo', 'neato', 'dot', 'sfdp']:
+        try:
+            pos_type.append(nx.nx_agraph.graphviz_layout(G, prog=layout))
+            lay_type.append(layout)
+        except Exception:
+            pass
 
     a = 331
     for i in range(len(pos_type)):

@@ -12,7 +12,7 @@ knapsack:
   task09: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 0, punti_sicuri: 0}
   task10: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 0, punti_sicuri: 0}
 lcs:
-  task01: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 10, punti_sicuri: 0}
+  task01: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 0, punti_sicuri: 0}
   task02: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 0, punti_sicuri: 0}
   task03: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 0, punti_sicuri: 0}
   task04: {punti_aggiuntivi_possibili: 0, punti_fuori_portata: 0, punti_sicuri: 0}

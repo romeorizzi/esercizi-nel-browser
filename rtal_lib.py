@@ -6,9 +6,7 @@
 # !{sys.executable} -m pip install websocket-client
 
 import os
-import sys
 from IPython.display import display, HTML
-import json
 import ruamel.yaml
 import pyrtal
 """ How to use pyrtal:

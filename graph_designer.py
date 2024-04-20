@@ -1,7 +1,7 @@
 import os
 import ruamel.yaml
-
 import graphml_converter
+
 GENERATED_DIRECTORY = os.path.join(os.getcwd(),"esame","generated")
 TEMPLATES_DIRECTORY = os.path.join(os.getcwd(),"esame","templates","esame")
 
@@ -10,16 +10,12 @@ e = graphml_converter.node_arrow()
 
 nodes_values = {}
 numero_nodi, numero_archi = graphml_converter.numero_node_edges()
-coordinate_nodi = []
 coordinate_nodi = graphml_converter.node_position()
-colori_nodi = []
 colori_nodi = graphml_converter.node_color()
-tag_nodi = []
 tag_nodi = graphml_converter.node_tag()
 
-
 yaml = ruamel.yaml.YAML()
-with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml') as cn:
+with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml') as cn:
     data = yaml.load(cn)
     node_color = data['nodecol_action'][0]
     initial_nodes_color = data['nodecol_action'][1]
@@ -41,15 +37,15 @@ def assign_coords(v):
 def write_yaml():
     yaml = ruamel.yaml.YAML()
     graph_edges = graphml_converter.edge_string() #grafo senza l'informazione arco puntato o meno
-    with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml') as fp:
+    with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml') as fp:
         data = yaml.load(fp)
-    
+
     data['instance']['n'] = numero_nodi
     data['instance']['m'] = numero_archi
     data['instance']['edges'] = graph_edges
-        
-    with open('simulazione_esame/esercizio_3/modo_browser/dp_mst.yaml', 'w') as fp:        
-        yaml.dump(data, fp) 
+
+    with open('simulazione_esame/esercizio_3/modo_browser/graphs_mst.yaml', 'w') as fp:
+        yaml.dump(data, fp)
 
 def init_graph_html():
     assign_coords(v)
@@ -60,7 +56,7 @@ def init_graph_html():
         txt += f"<label id='{node}-label' style='font-size: 14px; position: absolute; top:75%;left:0%;'> {nodes_values[node]['tag']}</label>\n"
         txt += "</div>\n"
     txt += "<script>\n"
-    txt += "  $('.node').draggable();\n"      
+    txt += "  $('.node').draggable();\n"
     txt += "  var _lines = new Array(); //This array will store all lines (option)\n"
     txt += "  var _canvas = document.createElement('canvas');\n"
     txt += "  var _ctx;\n"
@@ -76,13 +72,13 @@ def init_graph_html():
     txt += "  var clientrectright\n"
     txt += "  var leftnodeoffsetx\n"
     txt += "  var leftnodeoffsety\n"
-    txt += "  var rightnodeoffsetx\n" 
-    txt += "  var rightnodeoffsety\n" 
-    txt += "  var dax\n" 
-    txt += "  var day\n" 
+    txt += "  var rightnodeoffsetx\n"
+    txt += "  var rightnodeoffsety\n"
+    txt += "  var dax\n"
+    txt += "  var day\n"
     txt += "  var dangle\n"
-    txt += "  var rightx\n" 
-    txt += "  var righty\n"  
+    txt += "  var rightx\n"
+    txt += "  var righty\n"
     txt += "  var leftx\n"
     txt += "  var lefty\n"
     txt += "  var _error =false;\n"
@@ -98,7 +94,7 @@ def init_graph_html():
     txt += "        //It will push line to array.\n"
     txt += "        linemap[`${option.left_node}${option.right_node}`] = _lines.length;\n"
     txt += "        _lines.push(option);\n"
-    txt += "        this.connect(option);\n"    
+    txt += "        this.connect(option);\n"
     txt += "      };\n"
     txt += "  this.kruskalize =function (_cl = 'rgb(0,0,0,0.08)')  {\n"
     txt += "    for ( line of _lines) {\n"
@@ -123,15 +119,15 @@ def init_graph_html():
     txt += "   if ((_lines[y].left_node) == one &&  (_lines[y].right_node) == two) {\n"
     txt += "    _lines.splice(y,1);\n"
     txt += "   }\n"
-    txt += "        }\n"   
+    txt += "        }\n"
     txt += "      };\n"
     txt += "      //This Function is used to connect two different div with a dotted line.\n"
     txt += "     this.connect = async function(option) {\n"
     txt += "      if ( option.left_node == undefined || option.left_node == 'null' || option.right_node == undefined || option.right_node == 'null'  ) {\n"
     txt += "        return;\n"
     txt += "      }\n"
-    txt += "            //To decide colour of the line\n"   
-    txt += "                _color = option.col || 'coral';\n"                
+    txt += "            //To decide colour of the line\n"
+    txt += "                _color = option.col || 'coral';\n"
     txt += "                _ctx.font = '30px Segoe UI';\n"
     txt += "            //To decide style of the line. dotted or solid\n"
     txt += "            switch (option.style) {\n"
@@ -179,10 +175,10 @@ def init_graph_html():
     txt += "                  option.text = '';\n"
     txt += "                }\n"
     txt += "                _ctx.beginPath(); \n"
-    txt += "              if (option.ltype == '') {\n"           
-    txt += "                  _ctx.moveTo(_left.x, _left.y );\n"     
+    txt += "              if (option.ltype == '') {\n"
+    txt += "                  _ctx.moveTo(_left.x, _left.y );\n"
     txt += "                  _ctx.lineTo((_right.x), (_right.y));\n"
-    txt += "              }\n"             
+    txt += "              }\n"
     txt += "              _ctx.lineWidth = option.width || 2;\n"
     txt += "              _ctx.strokeStyle = _color;\n"
     txt += "     if (option.ltype == 'curve') {\n"
@@ -254,23 +250,23 @@ def init_graph_html():
     txt += "              _ctx.moveTo(ele2_x, ele2_y);\n"
     txt += "              _ctx.lineTo(ele2_x - headlen * Math.cos(firstangle + Math.PI / 6), ele2_y - headlen * Math.sin(firstangle + Math.PI / 6));\n"
     txt += "            }\n"
-    txt += "              _ctx.stroke();\n"             
+    txt += "              _ctx.stroke();\n"
     txt += "  f = 0;\n"
     txt += "              _ctx.font = 'bold 1.1em Segoe ui';\n"
     txt += "              _ctx.fillText(option.text,(_right.x +_left.x)/2-15 ,( _right.y + _left.y)/2-15);\n"
-    txt += "            //option.resize = option.resize || false;\n"     
-    txt += "        }\n" 
-    txt += "      window.addEventListener('resize',function()  {\n"           
+    txt += "            //option.resize = option.resize || false;\n"
+    txt += "        }\n"
+    txt += "      window.addEventListener('resize',function()  {\n"
     txt += "          _me.redrawLines();\n"
     txt += "        //_me.Blines();\n"
     txt += "       //  _me.Listlines();\n"
     txt += "      })\n"
     txt += "      this.redrawLines = async function() {\n"
-    txt += "        if (_lines.length == 0) return;\n"    
+    txt += "        if (_lines.length == 0) return;\n"
     txt += "        _ctx.clearRect(0, 0,  10000, 4300);\n"
-    txt += "          for (let li = 0 ; li < _lines.length ;li++) {\n"          
-    txt += "            _me.connect(_lines[li])\n"    
-    txt += "            }\n"            
+    txt += "          for (let li = 0 ; li < _lines.length ;li++) {\n"
+    txt += "            _me.connect(_lines[li])\n"
+    txt += "            }\n"
     txt += "      };\n"
     txt += "      this.Splaylines = async function() {\n"
     txt += "        if (tree.length == 0) return;\n"
@@ -333,7 +329,7 @@ def init_graph_html():
     txt += "        else {\n"
     txt += f"           counter = 0;\n"
     txt += f"           e.style.background = colors[counter];\n"
-    txt += "        }\n"   
+    txt += "        }\n"
     txt += "        counters[index] = counter;\n"
     txt += "    }\n\n"
     txt += "    //Cambio orientamento archi\n"
@@ -402,7 +398,7 @@ def init_graph_html():
     txt += "            edge.orientation = _lines[i].gtype;\n"
     txt += "            edge.value = _lines[i].text;\n"
     txt += "            output[status].m.push(edge);\n"
-    txt += "           }\n" 
+    txt += "           }\n"
     txt += "        var jsonString = JSON.stringify(output, null, '\t');\n"
     txt += "        window.parent.postMessage(jsonString, '*');\n"
     txt += f"       refresh_edges({edge_color_starting});\n"
@@ -442,7 +438,7 @@ def init_graph_html():
     txt += "        //Aggiungo archi all'output\n"
     txt += "        for(i=0; i < Object.keys(_lines).length; i++){\n"
     txt += f"           if(_lines[i].col != {edge_color_starting})\n"
-    txt += "                //Aggiungere qui il peso _lines[i].text per stampare il peso (si può creare oggetto edge come in funzione send)\n"                       
+    txt += "                //Aggiungere qui il peso _lines[i].text per stampare il peso (si può creare oggetto edge come in funzione send)\n"
     txt += "                output[status].push(_lines[i].left_node + '_' + _lines[i].right_node);\n"
     txt +=  "       }\n"
     txt += "    var jsonString = JSON.stringify(output, null);\n"
@@ -516,11 +512,11 @@ def init_graph_html():
     txt += "        if (String(e.data).split('.')[1] == 'nodeset')\n"
     txt += "            get_colored_nodes(String(e.data).split('.')[0]);\n"
     txt += "        if (String(e.data).split('.')[1] == 'orientation')\n"
-    txt += "            get_orientation_edge(String(e.data).split('.')[0]);\n"    
+    txt += "            get_orientation_edge(String(e.data).split('.')[0]);\n"
     txt += "        if (String(e.data).split('.')[1] == 'edgecol')\n"
-    txt += "            get_colored_edges(String(e.data).split('.')[0]);\n"  
+    txt += "            get_colored_edges(String(e.data).split('.')[0]);\n"
     txt += "        if (String(e.data).split('.')[1] == 'nodecol')\n"
-    txt += "            get_all_nodes(String(e.data).split('.')[0]);\n" 
+    txt += "            get_all_nodes(String(e.data).split('.')[0]);\n"
     txt += "        if (String(e.data).split('.')[1] == 'send')\n"
     txt += "            send_output(String(e.data).split('.')[0]);\n"
     txt += "    };\n"
@@ -528,11 +524,7 @@ def init_graph_html():
     with open(os.path.join(os.getcwd(),"esame","templates","esame","graph.html"),"r") as stream:
         html = "".join(stream.readlines())
         t = html.replace("GRAFO",txt)
-    
+
     f = open(os.path.join(TEMPLATES_DIRECTORY,"grafo_template.html"),"w")
     f.write(t)
     f.close()
-
-    
-    
-    

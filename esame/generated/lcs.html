@@ -13,7 +13,7 @@
       }
       th {
         border: 1px solid #000;
-        width: 150px;
+        width: auto;
       }
       th+td {
         border: 1px solid #000;
@@ -34,7 +34,7 @@
     <h1>lcs</h1>
 </div>
 <div class="container my-5 text-center" style="max-width:900px">
-    <p><h5>s = GCTCTACGCTGGATTC</h5><br> <h5>t = ATGCCGCTTACCGTGATC</h5></p>
+    <p></p>
 </div>
 <div class="container" style="margin-top:18px; margin-bottom:18px;font-size:18px" ALIGN="center" style="text-align:center" >
     <div class="row">
@@ -43,7 +43,7 @@
                 <img src="" class="card-img-top">
                 <div class="card-body">
                     <a href={% url 'save_solutions' ex='lcs' %} class="btn btn-primary" style="margin-top:18px; margin-bottom:18px; margin-right:118px">SALVA</a>
-                    <a href='{% url 'retrieve_saved_solutions' ex='lcs' %}' class="btn btn-primary" style="margin-top:18px; margin-bottom:18px">CARICA</a>
+                    <a href={% url 'retrieve_saved_solutions' ex='lcs' %} class="btn btn-primary" style="margin-top:18px; margin-bottom:18px">CARICA</a>
                     <p class="card-text">Cliccando su <b>SALVA</b> salverai i risultati presenti in questa pagina.<br>Cliccando su <b>CARICA</b> caricherai gli ultimi risultati salvati.</p>
                 </div>
             </div>
@@ -52,25 +52,26 @@
 </div>
 <label style="margin-left:15%; margin-right:20%; margin-top:18px">
     <h3>ISTANZA</h3>
-    <p class="lead"><b>s: </b>GCTCTACGCTGGATTC<br><b>t: </b>ATGCCGCTTACCGTGATC<br></p>
+    <p class="lead"><b>s: </b>AAGCGAGATAGCCGGT<br><b>t: </b>ATAACCGATACAAGTC<br></p>
 </label>
 <div class="container">
-    <!-- input from textbox -->    
-    {% for task,quadruple in data.items %}    
+    <!-- input from textbox -->
+    {% for task,quadruple in data.items %}
     <label style="margin-top:5px;font-size:18px" class="label"><b>{{quadruple.descr_before_task | safe}}</b></label>
-    <!-- ######################## {{task}} ######################## -->  
-      <h3 style="margin-top:30px"> <span style="text-transform:uppercase">{{task}}</span> </h3>  
+    <!-- ######################## {{task}} ######################## -->
+      <h3 style="margin-top:30px"> <span style="text-transform:uppercase">{{task}}</span> </h3>
         <form name="form" method="post" action = "{% url 'lcs' %}" autocomplete="off">
-          {% csrf_token %}          
+          {% csrf_token %}
           <label style="margin-top:5px;font-size:18px" class="form-label">{{quadruple.question | safe}}</label>
           <div class="row g-3">
-          {% for goal in quadruple.goals %} 
-            <div>   
-              <input type="text" style="width:950px;font-size:18px" class="form-control" id="ans_{{goal}}" name="ans_{{goal}}" placeholder="Inserisci {{goal}}"required>                        
+            {% for goal in quadruple.goals %}
+            <div>
+              <label style="margin-top:5px;font-size:18px" class="form-label">{{goal.form | safe}}</label>
+              <input type="text" style="width:950px;font-size:18px" class="form-control" id="ans_{{goal.goal}}" name="ans_{{goal.goal}}" placeholder="{{goal.value}}"required>
             </div>
             {% endfor %}
             <div class="col-sm">
-              <button type="submit" name="run_script_{{task}}" style="width:80px;" class="btn btn-primary">Invia</button>     
+              <button type="submit" name="run_script_{{task}}" style="width:80px;" class="btn btn-primary">Invia</button>
             </div>
           </div>
         </form>
@@ -78,31 +79,30 @@
           <div class="col-sm">
             <div class="shadow-none p-3 mb-5 bg-light rounded" style="margin-top:30px; width:950px">
                {%if quadruple.feedback %}
-               <label style="margin-top:5px">{{quadruple.feedback | safe}}</label> 
+               <label style="margin-top:5px">{{quadruple.feedback | safe}}</label>
                {% else %}
-               <label style="margin-top:5px;font-size:18px" ><font style="font-family:'Courier New'">Ancora nessun feedback disponibile</font></label> 
+               <label style="margin-top:5px;font-size:18px" ><font style="font-family:'Courier New'">Ancora nessun feedback disponibile</font></label>
                {% endif %}
-            </div>     
+            </div>
           </div>
     </div>
     <!-- input from file-->
     <div class="row g-3" >
         <form name="form" method="post" action = "{% url 'simple_upload' ex='lcs' task=task %}" enctype="multipart/form-data">
-          {% csrf_token %}        
-          <div class="row g-3">            
-            <div>          
-              <input type="file" style="width:950px" class="form-control" id="ans_{{lcs}}_{{task}}" name="myfile" required>                        
+          {% csrf_token %}
+          <div class="row g-3">
+            <div>
+              <input type="file" style="width:950px" class="form-control" id="ans_{{lcs}}_{{task}}" name="myfile" required>
             </div>
             <div class="col-sm">
-              <button type="submit" name="upload_{{task}}" style="width:100px;margin-bottom:50px" class="btn btn-primary">Upload</button>     
+              <button type="submit" name="upload_{{task}}" style="width:100px;margin-bottom:50px" class="btn btn-primary">Upload</button>
             </div>
           </div>
         </form>
-    </div>    
+    </div>
   {% endfor %}
   <div class="container" style="margin-top:18px; margin-bottom:200px" ALIGN="left" style="text-align:left" >
     <h4><b>ricordati di salvare periodicamente il tuo lavoro. Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda (potrai sempre riaprirla successivamente)</b></h4>
   </div>
 {% endblock %}
 </html>
-

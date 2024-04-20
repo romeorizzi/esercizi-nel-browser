@@ -1,48 +1,33 @@
+%YAML 1.2
+---
 context_knapsack:
   data:
-    task01:
-      feedback: ''
-    task02:
-      feedback: ''
-    task03:
-      feedback: ''
-    task04:
-      feedback: ''
-    task05:
-      feedback: ''
-    task06:
-      feedback: ''
-    task07:
-      feedback: ''
-    task08:
-      feedback: ''
-    task09:
-      feedback: ''
-    task10:
-      feedback: ''
+    task01: {feedback: ''}
+    task02: {feedback: ''}
+    task03: {feedback: ''}
+    task04: {feedback: ''}
+    task05: {feedback: ''}
+    task06: {feedback: ''}
+    task07: {feedback: ''}
+    task08: {feedback: ''}
+    task09: {feedback: ''}
+    task10: {feedback: ''}
 context_lcs:
   data:
-    task01:
-      feedback: ''
-    task02:
-      feedback: ''
-    task03:
-      feedback: ''
-    task04:
-      feedback: ''
-    task05:
-      feedback: ''
-    task06:
-      feedback: ''
-    task07:
-      feedback: ''
-    task08:
-      feedback: ''
+    task01: {feedback: ''}
+    task02: {feedback: ''}
+    task03: {feedback: ''}
+    task04: {feedback: ''}
+    task05: {feedback: ''}
+    task06: {feedback: ''}
+    task07: {feedback: ''}
+    task08: {feedback: ''}
 context_mst:
   data:
-    task01:
-      feedback: ''
-    task02:
-      feedback: ''
-    task03:
-      feedback: ''
+    task01: {feedback: ''}
+    task02: {feedback: ''}
+    task03: {feedback: ''}
+    task04: {feedback: ''}
+    task05: {feedback: ''}
+    task06: {feedback: ''}
+    task07: {feedback: ''}

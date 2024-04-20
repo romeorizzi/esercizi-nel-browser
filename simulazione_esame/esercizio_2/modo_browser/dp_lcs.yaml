@@ -1,192 +1,212 @@
----
-problem: 02
+general_description_to_conclude: ricordati di salvare periodicamente il tuo lavoro.
+  Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda
+  (potrai sempre riaprirla successivamente)
+graphic_instance_descriptor: ''
+instance:
+  s: AAGCGAGATAGCCGGT
+  t: ATAACCGATACAAGTC
+modes:
+- free
+- with_checks
 name: lcs
-title: Massima sottosequenza comune
+pages:
+  teoria: https://cms.di.univr.it/home/RO/explain/lcs
 tags:
 - programmazione dinamica
 - sottoproblemi e ricorrenze
 - algoritmi classici su stringhe
-instance:
-  s: GCTCTACGCTGGATTC
-  t: ATGCCGCTTACCGTGATC
-modes:
-- free
-- with_checks
-pages:
-  teoria: https://cms.di.univr.it/home/RO/explain/lcs
-
-graphic_instance_descriptor: 
-        "<h5>s = GCTCTACGCTGGATTC</h5><br>
-         <h5>t = ATGCCGCTTACCGTGATC</h5>"
 tasks:
-- 1:    
-    general_description_before_task: Si considerino le seguenti sequenze di caratteri:<br/><br/>  
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    pt_consistency_OK: 0
+- 1:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol1
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val1
+      title: 'e la sua lunghezza:'
+    general_description_before_task: Si considerino le seguenti sequenze di caratteri:<br/><br/>
+      $s$ = __AAGCGAGATAGCCGGT__ <br/>  $t$ = __ATAACCGATACAAGTC__
     goals:
     - opt_sol
     - opt_val
-    request: Fornire una massima sottosequenza comune tra le due stringhe:<br/>$s$
-      = GCTCTACGCTGGATTC<br/>$t$ = ATGCCGCTTACCGTGATC.
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol1=""\n#e
-      la sua lunghezza:\nopt_val1=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 1, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':16,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':18,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol1` una sottosequnza ottima\nopt_sol1=SONOUNASTRINGA\n#Immetti
-      in `opt_val1` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val1=14'
-- 2:
-    general_description_before_task: ""
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol1=""\ne
+      la sua lunghezza:\nopt_val1=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol1=""\ne la sua lunghezza:\nopt_val1=7
     pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
+    request: Fornire una massima sottosequenza comune tra le due stringhe<br/>$s$
+      = AAGCGAGATAGCCGGT<br/>$t$ = ATAACCGATACAAGTC.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
+- 2:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol2
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val2
+      title: 'e la sua lunghezza:'
     beginning: CC
     goals:
     - opt_sol
     - opt_val
-    request: 'Fornire una stringa di lunghezza massima che inizi col prefisso CC
-      e sia sottosequenza comune tra: <br/>$s$ = GCTCTACGCTGGATTC<br/>$t$ = ATGCCGCTTACCGTGATC.'
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol2=""\n#e
-      la sua lunghezza:\nopt_val2=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 2, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':''CC'',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':16,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':18,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol2,''opt_sol2''),''opt_val'':(opt_val2,''opt_val2''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol2` una sottosequnza ottima\nopt_sol2=SONOUNASTRINGA\n#Immetti
-      in `opt_val2` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val2=14'
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol2=""\ne
+      la sua lunghezza:\nopt_val2=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol2=""\ne la sua lunghezza:\nopt_val2=7
+    pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
+    request: Fornire una stringa di lunghezza massima che inizi col prefisso __CC__
+      e sia sottosequenza comune tra<br/>$s$ = AAGCGAGATAGCCGGT<br/>$t$ = ATAACCGATACAAGTC.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''beginning'':''CC'',''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''beginning'':''CC'',''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol2,''opt_sol2''),''opt_val'':(opt_val2,''opt_val2''),})'''
 - 3:
-    general_description_before_task: ""
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol3
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val3
+      title: 'e la sua lunghezza:'
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol3=""\ne
+      la sua lunghezza:\nopt_val3=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol3=""\ne la sua lunghezza:\nopt_val3=7
     pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     reduce_s_to_its_suffix_of_length: 15
-    goals:
-    - opt_sol
-    - opt_val
-    request: Fornire una massima sottosequenza comune tra:<br/><b>il suffisso </b>
-      $s'$ = CTCTACGCTGGATTC di $s$ e <br/>$t$ = ATGCCGCTTACCGTGATC.
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol3=""\n#e
-      la sua lunghezza:\nopt_val3=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 3, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':15,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':18,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol3,''opt_sol3''),''opt_val'':(opt_val3,''opt_val3''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol3` una sottosequnza ottima\nopt_sol3=SONOUNASTRINGA\n#Immetti
-      in `opt_val3` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val3=14'
+    request: Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b>
+      $s\'$ = AGCGAGATAGCCGGT di $s$ e <br/>$t$ = ATAACCGATACAAGTC.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':15,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':15,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol3,''opt_sol3''),''opt_val'':(opt_val3,''opt_val3''),})'''
 - 4:
-    general_description_before_task: ""
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol4
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val4
+      title: 'e la sua lunghezza:'
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol4=""\ne
+      la sua lunghezza:\nopt_val4=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol4=""\ne la sua lunghezza:\nopt_val4=7
     pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     reduce_s_to_its_suffix_of_length: 11
-    goals:
-    - opt_sol
-    - opt_val
-    request: Fornire una massima sottosequenza comune tra:<br/><b>il suffisso </b>
-      $s'$ = ACGCTGGATTC di $s$ e <br/>$t$ = ATGCCGCTTACCGTGATC.
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol4=""\n#e
-      la sua lunghezza:\nopt_val4=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 4, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':11,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':18,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol4,''opt_sol4''),''opt_val'':(opt_val4,''opt_val4''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol4` una sottosequnza ottima\nopt_sol4=SONOUNASTRINGA\n#Immetti
-      in `opt_val4` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val4=14'
+    request: Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b>
+      $s\'$ = AGATAGCCGGT di $s$ e <br/>$t$ = ATAACCGATACAAGTC.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol4,''opt_sol4''),''opt_val'':(opt_val4,''opt_val4''),})'''
 - 5:
-    general_description_before_task: ""
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol5
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val5
+      title: 'e la sua lunghezza:'
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol5=""\ne
+      la sua lunghezza:\nopt_val5=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol5=""\ne la sua lunghezza:\nopt_val5=7
     pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     reduce_s_to_its_suffix_of_length: 9
-    goals:
-    - opt_sol
-    - opt_val
-    request: Fornire una massima sottosequenza comune tra:<br/><b>il suffisso </b>
-      $s'$ = GCTGGATTC di $s$ e <br/>$t$ = ATGCCGCTTACCGTGATC.
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol5=""\n#e
-      la sua lunghezza:\nopt_val5=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 5, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':9,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':18,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol5,''opt_sol5''),''opt_val'':(opt_val5,''opt_val5''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol5` una sottosequnza ottima\nopt_sol5=SONOUNASTRINGA\n#Immetti
-      in `opt_val5` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val5=14'
+    request: Fornire una massima sottosequenza comune tra<br/><b>il suffisso </b>
+      $s\'$ = ATAGCCGGT di $s$ e <br/>$t$ = ATAACCGATACAAGTC.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':9,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_s_to_its_suffix_of_length'':9,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol5,''opt_sol5''),''opt_val'':(opt_val5,''opt_val5''),})'''
 - 6:
-    general_description_before_task: ""
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol6
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val6
+      title: 'e la sua lunghezza:'
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol6=""\ne
+      la sua lunghezza:\nopt_val6=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol6=""\ne la sua lunghezza:\nopt_val6=7
     pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     reduce_t_to_its_suffix_of_length: 13
-    goals:
-    - opt_sol
-    - opt_val
-    request: 'Fornire una massima sottosequenza comune tra: <br/><b>il suffisso</b>  $t''$
-      = GCTTACCGTGATC di $t$ e <br/>$s$ = GCTCTACGCTGGATTC.'
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol6=""\n#e
-      la sua lunghezza:\nopt_val6=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 6, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':16,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':13,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol6,''opt_sol6''),''opt_val'':(opt_val6,''opt_val6''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol6` una sottosequnza ottima\nopt_sol6=SONOUNASTRINGA\n#Immetti
-      in `opt_val6` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val6=14'
+    request: Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\'$
+      = ACCGATACAAGTC di $t$ e <br/>$s$ = AAGCGAGATAGCCGGT.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':13,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':13,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol6,''opt_sol6''),''opt_val'':(opt_val6,''opt_val6''),})'''
 - 7:
-    general_description_before_task: ""
-    tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol7
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val7
+      title: 'e la sua lunghezza:'
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol7=""\ne
+      la sua lunghezza:\nopt_val7=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol7=""\ne la sua lunghezza:\nopt_val7=7
     pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     reduce_t_to_its_suffix_of_length: 11
-    goals:
-    - opt_sol
-    - opt_val
-    request: 'Fornire una massima sottosequenza comune tra: <br/><b>il suffisso</b>  $t''$
-      = TTACCGTGATC di $t$ e <br/>$s$ = GCTCTACGCTGGATTC.'
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol7=""\n#e
-      la sua lunghezza:\nopt_val7=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 7, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':16,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':11,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol7,''opt_sol7''),''opt_val'':(opt_val7,''opt_val7''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol7` una sottosequnza ottima\nopt_sol7=SONOUNASTRINGA\n#Immetti
-      in `opt_val7` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val7=14'
-- 8:
-    general_description_before_task: ""
+    request: Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\'$
+      = CGATACAAGTC di $t$ e <br/>$s$ = AAGCGAGATAGCCGGT.
     tot_points: 45
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    pt_consistency_OK: 0
-    reduce_t_to_its_suffix_of_length: 9
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':11,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol7,''opt_sol7''),''opt_val'':(opt_val7,''opt_val7''),})'''
+- 8:
+    answ_form:
+    - init_var: TATATAX
+      name_var: opt_sol8
+      title: 'Inserisci la tua risposta (una stringa, per esempio ''TATATAX''):'
+    - init_var: '7'
+      name_var: opt_val8
+      title: 'e la sua lunghezza:'
     goals:
     - opt_sol
     - opt_val
-    request: 'Fornire una massima sottosequenza comune tra: <br/><b>il suffisso</b>  $t''$
-      = ACCGTGATC di $t$ e <br/>$s$ = GCTCTACGCTGGATTC.'
-    init_answ_cell_msg: '#Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol8=""\n#e
-      la sua lunghezza:\nopt_val8=7'
-    verif: 'verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 8, ''pt_tot'': 45, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''s'':''GCTCTACGCTGGATTC'',''t'':''ATGCCGCTTACCGTGATC'',''beginning'':'''',''ending'':'''',''forbidden_s_interval_first_pos'':1000000,''forbidden_s_interval_last_pos'':0,''reduce_s_to_its_suffix_of_length'':16,''reduce_s_to_its_prefix_of_length'':16,''reduce_t_to_its_suffix_of_length'':9,''reduce_t_to_its_prefix_of_length'':18,''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol8,''opt_sol8''),''opt_val'':(opt_val8,''opt_val8''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol8` una sottosequnza ottima\nopt_sol8=SONOUNASTRINGA\n#Immetti
-      in `opt_val8` il valore della soluzione introdotta (un intero, la lunghezza
-      della stringa introdotta)\nopt_val8=14'
-general_description_to_conclude: ricordati di salvare periodicamente il tuo lavoro.
-  Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda
-  (potrai sempre riaprirla successivamente)
-...
+    init_answ_cell_msg: Inserisci la tua risposta (una stringa, per esempio "TATATAX")\nopt_sol8=""\ne
+      la sua lunghezza:\nopt_val8=7
+    init_answ_cell_msg_automatic: Inserisci la tua risposta (una stringa, per esempio
+      "TATATAX")\nopt_sol8=""\ne la sua lunghezza:\nopt_val8=7
+    pt_consistency_OK: 0
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
+    reduce_t_to_its_suffix_of_length: 9
+    request: Fornire una massima sottosequenza comune tra<br/><b>il suffisso</b>  $t\'$
+      = ATACAAGTC di $t$ e <br/>$s$ = AAGCGAGATAGCCGGT.
+    tot_points: 45
+    verif: '''verify_submission(TALight_problem_name=''RO_lcs'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':9,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},input_data_assigned={''tot_points'':45,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''reduce_t_to_its_suffix_of_length'':9,''s'':''AAGCGAGATAGCCGGT'',''t'':''ATAACCGATACAAGTC'',},long_answer_dict={''opt_sol'':(opt_sol8,''opt_sol8''),''opt_val'':(opt_val8,''opt_val8''),})'''
+title: Massima sottosequenza comune

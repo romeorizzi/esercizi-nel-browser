@@ -6,9 +6,7 @@
 # !{sys.executable} -m pip install websocket-client
 
 import os
-import sys
 from IPython.display import display, HTML
-import json
 import ruamel.yaml
 import pyrtal
 """ How to use pyrtal:
@@ -51,7 +49,8 @@ while os.path.isdir(PATH_EDITABLE_SETTINGS):
     PATH_EDITABLE_SETTINGS = os.path.join(PATH_EDITABLE_SETTINGS,'..')
 SETTINGS_FILE_FULLNAME=os.path.join(PATH_EDITABLE_SETTINGS,'settings','settings.yaml') 
 with open(SETTINGS_FILE_FULLNAME,"r") as stream:
-     settings = ruamel.yaml.safe_load(stream)
+     yaml = ruamel.yaml.YAML(typ='safe', pure=True)
+     settings = yaml.load(stream)
 
 
 def info():

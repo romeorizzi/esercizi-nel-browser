@@ -1,29 +1,10 @@
----
-problem: 01
-name: knapsack
-title: Problema dello zaino
 collocation: problema dello zaino in versione classica
-tags:
-- programmazione dinamica
-- sottoproblemi e ricorrenze
-modes:
-- free
-- with_checks
+general_description_to_conclude: ricordati di salvare periodicamente il tuo lavoro.
+  Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda
+  (potrai sempre riaprirla successivamente)
+graphic_instance_descriptor: ''
 instance:
   CapacityMax: 36
-  labels:
-  - A
-  - B
-  - C
-  - D
-  - E
-  - F
-  - G
-  - H
-  - I
-  - L
-  - M
-  - N
   costs:
   - 15
   - 16
@@ -37,6 +18,19 @@ instance:
   - 12
   - 9
   - 7
+  labels:
+  - A
+  - B
+  - C
+  - D
+  - E
+  - F
+  - G
+  - H
+  - I
+  - L
+  - M
+  - N
   vals:
   - 50
   - 52
@@ -50,295 +44,350 @@ instance:
   - 42
   - 30
   - 22
+modes:
+- free
+- with_checks
+name: knapsack
 pages:
   teoria: https://cms.di.univr.it/home/RO/explain/knapsack
-graphic_instance_descriptor:  
-        "  <table class='center'>                                                    \
-         \   <tr>                                                                    \
-         \     <th scope='row'>nome</th><td>A</td><td>B</td>                         \
-         \                              <td>C</td><td>D</td>                         \
-         \                              <td>E</td><td>F</td>                         \
-         \                              <td>G</td><td>H</td>                         \
-         \                              <td>I</td><td>L</td>                         \
-         \                              <td>M</td><td>N</td>                         \       
-         \   </tr>                                                                   \
-         \   <tr>                                                                    \
-         \     <th scope='row'>peso</th><td>15</td><td>16</td>                       \
-         \                              <td>17</td><td>11</td>                       \
-         \                              <td>13</td><td>5</td>                        \
-         \                              <td>7</td><td>3</td>                         \
-         \                              <td>1</td><td>12</td>                        \
-         \                              <td>9</td><td>7</td>                         \
-         \   <tr>                                                                    \
-         \     <th scope='row'>valore</th><td>50</td><td>52</td>                     \
-         \                              <td>54</td><td>40</td>                       \
-         \                              <td>45</td><td>17</td>                       \
-         \                              <td>18</td><td>7</td>                        \
-         \                              <td>8</td><td>42</td>                        \
-         \                              <td>30</td><td>22</td>                       \
-         \ </table>"                  
+tags:
+- programmazione dinamica
+- sottoproblemi e ricorrenze
 tasks:
 - 1:
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol1
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val1
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     general_description_before_task: "In ogni richiesta del presente esercizio lo\
       \ zaino disponibile avr\xE0 capienza al pi\xF9 $CapacityMax$ = __36__  e dovrai\
       \ scegliere quali prendere da un sottoinsieme degli oggetti con nome, peso e\
-      \ valore come nella tabella sopra riportata"
-    tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    pt_consistency_OK: 0
+      \ valore come da seguente tabella:\n\n|      |   A |   B |   C |   D |   E |\
+      \   F |   G |   H |   I |   L |   M |   N |\n|:-----|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|\n\
+      | peso |  15 |  16 |  17 |  11 |  13 |   5 |   7 |   3 |   1 |  12 |   9 | \
+      \  7 |\n| val  |  50 |  52 |  54 |  40 |  45 |  17 |  18 |   7 |   8 |  42 |\
+      \  30 |  22 |"
     goals:
     - opt_sol
     - opt_val
-    request: Tra i sottoinsiemi di oggetti di peso complessivo non eccedente $CapacityMax$=
-      __36__ fornirne uno in cui sia massima la somma dei valori.
-    init_answ_cell_msg: '#Inserisci la tua risposta in forma di lista di oggetti da
+    init_answ_cell_msg: 'Inserisci la tua risposta in forma di lista di oggetti da
       prendere (esempio: [''C'', ''F'', ''A''])
 
       opt_sol1=[]
 
-      #Specificare il valore della soluzione introdotta (un intero, la somma dei valori
+      Specificare il valore della soluzione introdotta (un intero, la somma dei valori
       degli oggetti presi):
 
       opt_val1=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 1, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':36,''forced_out'':[],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol1` la lista degli oggetti
-      da prendere (esempio: [''N'', ''M'', ''L'', ''I'', ''H'', ''G'', ''E'', ''A''])\nopt_sol1=[]\n#Immetti
-      in `opt_val1` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val1=-1'
-- 2:
-    general_description_before_task: ""
-    tot_points: 40
-    pt_formato_OK: 0
+    init_answ_cell_msg_automatic: 'Inserisci la tua risposta in forma di lista di
+      oggetti da prendere (esempio: [''C'', ''F'', ''A''])
+
+      opt_sol1=[]
+
+      Specificare il valore della soluzione introdotta (un intero, la somma dei valori
+      degli oggetti presi):
+
+      opt_val1=-1'
+    pt_consistency_OK: 0
     pt_feasibility_OK: 1
+    pt_formato_OK: 0
+    request: Tra i sottoinsiemi di oggetti di peso complessivo non eccedente $CapacityMax$=
+      __36__ fornirne uno in cui sia massima la somma dei valori.
+    tot_points: 40
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''pt_consistency_OK'':0,''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol1,''opt_sol1''),''opt_val'':(opt_val1,''opt_val1''),})'''
+- 2:
+    CapacityGen: 32
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol2
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val2
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     goals:
     - opt_sol
     - opt_val
-    CapacityGen: 32
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Tra i sottoinsiemi di oggetti di peso complessivo non eccedente <b>la\
       \ capacit\xE0 32</b>, fornirne uno in cui sia massima la somma dei valori."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol2` la lista degli oggetti
-      da prendere (esempio: [''N'', ''M'', ''L'', ''I'', ''H'', ''G'', ''D'', ''F''])\nopt_sol2=[]\n#Immetti
-      in `opt_val2` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val2=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 2, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':32,''forced_out'':[],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol2,''opt_sol2''),''opt_val'':(opt_val2,''opt_val2''),})'
-- 3:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':32,''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':32,''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol2,''opt_sol2''),''opt_val'':(opt_val2,''opt_val2''),})'''
+- 3:
+    CapacityGen: 30
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol3
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val3
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     goals:
     - opt_sol
     - opt_val
-    CapacityGen: 30
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Tra i sottoinsiemi di oggetti di peso complessivo non eccedente <b>la\
       \ capacit\xE0 30</b>, fornirne uno in cui sia massima la somma dei valori."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol3` la lista degli oggetti
-      da prendere (esempio: [''N'', ''M'', ''L'', ''I'', ''H'', ''E'', ''A''])\nopt_sol3=[]\n#Immetti
-      in `opt_val3` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val3=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 3, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':30,''forced_out'':[],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol3,''opt_sol3''),''opt_val'':(opt_val3,''opt_val3''),})'
+    tot_points: 40
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':30,''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':30,''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol3,''opt_sol3''),''opt_val'':(opt_val3,''opt_val3''),})'''
 - 4:
+    CapacityGen: 28
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol4
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val4
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     general_description_before_task: Nelle successive richieste alcuni degli oggetti
       saranno proibiti, oppure obbligati
-    tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
     goals:
     - opt_sol
     - opt_val
-    CapacityGen: 28
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Tra i sottoinsiemi di oggetti di peso complessivo non eccedente <b>la\
       \ capacit\xE0 28</b>, fornirne uno in cui sia massima la somma dei valori."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol4` la lista degli oggetti
-      da prendere (esempio: [''N'', ''M'', ''L'', ''I'', ''D'', ''H''])\nopt_sol4=[]\n#Immetti
-      in `opt_val4` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val4=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 4, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':28,''forced_out'':[],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol4,''opt_sol4''),''opt_val'':(opt_val4,''opt_val4''),})'
-- 5:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':28,''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':28,''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol4,''opt_sol4''),''opt_val'':(opt_val4,''opt_val4''),})'''
+- 5:
+    CapacityGen: 36
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol5
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val5
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
+    forced_out:
+    - E
     goals:
     - opt_sol
     - opt_val
-    CapacityGen: 36
-    forced_out:
-    - E
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Fornire una soluzione ottima se <b>36 \xE8 la capienza dello zaino</b>\
       \ da non superarsi ma assumendo di <b>non poter prendere</b> nessuno degli elementi\
       \ in ['E']."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol5` la lista degli oggetti
-      da prendere (esempio: [''E'', ''N'', ''M'', ''L'', ''F'', ''G''])\nopt_sol5=[]\n#Immetti
-      in `opt_val5` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val5=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 5, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':36,''forced_out'':[''E''],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol5,''opt_sol5''),''opt_val'':(opt_val5,''opt_val5''),})'
-- 6:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    goals:
-    - opt_sol
-    - opt_val
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':36,''forced_out'':[''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':36,''forced_out'':[''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol5,''opt_sol5''),''opt_val'':(opt_val5,''opt_val5''),})'''
+- 6:
     CapacityGen: 36
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol6
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val6
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_out:
     - B
     - E
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Fornire una soluzione ottima se <b>36 \xE8 la capienza dello zaino</b>\
       \ da non superarsi ma assumendo di <b>non poter prendere</b> nessuno degli elementi\
       \ in ['B', 'E']."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol6` la lista degli oggetti
-      da prendere (esempio: [''B'', ''N'', ''M'', ''L'', ''A'', ''F''])\nopt_sol6=[]\n#Immetti
-      in `opt_val6` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val6=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 6, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':36,''forced_out'':[''B'', ''E''],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol6,''opt_sol6''),''opt_val'':(opt_val6,''opt_val6''),})'
-- 7:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    goals:
-    - opt_sol
-    - opt_val
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':36,''forced_out'':[''B'',
+      ''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':36,''forced_out'':[''B'',
+      ''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol6,''opt_sol6''),''opt_val'':(opt_val6,''opt_val6''),})'''
+- 7:
     CapacityGen: 34
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol7
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val7
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_out:
     - B
     - E
     - F
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Fornire una soluzione ottima se <b>34 \xE8 la capienza dello zaino</b>\
       \ da non superarsi ma assumendo di <b>non poter prendere</b> nessuno degli elementi\
       \ in ['B', 'E', 'F']."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol7` la lista degli oggetti
-      da prendere (esempio: [''E'', ''N'', ''M'', ''L'', ''G'', ''A''])\nopt_sol7=[]\n#Immetti
-      in `opt_val7` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val7=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 7, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':34,''forced_out'':[''B'', ''E'', ''F''],''forced_in'':[],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol7,''opt_sol7''),''opt_val'':(opt_val7,''opt_val7''),})'
-- 8:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    goals:
-    - opt_val
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':34,''forced_out'':[''B'',
+      ''E'', ''F''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':34,''forced_out'':[''B'',
+      ''E'', ''F''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol7,''opt_sol7''),''opt_val'':(opt_val7,''opt_val7''),})'''
+- 8:
     CapacityGen: 34
+    answ_form:
+    - init_var: '-1'
+      name_var: opt_val8
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_in:
     - B
     - E
+    goals:
+    - opt_val
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Fornire una soluzione ottima se <b>34 \xE8 la capienza dello zaino</b>\
       \ da non superarsi ma assumendo di <b>dover prendere</b> tutti gli elementi\
       \ in ['B', 'E']."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_val8` il massimo valore possibile
-      per una soluzione ammissibile (un intero, la somma dei valori degli oggetti
-      presi)\nopt_val8=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 8, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':34,''forced_out'':[],''forced_in'':[''B'',
-      ''E''],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_val'':(opt_val8,''opt_val8''),})'
-- 9:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    goals:
-    - opt_sol
-    - opt_val
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':34,''forced_in'':[''B'',
+      ''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':34,''forced_in'':[''B'',
+      ''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_val'':(opt_val8,''opt_val8''),})'''
+- 9:
     CapacityGen: 34
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol9
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
+    - init_var: '-1'
+      name_var: opt_val9
+      title: 'Specificare il valore della soluzione introdotta (un intero, la somma
+        dei valori degli oggetti presi):'
     forced_in:
     - B
     - F
     forced_out:
     - E
+    goals:
+    - opt_sol
+    - opt_val
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Fornire una soluzione ottima se <b>34 \xE8 la capienza dello zaino</b>\
       \ da non superarsi ma assumendo di <b>dover prendere tutti</b> gli elementi\
       \ in ['B', 'F'] e <b>nessuno</b> di quelli in ['E']."
-    init_answ_cell_msg_automatic: '#Inserisci in `opt_sol9` la lista degli oggetti
-      da prendere (esempio: [''B'', ''E'', ''N'', ''D'', ''H''])\nopt_sol9=[]\n#Immetti
-      in `opt_val9` il valore della soluzione introdotta (un intero, la somma dei
-      valori degli oggetti presi)\nopt_val9=-1'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 9, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':34,''forced_out'':[''E''],''forced_in'':[''B'',
-      ''F''],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol9,''opt_sol9''),''opt_val'':(opt_val9,''opt_val9''),})'
-- 10:
-    general_description_before_task: ""
     tot_points: 40
-    pt_formato_OK: 0
-    pt_feasibility_OK: 1
-    goals:
-    - opt_sol
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':34,''forced_in'':[''B'',
+      ''F''],''forced_out'':[''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':34,''forced_in'':[''B'',
+      ''F''],''forced_out'':[''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol9,''opt_sol9''),''opt_val'':(opt_val9,''opt_val9''),})'''
+- 10:
     CapacityGen: 31
+    answ_form:
+    - init_var: '[''C'', ''F'', ''A'']'
+      name_var: opt_sol10
+      title: 'Inserisci la tua risposta in forma di lista di oggetti da prendere (esempio:
+        [''C'', ''F'', ''A''])'
     forced_in:
     - B
     - I
     forced_out:
     - F
     - E
+    goals:
+    - opt_sol
+    init_answ_cell_msg_automatic: ''
+    pt_feasibility_OK: 1
+    pt_formato_OK: 0
     request: "Fornire una soluzione ottima se <b>31 \xE8 la capienza dello zaino</b>\
       \ da non superarsi ma assumendo di <b>dover prendere tutti</b> gli elementi\
       \ in ['B', 'I'] e <b>nessuno</b> di quelli in ['F', 'E']."
-    init_answ_cell_msg_automatic: '#Inserisci la tua risposta in forma di lista di
-      oggetti da prendere (esempio: [''I'', ''E'', ''N'', ''M'', ''L'', ''F'', ''D''])\nopt_sol10=[]'
-    verif: 'verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
-      ''embedded_in_notebook''],task_dict={''task'': 10, ''pt_tot'': 40, ''pt_formato_OK'':
-      0, ''pt_feasibility_OK'': 1, ''pt_consistency_OK'': 0}, input_data_assigned={''labels'':[''A'',
-      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N''],''costs'':[15,
-      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7],''vals'':[50, 52, 54, 40, 45, 17, 18,
-      7, 8, 42, 30, 22],''Knapsack_Capacity'':31,''forced_out'':[''F'', ''E''],''forced_in'':[''B'',
-      ''I''],''partialDPtable'':[],''CAP_FOR_NUM_OPT_SOLS'':10,''CAP_FOR_NUM_SOLS'':10,},
-      long_answer_dict={''opt_sol'':(opt_sol10,''opt_sol10''),})'
-general_description_to_conclude: ricordati di salvare periodicamente il tuo lavoro.
-  Quando hai finito di lavorare su un esercizio ti conviene chiudere la sua scheda
-  (potrai sempre riaprirla successivamente)
-...
+    tot_points: 40
+    verif: '''verify_submission(TALight_problem_name=''RO_knapsack'',checkers=[''TALight'',
+      ''embedded_in_notebook''],task_dict={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':31,''forced_in'':[''B'',
+      ''I''],''forced_out'':[''F'', ''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},input_data_assigned={''tot_points'':40,''pt_formato_OK'':0,''pt_feasibility_OK'':1,''CapacityGen'':31,''forced_in'':[''B'',
+      ''I''],''forced_out'':[''F'', ''E''],''init_answ_cell_msg_automatic'':''PLACEHOLDER_prompt'',''CapacityMax'':''36'',''labels'':"[''A'',
+      ''B'', ''C'', ''D'', ''E'', ''F'', ''G'', ''H'', ''I'', ''L'', ''M'', ''N'']",''costs'':''[15,
+      16, 17, 11, 13, 5, 7, 3, 1, 12, 9, 7]'',''vals'':''[50, 52, 54, 40, 45, 17,
+      18, 7, 8, 42, 30, 22]'',},long_answer_dict={''opt_sol'':(opt_sol10,''opt_sol10''),})'''
+title: Problema dello zaino
